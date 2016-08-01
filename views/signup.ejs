@@ -7,11 +7,12 @@
   </head>
   <body>
     <%= alert %>
-    <form class="" action="/login" method="post">
-      <input type="email" name="email" value="">
-      <input type="password" name="password" value="">
+    <form class="" action="/signup" method="post">
+      <input type="text" name="email" value="" placeholder="email">
+      <input type="text" name="name" value="" placeholder="name">
+      <input type="password" name="password" value="" placeholder="password">
       <input type="submit">
-    </form>
+    </form><br>
     <button type="button" name="google" onclick="location.href = '/auth/google';">Connect with Google</button>
   </body>
 </html>
