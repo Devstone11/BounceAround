@@ -3,7 +3,7 @@ require('dotenv').config();
 module.exports = {
   development: {
     client: 'pg',
-    connection: 'postgres://localhost/DATABASE_NAME'
+    connection: 'postgres://localhost/bouncearound'
   },
   production:{
     client: 'pg',
