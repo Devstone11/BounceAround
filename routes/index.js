@@ -19,7 +19,7 @@ router.get('/auth/google',
 router.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
-    // Successful authentication, redirect home.
+    var profile = req.session.passport.user; //all the google profile information
     res.redirect('/');
   });
 
