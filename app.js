@@ -40,7 +40,8 @@ app.use(passport.session());
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: process.env.HOST + "/auth/google/callback"
+    callbackURL: process.env.HOST + "/auth/google/callback",
+    profileFields: [ 'https://www.googleapis.com/auth/userinfo.email' ]
   },
   function(accessToken, refreshToken, profile, done) {
     return done(null, profile);

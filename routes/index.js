@@ -14,12 +14,13 @@ router.get('/login', function(req, res, next) {
 });
 
 router.get('/auth/google',
-  passport.authenticate('google', { scope: ['profile'] }));
+  passport.authenticate('google', { scope: ['profile', 'https://www.googleapis.com/auth/userinfo.email'] }));
 
 router.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
     var profile = req.session.passport.user; //all the google profile information
+    console.log(profile);
     res.redirect('/');
   });
 
