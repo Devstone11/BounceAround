@@ -5,6 +5,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var GoogleStrategy = require('passport-google-oauth20').Strategy;
+var bcrypt = require('bcrypt');
+var session = require('express-session');
+var passport = require('passport');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -22,6 +26,34 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+	  keys: [process.env.SESSION_KEY1, process.env.SESSION_KEY2],
+	  secret: 'bam',
+	  resave: false,
+	  saveUninitialized: true
+  }));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new GoogleStrategy({
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: process.env.HOST + "/auth/google/callback",
+    profileFields: [ 'https://www.googleapis.com/auth/userinfo.email' ]
+  },
+  function(accessToken, refreshToken, profile, done) {
+    return done(null, profile);
+  }));
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
 
 app.use('/', routes);
 app.use('/users', users);
