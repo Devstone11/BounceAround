@@ -1,10 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!-- font for headers font-family: 'Fjalla One', sans-serif; -->
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Mukta+Vaani" rel="stylesheet">    <!-- font for text  font-family: 'Mukta Vaani', sans-serif;-->
+    <link href="https://fonts.googleapis.com/css?family=Mukta+Vaani" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheets/style.css" media="screen" title="no title" charset="utf-8">
+    <title></title>
   </head>
   <body>
+    <% include ./layout.ejs %>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <a href="/login">login</a><br>
