@@ -48,3 +48,13 @@ h1, h2, h3, h4, h5, h6{
   width: 100vw;
   background-color: #d3d3d3;
 }
+#login, #signup{
+  text-decoration: none;
+  border: 1px solid black;
+  background-color: rgb(140, 138, 150);
+  border-radius: 5px;
+  color: white;
+  width: 4vw;
+  height: 5vh;
+  display: inline-flex;
+}
