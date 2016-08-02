@@ -23,6 +23,10 @@ router.get('/:id/trips', function(req, res, next) {
   res.render('dashboard');
 });
 
+router.get('/:id/createTrip', function(req, res, next) {
+  res.render('createTrip'); 
+});
+
 router.get('/logout', function(req, res, next) {
   res.clearCookie("id");
   res.clearCookie("session");
