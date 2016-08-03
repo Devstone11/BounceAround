@@ -6,6 +6,7 @@ var bcrypt = require('bcrypt');
 var data = require('../data/queries');
 var salt = bcrypt.genSaltSync(10);
 var magic = require('../jsmagic/magic');
+var quickstartjs = require('../quickstart');
 
 router.get('/', function(req, res, next) {
   req.cookies.session ? res.redirect(`/${req.cookies.id}/trips`) : res.render('index', { title: 'Express' });
@@ -13,6 +14,10 @@ router.get('/', function(req, res, next) {
 
 router.get('/trips/new', function(req, res, next) {
   res.render('trips');
+});
+
+router.get('/trips/:id', function(req, res, next) {
+  res.render('show');
 });
 
 router.get('/login', function(req, res, next) {
@@ -37,6 +42,11 @@ router.get('/logout', function(req, res, next) {
   req.session.destroy(function (err) {
     res.redirect('/');
   });
+});
+
+router.get('/:user_id/trips/:trip_id/googlecalendar', function(req, res, next){
+  quickstartjs.quickstart(); //button to redirect to trip page after the events are sent to google
+  res.redirect('/');
 });
 
 router.post('/login', function(req, res, next) {
