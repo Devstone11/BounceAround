@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/stylesheets/style.css" media="screen" title="no title" charset="utf-8">
     <title></title>
   </head>
+<<<<<<< HEAD
     <% include ./layout.ejs %>
     <div class="container-fluid">
       <div class="row">
@@ -53,7 +54,19 @@
         <div class="col-sm-3">
           <h1>Hello Hello Hello</h1>
         </div>
+        <div class="row">
+          <a href="/trips/new">Add Trip</a>
+          <% if (trips) { %>
+            <h1>success!</h1>
+            <ul>
+            <% trips.forEach(function(trip) { %>
+              <li><a href="/trips/<%= trip.id %>"><%= trip.city %></a></li>
+              <% }) %>
+              </ul>
+              <% } %>
+        </div>
       </div>
     </div>
+<button type="button" name="google" onclick="location.href = '/logout';">Logout</button>
   </body>
 </html>

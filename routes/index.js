@@ -20,7 +20,7 @@ router.get('/signup', function(req, res, next) {
 });
 
 router.get('/:id/trips', function(req, res, next) {
-  res.render('dashboard');
+  res.redirect('/dashboard');
 });
 
 router.get('/logout', function(req, res, next) {
@@ -127,5 +127,12 @@ router.get('/auth/google/callback',
       }
     });
   });
+
+router.get('/dashboard', function(req, res, next) {
+  knex.raw(`SELECT * from trips WHERE user_id=${req.cookies.id}`).then(function(payload) {
+    console.log(payload.rows);
+    res.render('dashboard', {trips: payload.rows});
+  })
+})
 
 module.exports = router;
