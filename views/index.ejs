@@ -13,8 +13,50 @@
   </head>
   <body>
     <% include ./layout.ejs %>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <section id="ourBanner">
+      <div id="makeTransparent">
+        <div id="bannerText">
+          <h1>Welcome to BounceAround</h1>
+        </div>
+        <div id="bottomButt">
+          <a href="#about"><span class="glyphicon glyphicon-chevron-down"></span></a>
+        </div>
+      </div>
+      </div>
+        <div id="container" class="pictures">
+          <div style="display: inline-block;">
+            <img src="images/pic1.jpeg" alt="" class="pics"/>
+          </div>
+          <div>
+            <img src="images/pic2.jpeg" alt="" class="pics"/>
+          </div>
+          <div>
+            <img src="images/pic3.jpeg" alt="" class="pics"/>
+          </div>
+          <div>
+            <img src="images/pic4.jpeg" alt="" class="pics"/>
+          </div>
+          <div>
+            <img src="images/pic5.jpeg" alt="" class="pics"/>
+          </div>
+          <div>
+            <img src="images/pic6.jpeg" alt="" class="pics"/>
+          </div>
+          <div>
+            <img src="images/pic7.jpeg" alt="" class="pics"/>
+          </div>
+          <div>
+            <img src="images/pic8.jpeg" alt="" class="pics"/>
+          </div>
+      </div>
+    </section>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span6" id="about">
+          <h2>About</h2>
+        </div>
+      </div>
+    </div>
     <div class="container" id="frontButt">
         <button onclick="location.href = '/login';" class="signup"><span>Login</span></button>
         <button onclick="location.href = '/signup';" class="signup"><span>Sign Up</span></button>
@@ -22,5 +64,7 @@
       <div id="googBut">
         <button type="button" name="google" onclick="location.href = '/auth/google';" ><img src="stylesheets/googleplus.png"/> Connect with Google</button>
       </div>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+      <script src="javascripts/script.js"></script>
   </body>
 </html>
