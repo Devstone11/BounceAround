@@ -2,19 +2,71 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!-- font for headers font-family: 'Fjalla One', sans-serif; -->
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Mukta+Vaani" rel="stylesheet">    <!-- font for text  font-family: 'Mukta Vaani', sans-serif;-->
+    <link href="https://fonts.googleapis.com/css?family=Mukta+Vaani" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/style.css" media="screen" title="no title" charset="utf-8">
     <title></title>
   </head>
-  <body>
-    <h3>this is the user dashboard</h3>
-    <a href="/trips/new">Add Trip</a>
-    <% if (trips) { %>
-      <h1>success!</h1>
-      <ul>
-        <% trips.forEach(function(trip) { %>
-          <li><a href="/trips/<%= trip.id %>"><%= trip.city %></a></li>
-        <% }) %>
-      </ul>
-    <% } %>
-    <button type="button" name="google" onclick="location.href = '/logout';">Logout</button>
+<<<<<<< HEAD
+    <% include ./layout.ejs %>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-4" style="height: 90vh;">
+          <div class="well well-sm">
+            <h1>Trip to <!--ejs statement that grabs the name of the city the trip is going to--></h1>
+          </div>
+          <div style="width: 95%; height: 35%; background-color: green; margin-left: auto; margin-right: auto;">
+            <h3>Google map</h3>
+          </div>
+          <div style="margin-top: 2vh;">
+            <div class="well well-sm">
+              <h4>Filters</h4>
+              <select>
+                <option>
+                  Bars
+                </option>
+                <option>
+                  Restaurants
+                </option>
+                <option>
+                  Museums
+                </option>
+                <option>
+                  Monuments
+                </option>
+                <option>
+                  Nature
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-5">
+          <div class="well well-sm">
+            <h1>Your Schedule in <!--ejs statement to get name--></h1>
+          </div>
+
+        </div>
+        <div class="col-sm-3">
+          <h1>Hello Hello Hello</h1>
+        </div>
+        <div class="row">
+          <a href="/trips/new">Add Trip</a>
+          <% if (trips) { %>
+            <h1>success!</h1>
+            <ul>
+            <% trips.forEach(function(trip) { %>
+              <li><a href="/trips/<%= trip.id %>"><%= trip.city %></a></li>
+              <% }) %>
+              </ul>
+              <% } %>
+        </div>
+      </div>
+    </div>
+<button type="button" name="google" onclick="location.href = '/logout';">Logout</button>
   </body>
 </html>

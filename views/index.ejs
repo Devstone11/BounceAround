@@ -13,10 +13,72 @@
   </head>
   <body>
     <% include ./layout.ejs %>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <a href="/login" id="login">login</a><br>
-    <a href="/signup" id="signup">signup</a><br>
-    <button type="button" name="google" onclick="location.href = '/auth/google';">Connect with Google</button>
+    <section id="ourBanner">
+      <div id="makeTransparent">
+        <div id="bannerText">
+          <h1>Welcome to BounceAround</h1>
+        </div>
+        <div id="bottomButt">
+          <a href="#frontButt"><span class="glyphicon glyphicon-chevron-down"></span></a>
+        </div>
+      </div>
+      </div>
+        <div id="container" class="pictures">
+          <div style="display: inline-block;">
+            <img src="images/pic1.jpeg" alt="" class="pics"/>
+          </div>
+          <div>
+            <img src="images/pic2.jpeg" alt="" class="pics"/>
+          </div>
+          <div>
+            <img src="images/pic3.jpeg" alt="" class="pics"/>
+          </div>
+          <div>
+            <img src="images/pic4.jpeg" alt="" class="pics"/>
+          </div>
+          <div>
+            <img src="images/pic5.jpeg" alt="" class="pics"/>
+          </div>
+          <div>
+            <img src="images/pic6.jpeg" alt="" class="pics"/>
+          </div>
+          <div>
+            <img src="images/pic7.jpeg" alt="" class="pics"/>
+          </div>
+          <div>
+            <img src="images/pic8.jpeg" alt="" class="pics"/>
+          </div>
+      </div>
+    </section>
+    <div class="container" id="frontButt">
+      <div class="col-sm-4">
+        <div class="row">
+          <div id="hackey">
+            <h3>BounceAround is all about maximizing the time you have for travel.</h3>
+            <p>
+              <strong>BounceAround</strong> is an online travel app that is designed to help you create and customize your travel itinerary based on your interests. Simply put in your dates and your interests and the app will give you a list of activities to choose from. Because the app is so flexible you can easily adjust your itinerary and add or delete activities from your schedule so that you can make the most of your travel time. You can adjust your plans on the go and update your plans easily. All while staying organized because you can find everything in one place.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div id="hackey2">
+
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <button onclick="location.href = '/login';" class="signup"><span>Login</span></button>
+        </div>
+        <div class="row">
+          <button onclick="location.href = '/signup';" class="signup"><span>Sign Up</span></button>
+        </div>
+        <div class="row" id="googBut">
+          <button type="button" name="google" onclick="location.href = '/auth/google';" ><img src="stylesheets/googleplus.png"/> Connect with Google</button>
+        </div>
+      </div>
+    </div>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+      <script src="javascripts/script.js"></script>
   </body>
 </html>
