@@ -17,13 +17,6 @@ function initMap() {
     streetViewControl: false
   });
 
-  //for places in db of days
-  var marker = new google.maps.Marker({
-    position: {lat: 39.734122, lng: -104.987145},
-    map: map,
-    icon:'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-circle-filled-32.png'
-  });
-
   infoWindow = new google.maps.InfoWindow({
     content: document.getElementById('info-content')
   });
@@ -34,6 +27,14 @@ function initMap() {
   places = new google.maps.places.PlacesService(map);
 
   autocomplete.addListener('place_changed', onPlaceChanged);
+
+  map.addListener('dragend', function() {
+    clearMarkers()
+    map.panTo(map.getCenter());
+    map.setZoom(14);
+    search();
+    clearMarkers()
+  });
 }
 
 // When the user selects a city, get the place details for the city and
@@ -48,16 +49,11 @@ function onPlaceChanged() {
       search();
       clearMarkers()
       //needs to be fixed to show middle of map
-      var marker = new google.maps.Marker({
-        position: (place.geometry.location),
-        icon: markerIconCenter
-      });
     }
   }
   else {
     document.getElementById('autocomplete').placeholder = 'Enter a city'; //city name from db
-    var latLng = new google.maps.LatLng(39.7429674, -104.9855794); //coordinates of place from db
-    map.panTo(latLng);
+    map.panTo(map.getCenter());
     map.setZoom(14);
     search();
   }

@@ -25,7 +25,7 @@ function typeIcon(type){
   default:
       return "http://findicons.com/files/icons/951/google_maps/32/cluster3.png";
   }
-}
+} 
 
 function initMap() {
   var startPoint = {lat: 39.7429674, lng: -104.9855794}; //coordinates from db
