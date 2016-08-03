@@ -19,7 +19,7 @@
           <h1>Welcome to BounceAround</h1>
         </div>
         <div id="bottomButt">
-          <a href="#about"><span class="glyphicon glyphicon-chevron-down"></span></a>
+          <a href="#frontButt"><span class="glyphicon glyphicon-chevron-down"></span></a>
         </div>
       </div>
       </div>
@@ -50,20 +50,34 @@
           </div>
       </div>
     </section>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="span6" id="about">
-          <h2>About</h2>
+    <div class="container" id="frontButt">
+      <div class="col-sm-4">
+        <div class="row">
+          <div id="hackey">
+            <h3>BounceAround is all about maximizing the time you have for travel.</h3>
+            <p>
+              <strong>BounceAround</strong> is an online travel app that is designed to help you create and customize your travel itinerary based on your interests. Simply put in your dates and your interests and the app will give you a list of activities to choose from. Because the app is so flexible you can easily adjust your itinerary and add or delete activities from your schedule so that you can make the most of your travel time. You can adjust your plans on the go and update your plans easily. All while staying organized because you can find everything in one place.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div id="hackey2">
+
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <button onclick="location.href = '/login';" class="signup"><span>Login</span></button>
+        </div>
+        <div class="row">
+          <button onclick="location.href = '/signup';" class="signup"><span>Sign Up</span></button>
+        </div>
+        <div class="row" id="googBut">
+          <button type="button" name="google" onclick="location.href = '/auth/google';" ><img src="stylesheets/googleplus.png"/> Connect with Google</button>
         </div>
       </div>
     </div>
-    <div class="container" id="frontButt">
-        <button onclick="location.href = '/login';" class="signup"><span>Login</span></button>
-        <button onclick="location.href = '/signup';" class="signup"><span>Sign Up</span></button>
-    </div>
-      <div id="googBut">
-        <button type="button" name="google" onclick="location.href = '/auth/google';" ><img src="stylesheets/googleplus.png"/> Connect with Google</button>
-      </div>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
       <script src="javascripts/script.js"></script>
   </body>
