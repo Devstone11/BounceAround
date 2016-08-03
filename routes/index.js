@@ -11,6 +11,10 @@ router.get('/', function(req, res, next) {
   req.cookies.session ? res.redirect(`/${req.cookies.id}/trips`) : res.render('index', { title: 'Express' });
 });
 
+router.get('/trips/new', function(req, res, next) {
+  res.render('trips');
+});
+
 router.get('/login', function(req, res, next) {
   req.cookies.session ? res.redirect(`/${req.cookies.id}/trips`) : res.render('login', { alert: '' });
 });
