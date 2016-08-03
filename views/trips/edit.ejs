@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/cal.css' />
   </head>
   <body>
     <div class="filters">
@@ -16,66 +17,79 @@
         <input id="autocompletemap" placeholder="Enter a city" type="text" />
       </div>
     </div>
-<div id="map"></div>
+    <div id="map"></div>
 
-<div class="addtocalendar">
-  Add activity to trip planner
-  <form class="" action="" method="post">
-    Event Title
-    <input type="text" name="event_title" value="" placeholder="Event Title"><br>
-    Day
-    <input type="date" name="day" value="" placeholder="day"><br>
-    Time
-    <input type="time" name="time" value="" placeholder="time"><br>
-    Place
-    <input id="add_place_name" type="text" name="name" value="" disabled><br>
-    Address
-    <input id="add_place_address" type="address" name="address" value="" disabled><br>
-    Coordinates (hidden)
-    <input id="add_place_coords" type="text" name="coordinates" value="" disabled><br>
-    <input type="button" name="name" value="add to calendar">
-</div>
+    <div class="addtocalendar">
+      Add activity to trip planner
+      <form class="" action="" method="post">
+        Event Title
+        <input type="text" name="event_title" value="" placeholder="Event Title"><br>
+        Day
+        <input type="date" name="day" value="" placeholder="day"><br>
+        Time
+        <input type="time" name="time" value="" placeholder="time"><br>
+        Place
+        <input id="add_place_name" type="text" name="name" value="" disabled><br>
+        Address
+        <input id="add_place_address" type="address" name="address" value="" disabled><br>
+        Coordinates (hidden)
+        <input id="add_place_coords" type="text" name="coordinates" value="" disabled><br>
+        <input type="button" name="name" value="add to calendar">
+    </div>
 
-<div id="listing">
-  <table id="resultsTable">
-    <tbody id="results"></tbody>
-  </table>
-</div>
+    <div id="listing">
+      <table id="resultsTable">
+        <tbody id="results"></tbody>
+      </table>
+    </div>
 
-<div style="display: none">
-  <div id="info-content">
-    <table>
-      <tr id="iw-url-row" class="iw_table_row">
-        <td id="iw-icon" class="iw_table_icon"></td>
-        <td id="iw-url"></td>
-      </tr>
-      <tr id="iw-address-row" class="iw_table_row">
-        <td class="iw_attribute_name">Address:</td>
-        <td id="iw-address"></td>
-      </tr>
-      <tr id="iw-phone-row" class="iw_table_row">
-        <td class="iw_attribute_name">Telephone:</td>
-        <td id="iw-phone"></td>
-      </tr>
-      <tr id="iw-rating-row" class="iw_table_row">
-        <td class="iw_attribute_name">Rating:</td>
-        <td id="iw-rating"></td>
-      </tr>
-      <tr id="iw-website-row" class="iw_table_row">
-        <td class="iw_attribute_name">Website:</td>
-        <td id="iw-website"></td>
-      </tr>
-      <tr id="iw-website-coords" class="iw_table_row">
-        <td class="iw_attribute_name">Coords:</td>
-        <td id="iw-coords"></td>
-      </tr>
-      <tr id="iw-addto-calendar" class="iw_table_row">
-        <td class="iw_attribute_name"><a href="#">Add to calendar</a></td>
-        <td id="iw-calendar"></td>
-      </tr>
-    </table>
-  </div>
-</div>
+    <div style="display: none">
+      <div id="info-content">
+        <table>
+          <tr id="iw-url-row" class="iw_table_row">
+            <td id="iw-icon" class="iw_table_icon"></td>
+            <td id="iw-url"></td>
+          </tr>
+          <tr id="iw-address-row" class="iw_table_row">
+            <td class="iw_attribute_name">Address:</td>
+            <td id="iw-address"></td>
+          </tr>
+          <tr id="iw-phone-row" class="iw_table_row">
+            <td class="iw_attribute_name">Telephone:</td>
+            <td id="iw-phone"></td>
+          </tr>
+          <tr id="iw-rating-row" class="iw_table_row">
+            <td class="iw_attribute_name">Rating:</td>
+            <td id="iw-rating"></td>
+          </tr>
+          <tr id="iw-website-row" class="iw_table_row">
+            <td class="iw_attribute_name">Website:</td>
+            <td id="iw-website"></td>
+          </tr>
+          <tr id="iw-website-coords" class="iw_table_row">
+            <td class="iw_attribute_name">Coords:</td>
+            <td id="iw-coords"></td>
+          </tr>
+          <tr id="iw-addto-calendar" class="iw_table_row">
+            <td class="iw_attribute_name"><a href="#">Add to calendar</a></td>
+            <td id="iw-calendar"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div id="calendar_box">
+      <% days.forEach(function(item) { %>
+        <div class="day_container">
+          <h2><%= item.date %></h2>
+          <div class="cal_day">
+            <ul>
+              <li>Placeholder activity</li>
+            </ul>
+          </div>
+        </div>
+        <% }) %>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.26/jquery.autocomplete.min.js"></script>

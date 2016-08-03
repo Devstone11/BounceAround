@@ -16,7 +16,21 @@ router.get('/new', function(req, res, next) {
 });
 
 router.get('/:id/edit', function(req, res, next) {
-  res.render('trips/edit');
+  knex.raw(`SELECT id, date from days WHERE trip_id=${req.params.id}`).then(function(days) {
+    var formatDates = days.rows.map(function(item) {
+      var splitDate = item.date.toISOString().split('T')[0].split('-');
+      return {
+        id: item.id,
+        date: `${splitDate[1]}-${splitDate[2]}-${splitDate[0]}`
+      }
+    })
+    knex.raw(`SELECT * from activities
+      JOIN days ON days.id = activities.day_id
+      JOIN trips ON trips.id = days.trip_id
+      WHERE trip_id = ${req.params.id}`).then(function(activities) {
+      res.render('trips/edit', {days: formatDates, activities: activities.rows});
+    })
+  })
 })
 
 router.post('/new', function(req, res, next) {

@@ -1,0 +1,24 @@
+#calendar_box {
+  border: 1px solid blue;
+  text-align: center;
+  padding: 20px;
+  height: 10vw;
+  overflow: scroll;
+  white-space:nowrap
+}
+
+.day_container {
+  border: 1px dashed red;
+  display: inline-block;
+}
+
+.day_container h2 {
+  font-size: 20px;
+}
+
+.cal_day {
+  border: 1px dotted green;
+  font-size: 10px;
+  width: 250px;
+  display: inline-block;
+}
