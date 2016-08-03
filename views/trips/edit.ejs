@@ -24,8 +24,12 @@
       <form class="" action="" method="post">
         Event Title
         <input type="text" name="event_title" value="" placeholder="Event Title"><br>
-        Day
-        <input type="date" name="day" value="" placeholder="day"><br>
+        Trip Day
+        <select name="day">
+          <% days.forEach(function(day) { %>
+              <option><%= day.date %></option>
+          <% }) %>
+        </select>
         Time
         <input type="time" name="time" value="" placeholder="time"><br>
         Place
@@ -34,7 +38,7 @@
         <input id="add_place_address" type="address" name="address" value="" disabled><br>
         Coordinates (hidden)
         <input id="add_place_coords" type="text" name="coordinates" value="" disabled><br>
-        <input type="button" name="name" value="add to calendar">
+        <input type="button" id="addToCal" value="add to calendar">
     </div>
 
     <div id="listing">
@@ -79,12 +83,16 @@
     </div>
 
     <div id="calendar_box">
-      <% days.forEach(function(item) { %>
+      <% days.forEach(function(day) { %>
         <div class="day_container">
-          <h2><%= item.date %></h2>
+          <h2><%= day.date %></h2>
           <div class="cal_day">
             <ul>
-              <li>Placeholder activity</li>
+              <% activities.forEach(function(activity) {
+                if (activity.day_id === day.id) { %>
+                  <li><%= activity.name %></li>
+              <% }
+              }) %>
             </ul>
           </div>
         </div>
@@ -96,5 +104,6 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTSj-FCBxjl1YBfJ2GngYKyajoobyKdVg&libraries=places&callback=initMap" async defer></script>
     <script type="text/javascript" src="/javascripts/map.js"></script>
     <script type="text/javascript" src="/javascripts/autocomplete.js"></script>
+    <script type="text/javascript" src="/javascripts/calendar.js"></script>
   </body>
 </html>
