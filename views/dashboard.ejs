@@ -7,6 +7,14 @@
   <body>
     <h3>this is the user dashboard</h3>
     <a href="/trips/new">Add Trip</a>
+    <% if (trips) { %>
+      <h1>success!</h1>
+      <ul>
+        <% trips.forEach(function(trip) { %>
+          <li><a href="/trips/<%= trip.id %>"><%= trip.city %></a></li>
+        <% }) %>
+      </ul>
+    <% } %>
     <button type="button" name="google" onclick="location.href = '/logout';">Logout</button>
   </body>
 </html>
