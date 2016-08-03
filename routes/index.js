@@ -24,7 +24,7 @@ router.get('/:id/trips', function(req, res, next) {
 });
 
 router.get('/:id/createTrip', function(req, res, next) {
-  res.render('createTrip'); 
+  res.render('createTrip');
 });
 
 router.get('/logout', function(req, res, next) {
@@ -132,43 +132,43 @@ router.get('/auth/google/callback',
     });
   });
 
-  router.get('/trips/new', function(req, res, next) {
-    res.render('trips/new');
-  });
+router.get('/trips/new', function(req, res, next) {
+  res.render('trips/new');
+});
 
-  router.post('/trips/new', function(req, res, next) {
-    var startDate = new Date(req.body.start_date);
-    var endDate = new Date(req.body.end_date);
+router.post('/trips/new', function(req, res, next) {
+  var startDate = new Date(req.body.startDate);
+  var endDate = new Date(req.body.endDate);
 
-    //create array of trip dates
-    Date.prototype.addDays = function(days) {
-      var dat = new Date(this.valueOf())
-      dat.setDate(dat.getDate() + days);
-      return dat;
+  //create array of trip dates
+  Date.prototype.addDays = function(days) {
+    var dat = new Date(this.valueOf())
+    dat.setDate(dat.getDate() + days);
+    return dat;
+  }
+
+  function addDays(startDate, endDate) {
+    var dateArray = [];
+    var currentDate = startDate;
+    while (currentDate <= endDate) {
+      dateArray.push( (new Date(currentDate)).toISOString().split('T')[0] )
+      currentDate = currentDate.addDays(1);
     }
+    return dateArray;
+  }
 
-    function addDays(startDate, endDate) {
-      var dateArray = [];
-      var currentDate = startDate;
-      while (currentDate <= endDate) {
-        dateArray.push( (new Date(currentDate)).toISOString().split('T')[0] )
-        currentDate = currentDate.addDays(1);
-      }
-      return dateArray;
-    }
-
-    var myDateArray = addDays(startDate, endDate);
-
-    //create records for trip and all days
-    knex.raw(`INSERT into trips values (DEFAULT, ${req.cookies.id}, '${req.body.start_date}', '${req.body.end_date}', '${req.body.city}')`).then(function() {
-      knex('trips').max('id').then(function(id) {
-        myDateArray.forEach(function(date) {
-          knex.raw(`INSERT into days values (DEFAULT, ${id[0].max}, '${date}')`).then(function() {
-            res.render('trips/new');
-          })
+  var myDateArray = addDays(startDate, endDate);
+  console.log(myDateArray);
+  //create records for trip and all days
+  knex.raw(`INSERT into trips values (DEFAULT, ${req.cookies.id}, '${req.body.startDate}', '${req.body.endDate}', '${req.body.city}')`).then(function() {
+    knex('trips').max('id').then(function(id) {
+      myDateArray.forEach(function(date) {
+        knex.raw(`INSERT into days values (DEFAULT, ${id[0].max}, '${date}')`).then(function() {
+          res.render('dashboard');
         })
-      });
+      })
     });
   });
+});
 
 module.exports = router;
