@@ -1,41 +1,55 @@
+//same code needed to load all markers in edit route (without initMap() loading function)
+
+function typeIcon(type){
+  switch(type) {
+  case 'park' || 'rv_park' || 'campground':
+      return "http://findicons.com/files/icons/951/google_maps/32/forest.png"
+  case 'restaurant' || 'bakery' || 'cafe' || 'meal_delivery':
+      return  "http://findicons.com/files/icons/951/google_maps/32/restaurantgourmet.png";
+  case 'airport':
+      return  "http://findicons.com/files/icons/951/google_maps/32/airport.png";
+  case 'gas_station':
+    return "http://findicons.com/files/icons/951/google_maps/32/gazstation.png";
+  case 'subway_station' || "train_station":
+    return "http://findicons.com/files/icons/951/google_maps/32/tram.png";
+  case 'bar' || 'liquor_store' || 'night_club':
+    return "http://findicons.com/files/icons/951/google_maps/32/cocktail.png";
+  case 'lodging':
+    return "http://findicons.com/files/icons/951/google_maps/32/hotel.png";
+  case 'convenience_store' || 'department_store' || 'pet_store' || 'shopping_mall' || 'store':
+    return "http://findicons.com/files/icons/951/google_maps/32/shoppingmall.png";
+  case 'casino' || 'amusement_park' || 'movie_theater' || 'bowling_alley':
+    return "http://findicons.com/files/icons/951/google_maps/32/circus.png";
+  case 'museum' || 'post_office' || 'stadium' || 'art_gallery':
+    return "http://findicons.com/files/icons/951/google_maps/32/ancienttemple.png";
+  default:
+      return "http://findicons.com/files/icons/951/google_maps/32/cluster3.png";
+  }
+}
+
 function initMap() {
-  var uluru = {lat: -25.363, lng: 131.044};
+  var startPoint = {lat: 39.7429674, lng: -104.9855794}; //coordinates from db
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 4,
-    center: uluru
+    zoom: 14,
+    center: startPoint
   });
 
-  var contentString = '<div id="content">'+
-      '<div id="siteNotice">'+
-      '</div>'+
-      '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
-      '<div id="bodyContent">'+
-      '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-      'sandstone rock formation in the southern part of the '+
-      'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-      'south west of the nearest large town, Alice Springs; 450&#160;km '+
-      '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-      'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-      'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-      'Aboriginal people of the area. It has many springs, waterholes, '+
-      'rock caves and ancient paintings. Uluru is listed as a World '+
-      'Heritage Site.</p>'+
-      '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-      'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-      '(last visited June 22, 2009).</p>'+
-      '</div>'+
-      '</div>';
+  var markers = [{name: "park", address: "45 street, denver, co", phone: "32434234234", coords: '39.7318556, -104.99786', type: "casino" }, {name: "gas", address: "45 str234eet, denver, 34", phone: "234234324", coords: '39.7429674, -104.9855794', type: "park"}];
+  //markers is a example, replace with db json object from ajax
+  markers.forEach(function(marker){
+      thismarker = new google.maps.Marker({
+        position: {lat: Number(marker.coords.split(",")[0]), lng: Number(marker.coords.split(",")[1])},
+        map: map,
+        icon: typeIcon(marker.type),
+        title: marker.name
+    });
 
-  var infowindow = new google.maps.InfoWindow({
-    content: contentString
-  });
+    var infowindow = new google.maps.InfoWindow({
+      content: '<div class="infowindowshow">' + marker.name + '</div>' + '<div class="infowindowshow">' + marker.address + '</div>' + '<div class="infowindowshow">' + marker.phone + '</div>'
+    });
 
-  var marker = new google.maps.Marker({
-    position: uluru,
-    map: map,
-    title: 'Uluru (Ayers Rock)'
-  });
-  marker.addListener('click', function() {
-    infowindow.open(map, marker);
+    thismarker.addListener('click', function() {
+      infowindow.open(map, this);
+    });
   });
 }

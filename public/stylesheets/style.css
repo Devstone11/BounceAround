@@ -148,7 +148,7 @@ table {
   display: inline-block;
   background-color: red;
   position: relative;
-  top: -52vh;
+  top: -40vh;
   padding: 30px;
 }
 
@@ -169,6 +169,12 @@ h5{
 
 #iw-website-coords{
   display: none;
+}
+
+.search_icon{
+  width: 30px;
+  display: inline-block;
+  cursor: pointer;
 }
 
 .autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }

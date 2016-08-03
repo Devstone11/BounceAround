@@ -41,7 +41,6 @@ function initMap() {
 var markerIconCenter = 'https://cdn0.iconfinder.com/data/icons/seo-web-15/141/seo-social-web-network-internet_122-32.png';
 function onPlaceChanged() {
   var place = autocomplete.getPlace();
-  console.log(place);
   if (place) {
     if (place.geometry) {
       map.panTo(place.geometry.location);
@@ -209,4 +208,9 @@ $('#iw-addto-calendar').on('click', function(){
   $('#add_place_address').val($('#iw-address').html());
   $('#add_place_coords').val($('#iw-coords').html());
   //pop-up with pre-populated information about place
+});
+
+$(document).on("click", ".search_icon", function(){
+  $('#autocomplete').attr("name", $(this).children(":first").attr("alt"));
+  onPlaceChanged();
 });
