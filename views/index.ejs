@@ -15,8 +15,12 @@
     <% include ./layout.ejs %>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-    <a href="/login" id="login">login</a><br>
-    <a href="/signup" id="signup">signup</a><br>
-    <button type="button" name="google" onclick="location.href = '/auth/google';">Connect with Google</button>
+    <div class="container" id="frontButt">
+        <button onclick="location.href = '/login';" class="signup"><span>Login</span></button>
+        <button onclick="location.href = '/signup';" class="signup"><span>Sign Up</span></button>
+    </div>
+      <div id="googBut">
+        <button type="button" name="google" onclick="location.href = '/auth/google';" ><img src="stylesheets/googleplus.png"/> Connect with Google</button>
+      </div>
   </body>
 </html>

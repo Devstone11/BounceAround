@@ -170,6 +170,40 @@ h5{
 #iw-website-coords{
   display: none;
 }
+button.signup{
+  display: flex;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 15vw;
+  height: 8vh;
+  font-size: 1.4em;
+  text-align: center;
+  margin-top: 2vh;
+  color: white;
+  border: none;
+  background-color: rgb(255, 218, 0);
+  padding: auto;
+}
+button.signup span{
+  margin-left: auto;
+  margin-right: auto;
+}
+ .signup:hover{
+  background-color: #3d60d1;
+}
+#googBut button{
+  width: 15vw;
+}
+#googBut{
+  margin-top: 3vh;
+  margin-left: 5vw;
+}
+#googBut button img{
+  height: 90%;
+  width: 25%;
+  vertical-align: middle;
+
+}
 
 .autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }
 .autocomplete-suggestion { padding: 10px 5px; font-size: 1em; white-space: nowrap; overflow: hidden; }
