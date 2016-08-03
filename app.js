@@ -44,6 +44,8 @@ passport.use(new GoogleStrategy({
     profileFields: [ 'https://www.googleapis.com/auth/userinfo.email' ]
   },
   function(accessToken, refreshToken, profile, done) {
+		profile.accesstoken = accessToken;
+		profile.refreshtoken = refreshToken;
     return done(null, profile);
   }));
 

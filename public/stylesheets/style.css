@@ -65,3 +65,113 @@ h1, h2, h3, h4, h5, h6{
     margin-right: 25px;
     margin-left: 25px;
 }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#map {
+  display: inline-block;
+  height: 70%;
+  margin-left: 30px;
+}
+table {
+  font-size: 12px;
+}
+#map {
+  width: 50%;
+}
+
+#findhotels {
+  position: absolute;
+  text-align: right;
+  width: 100px;
+  font-size: 14px;
+  padding: 4px;
+  z-index: 5;
+}
+#locationField, #searchfield {
+  width: 80%;
+  height: 25px;
+  display: block;
+  margin-bottom: 20px;
+}
+#controls {
+  position: absolute;
+  left: 300px;
+  width: 140px;
+  top: 0px;
+  z-index: 5;
+  background-color: #fff;
+}
+
+#country {
+  width: 100%;
+}
+.placeIcon {
+  width: 20px;
+  height: 34px;
+  margin: 4px;
+}
+.hotelIcon {
+  width: 24px;
+  height: 24px;
+}
+#resultsTable {
+  border-collapse: collapse;
+  width: 240px;
+}
+
+#rating {
+  font-size: 13px;
+  font-family: Arial Unicode MS;
+}
+.iw_table_row {
+  height: 18px;
+}
+.iw_attribute_name {
+  font-weight: bold;
+  text-align: right;
+}
+.iw_table_icon {
+  text-align: right;
+}
+
+#listing{
+  display: none;
+}
+
+.filters{
+  width: 20%;
+  height: 70%;
+  display: inline-block;
+  background-color: red;
+  position: relative;
+  top: -52vh;
+  padding: 30px;
+}
+
+h5{
+  display: block;
+}
+
+.addtocalendar{
+  top: -36vh;
+  position: relative;
+  display: inline-block;
+  background-color: blue;
+  width: 12%;
+  height: 70%;
+  padding: 20px;
+  color: white;
+}
+
+#iw-website-coords{
+  display: none;
+}
+
+.autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }
+.autocomplete-suggestion { padding: 10px 5px; font-size: 1em; white-space: nowrap; overflow: hidden; }
+.autocomplete-selected { background: #f0f0f0; }
+.autocomplete-suggestions strong { font-weight: normal; color: #3399ff; }
