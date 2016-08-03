@@ -1,10 +1,69 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Mukta Vaani', sans-serif !important;
+}
+#custom-bootstrap-menu, footer, body{
+  font-family: 'Mukta Vaani', sans-serif;
+}
+#custom-bootstrap-menu.navbar-default .navbar-brand {
+    color: rgba(119, 119, 119, 1);
+}
+#custom-bootstrap-menu.navbar-default {
+    font-size: 16px;
+    background-color: rgba(248, 248, 248, 1);
+    border-width: 1px;
+    border-radius: 4px;
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a {
+    color: rgba(119, 119, 119, 1);
+    background-color: rgba(248, 248, 248, 0);
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:hover,
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
+    color: rgba(51, 51, 51, 1);
+    background-color: rgba(255, 218, 0, 1);
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a,
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover,
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:focus {
+    color: rgba(85, 85, 85, 1);
+    background-color: rgba(209, 174, 61, 1);
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle {
+    border-color: #d1ae3d;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover,
+#custom-bootstrap-menu.navbar-default .navbar-toggle:focus {
+    background-color: #d1ae3d;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {
+    background-color: #d1ae3d;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar,
+#custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {
+    background-color: #f8f8f8;
+}
+#footer{
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  background-color: #d3d3d3;
+}
+#login, #signup{
+  text-decoration: none;
+  border: 1px solid black;
+  background-color: rgb(140, 138, 150);
+  border-radius: 5px;
+  color: white;
+  width: 4vw;
+  height: 5vh;
+  display: inline-flex;
 }
 
-a {
-  color: #00B7FF;
+.form-group {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    margin-right: 25px;
+    margin-left: 25px;
 }
 
 html, body {
