@@ -114,9 +114,10 @@ table {
   height: 34px;
   margin: 4px;
 }
-.hotelIcon {
-  width: 24px;
-  height: 24px;
+.imgPop {
+  width: 55px;
+  height: 55px;
+  border-radius: 100%;
 }
 #resultsTable {
   border-collapse: collapse;
@@ -127,6 +128,13 @@ table {
   font-size: 13px;
   font-family: Arial Unicode MS;
 }
+
+#iw-url{
+  font-weight: bold;
+  font-size: 1.2em;
+  text-align: left;
+}
+
 .iw_table_row {
   height: 18px;
 }

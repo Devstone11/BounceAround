@@ -48,7 +48,6 @@ function onPlaceChanged() {
       map.setZoom(14);
       search();
       clearMarkers()
-      //needs to be fixed to show middle of map
     }
   }
   else {
@@ -68,13 +67,17 @@ function search() {
   };
 
   places.nearbySearch(search, function(results, status) {
+    results.push(results[0]);
+    results[results.length-1].geometry.location = map.getCenter();
+    results[results.length-1].name = "add this place to calendar"
+    results[results.length-1].geometry.location = map.getCenter();
+    console.log(results);
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       clearResults();
       clearMarkers();
 
       for (var i = 0; i < results.length; i++) {
         var markerIcon = 'https://cdn4.iconfinder.com/data/icons/small-n-flat/24/map-marker-32.png';
-
         markers[i] = new google.maps.Marker({
           position: results[i].geometry.location,
           animation: google.maps.Animation.DROP,
@@ -151,10 +154,11 @@ function showInfoWindow() {
 
 // Load the place information into the HTML elements used by the info window.
 function buildIWContent(place) {
-  document.getElementById('iw-icon').innerHTML = '<img class="hotelIcon" ' +
-      'src="' + place.icon + '"/>';
-  document.getElementById('iw-url').innerHTML = '<b><a href="' + place.url +
-      '">' + place.name + '</a></b>';
+  if (place.photos){
+  document.getElementById('iw-icon').innerHTML = '<img class="imgPop" ' +
+      'src="' + place.photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100}) + '"/>';
+  }
+  document.getElementById('iw-url').innerHTML = '<div>' + place.name + '</div>';
   document.getElementById('iw-address').textContent = place.vicinity;
   document.getElementById('iw-coords').innerHTML = place.geometry.location;
 
