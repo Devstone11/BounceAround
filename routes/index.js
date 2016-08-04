@@ -138,7 +138,6 @@ router.get('/dashboard', function(req, res, next) {
   knex.raw(`SELECT * from trips WHERE user_id=${req.cookies.id}`).then(function(payload) {
     data.getLastTrip(req.cookies.id).then(function(last_trip){
     var trip;
-    console.log(payload.rows);
     if (payload.rows.length !== 0){
       var days = {};
       for (var i in last_trip.rows){
@@ -152,6 +151,7 @@ router.get('/dashboard', function(req, res, next) {
       trip.start = (last_trip.rows[0].start_date + '').substring(4, 15);
       trip.end = (last_trip.rows[0].end_date + '').substring(4, 15);
       trip.days = days;
+      trip.id = last_trip.rows[0].id;
       trip.city = last_trip.rows[0].city;
       console.log(trip);
       console.log(payload.rows);

@@ -61,7 +61,7 @@ router.post('/new', function(req, res, next) {
   var myDateArray = addDays(startDate, endDate);
   console.log(myDateArray);
   //create records for trip and all days
-  knex.raw(`INSERT into trips values (DEFAULT, ${req.cookies.id}, '${req.body.startDate}', '${req.body.endDate}', '${req.body.city}')`).then(function() {
+  knex.raw(`INSERT into trips values (DEFAULT, ${req.cookies.id}, '${req.body.startDate}', '${req.body.endDate}', '${req.body.city}', ${req.body.coords})`).then(function() {
     knex('trips').max('id').then(function(id) {
       myDateArray.forEach(function(date) {
         knex.raw(`INSERT into days values (DEFAULT, ${id[0].max}, '${date}')`).then(function() {
