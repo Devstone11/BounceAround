@@ -151,7 +151,8 @@ router.get('/dashboard', function(req, res, next) {
       trip.start = (last_trip.rows[0].start_date + '').substring(4, 15);
       trip.end = (last_trip.rows[0].end_date + '').substring(4, 15);
       trip.days = days;
-      trip.id = last_trip.rows[0].id;
+      trip.id = last_trip.rows[0].trip_id;
+      console.log(trip.id)
       trip.city = last_trip.rows[0].city;
       console.log(trip);
       console.log(payload.rows);

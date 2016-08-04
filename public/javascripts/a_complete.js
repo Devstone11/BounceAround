@@ -1,6 +1,6 @@
 var autocomplete;
 var city = document.getElementById('city');
-//$(document).ready(function() { initialize(); });
+
 $('#new_coords').hide()
 function initialize() {
   var geocoder = new google.maps.Geocoder();

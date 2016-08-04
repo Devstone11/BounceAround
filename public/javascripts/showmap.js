@@ -30,11 +30,15 @@ function typeIcon(type){
   }
 }
 
-var id = $('.last_trip').attr("id");
-
 var map;
 function initMap() {
-  var startPoint = {lat: 39.7429674, lng: -104.9855794}; //coordinates from db
+  var id = $('.last_trip').attr("id");
+  var url = `http://localhost:3000/activities/trip/${id}`;
+  console.log(id, url)
+  $.ajax({
+      url: url,
+      success: function(markers){
+  var startPoint = {lat: Number(markers[0].coordinates.slice(1,-1).split(",")[0]), lng: Number(markers[0].coordinates.slice(1,-1).split(",")[1])} //coordinates from db
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 13,
     center: startPoint,
@@ -44,10 +48,6 @@ function initMap() {
     streetViewControl: false
   });
 
-  $.ajax({
-      url: `http://localhost:3000/activities/trip/${id}`,
-      success: function(markers){
-        console.log(markers);
         markers.forEach(function(marker){
               marker.activities_coordinates = marker.activities_coordinates.slice(1,-1);
               thismarker = new google.maps.Marker({
@@ -67,6 +67,4 @@ function initMap() {
         });
       }
     });
-//  var markers = [{name: "Some hotel", address: "Some address", phone: "32434234234", coords: '39.7318556, -104.99786', type: "lodging" }, {name: "Some restaurant", address: "45 str234eet, denver, 34", phone: "234234324", coords: '39.7429674, -104.9855794', type: "restaurant"}];
-  //markers is a example, replace with db json object from ajax
 }
