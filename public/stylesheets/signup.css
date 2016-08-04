@@ -1,0 +1,75 @@
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Mukta Vaani', sans-serif !important;
+}
+.form-group {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 35vw;
+    min-height: 40px;
+}
+/*.first {
+  width: 35vw;
+  display: block;
+  margin-top: 10vh;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 300px;
+  min-height: 40px;
+}*/
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #00A4CA;
+}
+.navbar-brand {
+  color: white;
+  margin-top: 30vh;
+  margin-left: 33.3vw;
+  margin-right: 33.3vw;
+  display: block;
+  width: 33vw;
+  text-align: center;
+}
+
+.login-button {
+  display: block;
+  background-color: white;
+  color: #808080;
+  width: 191px;
+  height: 46px;
+  border: solid #c0c0c0;
+  border-top-color: #FFDA00;
+  text-align: center;
+}
+#google-signin {
+  display: block;
+  background-image: url("../images/btn_google_signin_light_normal_web.png");
+  width: 191px;
+  height: 46px;
+  border: none;
+}
+div.button-container {
+  margin: auto;
+  text-align: center;
+  /*border: solid black;*/
+  display: block;
+  width: 35vw;
+  height: 150px;
+}
+.button-left {
+  text-align: left;
+  width: 100%;
+  height: 56px;
+  margin-right: 40px;
+  display: block;
+}
+.button-right {
+  width: 100%;
+  height: 56px;
+  display: block;
+}
