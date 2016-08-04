@@ -34,10 +34,11 @@ var map;
 function initMap() {
   var id = $('.last_trip').attr("id");
   var url = `http://localhost:3000/activities/trip/${id}`;
-  console.log(id, url)
+
   $.ajax({
       url: url,
       success: function(markers){
+        console.log(markers);
   var startPoint = {lat: Number(markers[0].coordinates.slice(1,-1).split(",")[0]), lng: Number(markers[0].coordinates.slice(1,-1).split(",")[1])} //coordinates from db
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 13,
@@ -58,7 +59,7 @@ function initMap() {
           });
 
           var infowindow = new google.maps.InfoWindow({
-            content: '<div class="infowindowshow">' + marker.activities_name.capitalize() + '</div>' + '<div class="infowindowshow">' + marker.activities_address + '</div>' + '<div class="infowindowshow">' + "phone number" + '</div>'
+            content: '<div class="infowindowshow">' + marker.activities_name.capitalize() + '</div>' + '<div class="infowindowshow">' + "Address: " + marker.activities_address + '</div>' + '<div class="infowindowshow">' + "Time: " + marker.activities_start_time + '</div>'
           });
 
           thismarker.addListener('click', function() {

@@ -19,7 +19,7 @@
           <div class="well well-sm">
             <h1 class="last_trip" id='<%= lasttrip.id %>'>Trip to <%= lasttrip.city %></h1>
           </div>
-          <div style="width: 95%; height: 35%; background-color: green; margin-left: auto; margin-right: auto;">
+          <div class="map_dashboard">
             <div id="map" class="dashboard_map">
             </div>
           </div>
@@ -32,6 +32,7 @@
                 ( <%= lasttrip.start %> - <%= lasttrip.end %> )
               </p>
             </div>
+          </div>
             <div class="schedule">
               <% for (var i in lasttrip.days) { %>
                 <p>
@@ -48,21 +49,22 @@
                 </div>
                 <% } %>
             </div>
-          </div>
         </div>
         <div class="col-sm-3">
         <div class="row">
-            <% if (trips.length > 1) { %>
-              <div class="col-sm-5">
-                <h1>All trips</h1>
-                <a href="/trips/new"> + Add Trip</a>
-              <ul>
-              <% trips.forEach(function(trip) { %>
-                <li><a href="/trips/<%= trip.id %>"><%= trip.city %></a></li>
-                <% }) %>
-                </ul>
+          <div class="well well-sm">
+            <h1>All trips</h1>
+            <a href="/trips/new"> + Add Trip</a>
+          <ul>
+          <% if (trips.length > 1) { %>
+          <% trips.forEach(function(trip) { %>
+            <li><a href="/trips/<%= trip.id %>"><%= trip.city %></a></li>
+            <% }) %>
+            <% } else { %>
+            <li><a href="/trips/<%= trips[0].id %>"><%= trips[0].city %></a></li>
             <% } %>
-              </div>
+            </ul>
+          </div>
         </div>
       </div>
       <% } else { %>
