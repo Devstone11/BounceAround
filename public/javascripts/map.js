@@ -155,6 +155,7 @@ function buildIWContent(place) {
   document.getElementById('iw-url').innerHTML = '<div>' + place.name + '</div>';
   document.getElementById('iw-address').textContent = place.vicinity;
   document.getElementById('iw-coords').innerHTML = place.geometry.location;
+  document.getElementById('iw-type').innerHTML = place.types[0];
 
   if (place.formatted_phone_number) {
     document.getElementById('iw-phone-row').style.display = '';
@@ -199,6 +200,7 @@ $('#iw-addto-calendar').on('click', function(){
   $('#add_place_name').val($('#iw-url').children(":first").children(":first").html());
   $('#add_place_address').val($('#iw-address').html());
   $('#add_place_coords').val($('#iw-coords').html());
+  $('#add_place_type').val($('#iw-type').html());
 });
 
 $(document).on("click", ".search_icon", function(){
