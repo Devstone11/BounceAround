@@ -19,28 +19,7 @@
             <h1>Trip to <!--ejs statement that grabs the name of the city the trip is going to--></h1>
           </div>
           <div style="width: 95%; height: 35%; background-color: green; margin-left: auto; margin-right: auto;">
-            <h3>Google map</h3>
-          </div>
-          <div style="margin-top: 2vh;">
-            <div class="well well-sm">
-              <h4>Filters</h4>
-              <select>
-                <option>
-                  Bars
-                </option>
-                <option>
-                  Restaurants
-                </option>
-                <option>
-                  Museums
-                </option>
-                <option>
-                  Monuments
-                </option>
-                <option>
-                  Nature
-                </option>
-              </select>
+            <div id=map class="dashboard_map">
             </div>
           </div>
         </div>
@@ -66,7 +45,7 @@
         </div>
       </div>
     </div>
-<button type="button" name="google" onclick="location.href = '/logout';">Logout</button>
+    <button type="button" name="google" onclick="location.href = '/logout';">Logout</button>
   <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmSDm9b-8fluOVsEKS8VKEu3YFzoF5q6A&libraries=places&callback=initMap" async defer></script>
   <script type="text/javascript" src="/javascripts/showmap.js"></script>

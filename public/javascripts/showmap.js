@@ -30,8 +30,12 @@ function typeIcon(type){
 function initMap() {
   var startPoint = {lat: 39.7429674, lng: -104.9855794}; //coordinates from db
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 14,
-    center: startPoint
+    zoom: 13,
+    center: startPoint,
+    mapTypeControl: false,
+    panControl: false,
+    zoomControl: true,
+    streetViewControl: false
   });
 
   var markers = [{name: "Some hotel", address: "Some address", phone: "32434234234", coords: '39.7318556, -104.99786', type: "lodging" }, {name: "Some restaurant", address: "45 str234eet, denver, 34", phone: "234234324", coords: '39.7429674, -104.9855794', type: "restaurant"}];
