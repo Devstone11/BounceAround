@@ -271,6 +271,12 @@ h5{
   cursor: pointer;
 }
 
+.map_box{
+  width: 500px;
+  height: 400px;
+  display:inline-block;
+}
+
 .autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }
 .autocomplete-suggestion { padding: 10px 5px; font-size: 1em; white-space: nowrap; overflow: hidden; }
 .autocomplete-selected { background: #f0f0f0; }

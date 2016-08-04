@@ -13,10 +13,11 @@
   </head>
     <% include ./layout.ejs %>
     <div class="container-fluid">
+      <% if (trips.length !== 0) { %>
       <div class="row">
         <div class="col-sm-4" style="height: 90vh;">
           <div class="well well-sm">
-            <h1>Trip to <!--ejs statement that grabs the name of the city the trip is going to--></h1>
+            <h1>Trip to <%= lasttrip.city %><!--ejs statement that grabs the name of the city the lasttrip is going to--></h1>
           </div>
           <div style="width: 95%; height: 35%; background-color: green; margin-left: auto; margin-right: auto;">
             <div id=map class="dashboard_map">
@@ -25,27 +26,53 @@
         </div>
         <div class="col-sm-5">
           <div class="well well-sm">
-            <h1>Your Schedule in <!--ejs statement to get name--></h1>
+            <div>
+              <h1>Trip Schedule</h1>
+              <p>
+                ( <%= lasttrip.start %> - <%= lasttrip.end %> )
+              </p>
+            </div>
+            <div class="schedule">
+              <% for (var i in lasttrip.days) { %>
+                <p>
+                  <%= lasttrip.days[i].date %>
+                </p>
+                <div class="activities">
+                  <ul>
+                  <% for (var e in lasttrip.days[i].activities) { %>
+                    <li>
+                      <%= lasttrip.days[i].activities[e].name %>
+                    </li>
+                    <% } %>
+                  </ul>
+                </div>
+                <% } %>
+            </div>
           </div>
-
         </div>
         <div class="col-sm-3">
-          <h1>Hello Hello Hello</h1>
-        </div>
         <div class="row">
-          <a href="/trips/new">Add Trip</a>
-          <% if (trips) { %>
-            <h1>success!</h1>
-            <ul>
-            <% trips.forEach(function(trip) { %>
-              <li><a href="/trips/<%= trip.id %>"><%= trip.city %></a></li>
-              <% }) %>
-              </ul>
-              <% } %>
+            <% if (trips.length > 1) { %>
+              <div class="col-sm-5">
+                <h1>All trips</h1>
+                <a href="/trips/new"> + Add Trip</a>
+              <ul>
+              <% trips.forEach(function(trip) { %>
+                <li><a href="/trips/<%= trip.id %>"><%= trip.city %></a></li>
+                <% }) %>
+                </ul>
+            <% } %>
+              </div>
         </div>
       </div>
+      <% } else { %>
+        <div class="row">
+          <div class="col-md-12" style="height: 100%;">
+            <h1>You don't have any trips</h1>
+            <a href="/trips/new">+ Add a trip</a>
+          </div>
+      <% } %>
     </div>
-    <button type="button" name="google" onclick="location.href = '/logout';">Logout</button>
   <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmSDm9b-8fluOVsEKS8VKEu3YFzoF5q6A&libraries=places&callback=initMap" async defer></script>
   <script type="text/javascript" src="/javascripts/showmap.js"></script>
