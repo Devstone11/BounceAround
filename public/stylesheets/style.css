@@ -201,9 +201,10 @@ table {
   height: 34px;
   margin: 4px;
 }
-.hotelIcon {
-  width: 24px;
-  height: 24px;
+.imgPop {
+  width: 55px;
+  height: 55px;
+  border-radius: 100%;
 }
 #resultsTable {
   border-collapse: collapse;
@@ -214,6 +215,13 @@ table {
   font-size: 13px;
   font-family: Arial Unicode MS;
 }
+
+#iw-url{
+  font-weight: bold;
+  font-size: 1.2em;
+  text-align: left;
+}
+
 .iw_table_row {
   height: 18px;
 }
@@ -235,7 +243,7 @@ table {
   display: inline-block;
   background-color: red;
   position: relative;
-  /*top: -52vh;*/
+  top: -40vh;
   padding: 30px;
 }
 
@@ -244,7 +252,6 @@ h5{
 }
 
 .addtocalendar{
-  /*top: -36vh;*/
   position: relative;
   display: inline-block;
   background-color: blue;
@@ -256,6 +263,12 @@ h5{
 
 #iw-website-coords{
   display: none;
+}
+
+.search_icon{
+  width: 30px;
+  display: inline-block;
+  cursor: pointer;
 }
 
 .autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }

@@ -7,12 +7,12 @@ var data = require('../data/queries');
 var salt = bcrypt.genSaltSync(10);
 var magic = require('../jsmagic/magic');
 
-router.get('/edit', function(req, res, next) {
-  res.render('trips/edit');
-});
-
 router.get('/new', function(req, res, next) {
   res.render('trips/new');
+});
+
+router.get('/:id', function(req, res, next){
+  res.render('trips/view_one');
 });
 
 router.get('/:id/edit', function(req, res, next) {

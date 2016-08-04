@@ -12,6 +12,12 @@
       <div id="searchfield">
         <input type="text" name="" class="biginput" id="autocomplete">
         </div>
+      <div class="search_icons">
+          <div class="search_icon"><img src="http://i.imgur.com/liUB50H.png" alt="restaurant" /></div>
+          <div class="search_icon"><img src="http://i.imgur.com/BFiuOkx.png" alt="lodging" /></div>
+          <div class="search_icon"><img src="http://i.imgur.com/kaicBix.png" alt="bar" /></div>
+          <div class="search_icon"><img src="http://i.imgur.com/OIT3QVJ.png" alt="park" /></div>
+      </div>
       <h5>near:</h5>
       <div id="locationField">
         <input id="autocompletemap" placeholder="Enter a city" type="text" />
@@ -40,6 +46,7 @@
         <input id="add_place_address" type="address" name="address" value=""><br>
         Coordinates (hidden)
         <input id="add_place_coords" type="text" name="coordinates" value=""><br>
+        <input id="add_place_type" type="text" name="type" value=""><br>
         <input type="submit" id="addToCal" value="add to calendar">
       </form>
     </div>
@@ -77,9 +84,13 @@
             <td class="iw_attribute_name">Coords:</td>
             <td id="iw-coords"></td>
           </tr>
+          <tr id="iw-website-type" class="iw_table_row">
+            <td class="iw_attribute_name">Coords:</td>
+            <td id="iw-type"></td>
+          </tr>
           <tr id="iw-addto-calendar" class="iw_table_row">
-            <td class="iw_attribute_name"><a href="#">Add to calendar</a></td>
-            <td id="iw-calendar"></td>
+            <td class="iw_attribute_name"></td>
+            <td id="iw-calendar"><a href="#">Add to calendar</a></td>
           </tr>
         </table>
       </div>

@@ -17,23 +17,22 @@ function initMap() {
     streetViewControl: false
   });
 
-  //for places in db of days
-  var marker = new google.maps.Marker({
-    position: {lat: 39.734122, lng: -104.987145},
-    map: map,
-    icon:'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-circle-filled-32.png'
-  });
-
   infoWindow = new google.maps.InfoWindow({
     content: document.getElementById('info-content')
   });
 
-  // Create the autocomplete object and associate it with the UI input control.
-  // Restrict the search to the default country, and to place type "cities".
   autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocompletemap'))
   places = new google.maps.places.PlacesService(map);
 
   autocomplete.addListener('place_changed', onPlaceChanged);
+
+  map.addListener('dragend', function() {
+    clearMarkers()
+    map.panTo(map.getCenter());
+    map.setZoom(14);
+    search();
+    clearMarkers()
+  });
 }
 
 // When the user selects a city, get the place details for the city and
@@ -41,24 +40,17 @@ function initMap() {
 var markerIconCenter = 'https://cdn0.iconfinder.com/data/icons/seo-web-15/141/seo-social-web-network-internet_122-32.png';
 function onPlaceChanged() {
   var place = autocomplete.getPlace();
-  console.log(place);
   if (place) {
     if (place.geometry) {
       map.panTo(place.geometry.location);
       map.setZoom(14);
       search();
       clearMarkers()
-      //needs to be fixed to show middle of map
-      var marker = new google.maps.Marker({
-        position: (place.geometry.location),
-        icon: markerIconCenter
-      });
     }
   }
   else {
     document.getElementById('autocomplete').placeholder = 'Enter a city'; //city name from db
-    var latLng = new google.maps.LatLng(39.7429674, -104.9855794); //coordinates of place from db
-    map.panTo(latLng);
+    map.panTo(map.getCenter());
     map.setZoom(14);
     search();
   }
@@ -73,20 +65,23 @@ function search() {
   };
 
   places.nearbySearch(search, function(results, status) {
+    results.push(results[0]);
+    results[results.length-1].geometry.location = map.getCenter();
+    results[results.length-1].name = "add this place to calendar"
+    results[results.length-1].geometry.location = map.getCenter();
+    console.log(results);
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       clearResults();
       clearMarkers();
 
       for (var i = 0; i < results.length; i++) {
         var markerIcon = 'https://cdn4.iconfinder.com/data/icons/small-n-flat/24/map-marker-32.png';
-
         markers[i] = new google.maps.Marker({
           position: results[i].geometry.location,
           animation: google.maps.Animation.DROP,
           icon: markerIcon
         });
 
-        // detail (pop-up)
         markers[i].placeResult = results[i];
         google.maps.event.addListener(markers[i], 'click', showInfoWindow);
         setTimeout(dropMarker(i), i * 100);
@@ -140,8 +135,6 @@ function clearResults() {
   }
 }
 
-// Get the place details for a hotel. Show the information in an info window,
-// anchored on the marker for the hotel that the user selected.
 function showInfoWindow() {
   var marker = this;
   places.getDetails({placeId: marker.placeResult.place_id},
@@ -154,14 +147,15 @@ function showInfoWindow() {
       });
 }
 
-// Load the place information into the HTML elements used by the info window.
 function buildIWContent(place) {
-  document.getElementById('iw-icon').innerHTML = '<img class="hotelIcon" ' +
-      'src="' + place.icon + '"/>';
-  document.getElementById('iw-url').innerHTML = '<b><a href="' + place.url +
-      '">' + place.name + '</a></b>';
+  if (place.photos){
+  document.getElementById('iw-icon').innerHTML = '<img class="imgPop" ' +
+      'src="' + place.photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100}) + '"/>';
+  }
+  document.getElementById('iw-url').innerHTML = '<div>' + place.name + '</div>';
   document.getElementById('iw-address').textContent = place.vicinity;
   document.getElementById('iw-coords').innerHTML = place.geometry.location;
+  document.getElementById('iw-type').innerHTML = place.types[0];
 
   if (place.formatted_phone_number) {
     document.getElementById('iw-phone-row').style.display = '';
@@ -186,8 +180,6 @@ function buildIWContent(place) {
     document.getElementById('iw-rating-row').style.display = 'none';
   }
 
-  // The regexp isolates the first part of the URL (domain plus subdomain)
-  // to give a short URL for displaying in the info window.
   if (place.website) {
     var fullUrl = place.website;
     var website = hostnameRegexp.exec(place.website);
@@ -208,5 +200,10 @@ $('#iw-addto-calendar').on('click', function(){
   $('#add_place_name').val($('#iw-url').children(":first").children(":first").html());
   $('#add_place_address').val($('#iw-address').html());
   $('#add_place_coords').val($('#iw-coords').html());
-  //pop-up with pre-populated information about place
+  $('#add_place_type').val($('#iw-type').html());
+});
+
+$(document).on("click", ".search_icon", function(){
+  $('#autocomplete').attr("name", $(this).children(":first").attr("alt"));
+  onPlaceChanged();
 });

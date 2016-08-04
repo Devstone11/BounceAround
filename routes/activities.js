@@ -22,8 +22,8 @@ router.post('/:id/new', function(req, res, next) {
         dayId = day.id;
       }
     })
-    knex.raw(`INSERT into activities (id, day_id, name, address, coordinates, start_time, end_time)
-    values (DEFAULT, ${dayId}, '${req.body.place}', '${req.body.address}', '${req.body.coordinates}', '${req.body.start_time}', '${req.body.end_time}')`).then(function() {
+    knex.raw(`INSERT into activities (id, day_id, name, address, coordinates, start_time, end_time, type)
+    values (DEFAULT, ${dayId}, '${req.body.place}', '${req.body.address}', '${req.body.coordinates}', '${req.body.start_time}', '${req.body.end_time}', '${req.body.type}')`).then(function() {
       res.redirect(`/trips/${req.params.id}/edit`);
     })
   })
