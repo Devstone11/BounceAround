@@ -18,5 +18,11 @@ module.exports = {
   },
   getUserDataWithGKey: function(google_key){
     return knex.raw(`select * from users where "googleKey"='${google_key}'`);
+  },
+  getActivitiesByTrip: function(tripId) {
+    return knex.raw(`select * from activities`);
+  },
+  getActivitiesByDate: function(tripId) {
+    return knex.raw(`select * from activities`);
   }
 };

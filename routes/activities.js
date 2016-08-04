@@ -7,6 +7,20 @@ var data = require('../data/queries');
 var salt = bcrypt.genSaltSync(10);
 var magic = require('../jsmagic/magic');
 
+router.get('/trip/:id', function(req, res, next) {
+  var trip_id = req.params.id;
+  data.getActivitiesByTrip(trip_id).then(function(activities) {
+    res.send(activities);
+  });
+});
+
+router.get('/date/:date', function(req, res, next){
+  var date_id = req.params.id;
+  data.getActivitiesByDate(date_id).then(function(activities) {
+    res.send(activities);
+  });
+});
+
 router.post('/:id/new', function(req, res, next) {
   knex.raw(`SELECT * from days WHERE trip_id = ${req.params.id}`).then(function(days) {
     var formatDates = days.rows.map(function(day) {
