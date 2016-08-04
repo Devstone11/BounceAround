@@ -10,14 +10,14 @@ var magic = require('../jsmagic/magic');
 router.get('/trip/:id', function(req, res, next) {
   var trip_id = req.params.id;
   data.getActivitiesByTrip(trip_id).then(function(activities) {
-    res.send(activities);
+    res.json(activities.rows);
   });
 });
 
 router.get('/date/:date', function(req, res, next){
-  var date_id = req.params.id;
+  var date_id = req.params.date;
   data.getActivitiesByDate(date_id).then(function(activities) {
-    res.json(activities);
+    res.json(activities.rows);
   });
 });
 
