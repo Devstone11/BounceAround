@@ -1,4 +1,7 @@
-//same code needed to load all markers in edit route (without initMap() loading function)
+
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+};
 
 function typeIcon(type){
   switch(type) {
@@ -27,29 +30,42 @@ function typeIcon(type){
   }
 }
 
+var map;
 function initMap() {
-  var startPoint = {lat: 39.7429674, lng: -104.9855794}; //coordinates from db
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 14,
-    center: startPoint
+  var id = $('.last_trip').attr("id");
+  var url = `http://localhost:3000/activities/trip/${id}`;
+
+  $.ajax({
+      url: url,
+      success: function(markers){
+        console.log(markers);
+  var startPoint = {lat: Number(markers[0].coordinates.slice(1,-1).split(",")[0]), lng: Number(markers[0].coordinates.slice(1,-1).split(",")[1])} //coordinates from db
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 13,
+    center: startPoint,
+    mapTypeControl: false,
+    panControl: false,
+    zoomControl: true,
+    streetViewControl: false
   });
 
-  var markers = [{name: "Some hotel", address: "Some address", phone: "32434234234", coords: '39.7318556, -104.99786', type: "lodging" }, {name: "Some restaurant", address: "45 str234eet, denver, 34", phone: "234234324", coords: '39.7429674, -104.9855794', type: "restaurant"}];
-  //markers is a example, replace with db json object from ajax
-  markers.forEach(function(marker){
-      thismarker = new google.maps.Marker({
-        position: {lat: Number(marker.coords.split(",")[0]), lng: Number(marker.coords.split(",")[1])},
-        map: map,
-        icon: typeIcon(marker.type),
-        title: marker.name
-    });
+        markers.forEach(function(marker){
+              marker.activities_coordinates = marker.activities_coordinates.slice(1,-1);
+              thismarker = new google.maps.Marker({
+              position: {lat: Number(marker.activities_coordinates.split(",")[0]), lng: Number(marker.activities_coordinates.split(",")[1])},
+              map: map,
+              icon: typeIcon(marker.activities_type),
+              title: marker.activities_name
+          });
 
-    var infowindow = new google.maps.InfoWindow({
-      content: '<div class="infowindowshow">' + marker.name + '</div>' + '<div class="infowindowshow">' + marker.address + '</div>' + '<div class="infowindowshow">' + marker.phone + '</div>'
-    });
+          var infowindow = new google.maps.InfoWindow({
+            content: '<div class="infowindowshow">' + marker.activities_name.capitalize() + '</div>' + '<div class="infowindowshow">' + "Address: " + marker.activities_address + '</div>' + '<div class="infowindowshow">' + "Time: " + marker.activities_start_time + '</div>'
+          });
 
-    thismarker.addListener('click', function() {
-      infowindow.open(map, this);
+          thismarker.addListener('click', function() {
+            infowindow.open(map, this);
+          });
+        });
+      }
     });
-  });
 }
