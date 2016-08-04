@@ -34,7 +34,7 @@ function initMap() {
     center: startPoint
   });
 
-  var markers = [{name: "park", address: "45 street, denver, co", phone: "32434234234", coords: '39.7318556, -104.99786', type: "casino" }, {name: "gas", address: "45 str234eet, denver, 34", phone: "234234324", coords: '39.7429674, -104.9855794', type: "park"}];
+  var markers = [{name: "Some hotel", address: "Some address", phone: "32434234234", coords: '39.7318556, -104.99786', type: "lodging" }, {name: "Some restaurant", address: "45 str234eet, denver, 34", phone: "234234324", coords: '39.7429674, -104.9855794', type: "restaurant"}];
   //markers is a example, replace with db json object from ajax
   markers.forEach(function(marker){
       thismarker = new google.maps.Marker({
