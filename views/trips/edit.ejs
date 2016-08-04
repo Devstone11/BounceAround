@@ -21,24 +21,27 @@
 
     <div class="addtocalendar">
       Add activity to trip planner
-      <form class="" action="" method="post">
+      <form class="" action="/activities/<%= trip_id %>/new" method="post">
         Event Title
         <input type="text" name="event_title" value="" placeholder="Event Title"><br>
         Trip Day
         <select name="day">
           <% days.forEach(function(day) { %>
-              <option><%= day.date %></option>
+              <option class="day"+<%= day.id %>><%= day.date %></option>
           <% }) %>
         </select>
-        Time
-        <input type="time" name="time" value="" placeholder="time"><br>
+        Start Time
+        <input type="time" name="start_time" value="" placeholder="time"><br>
+        End Time
+        <input type="time" name="end_time" value="" placeholder="time"><br>
         Place
-        <input id="add_place_name" type="text" name="name" value="" disabled><br>
+        <input id="add_place_name" type="text" name="place" value=""><br>
         Address
-        <input id="add_place_address" type="address" name="address" value="" disabled><br>
+        <input id="add_place_address" type="address" name="address" value=""><br>
         Coordinates (hidden)
-        <input id="add_place_coords" type="text" name="coordinates" value="" disabled><br>
-        <input type="button" id="addToCal" value="add to calendar">
+        <input id="add_place_coords" type="text" name="coordinates" value=""><br>
+        <input type="submit" id="addToCal" value="add to calendar">
+      </form>
     </div>
 
     <div id="listing">
@@ -104,6 +107,5 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTSj-FCBxjl1YBfJ2GngYKyajoobyKdVg&libraries=places&callback=initMap" async defer></script>
     <script type="text/javascript" src="/javascripts/map.js"></script>
     <script type="text/javascript" src="/javascripts/autocomplete.js"></script>
-    <script type="text/javascript" src="/javascripts/calendar.js"></script>
   </body>
 </html>

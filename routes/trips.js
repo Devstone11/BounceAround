@@ -29,7 +29,10 @@ router.get('/:id/edit', function(req, res, next) {
       JOIN trips ON trips.id = days.trip_id
       WHERE trip_id = ${req.params.id}
       ORDER BY start_time`).then(function(activities) {
-      res.render('trips/edit', {days: formatDates, activities: activities.rows});
+      res.render('trips/edit', {days: formatDates,
+        activities: activities.rows,
+        trip_id: req.params.id
+      });
     })
   })
 })

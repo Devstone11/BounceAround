@@ -148,7 +148,7 @@ table {
   display: inline-block;
   background-color: red;
   position: relative;
-  top: -52vh;
+  /*top: -52vh;*/
   padding: 30px;
 }
 
@@ -157,7 +157,7 @@ h5{
 }
 
 .addtocalendar{
-  top: -36vh;
+  /*top: -36vh;*/
   position: relative;
   display: inline-block;
   background-color: blue;
