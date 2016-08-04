@@ -17,7 +17,7 @@ router.get('/trip/:id', function(req, res, next) {
 router.get('/date/:date', function(req, res, next){
   var date_id = req.params.id;
   data.getActivitiesByDate(date_id).then(function(activities) {
-    res.send(activities);
+    res.json(activities);
   });
 });
 
