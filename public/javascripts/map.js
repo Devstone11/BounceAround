@@ -21,8 +21,6 @@ function initMap() {
     content: document.getElementById('info-content')
   });
 
-  // Create the autocomplete object and associate it with the UI input control.
-  // Restrict the search to the default country, and to place type "cities".
   autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocompletemap'))
   places = new google.maps.places.PlacesService(map);
 
@@ -84,7 +82,6 @@ function search() {
           icon: markerIcon
         });
 
-        // detail (pop-up)
         markers[i].placeResult = results[i];
         google.maps.event.addListener(markers[i], 'click', showInfoWindow);
         setTimeout(dropMarker(i), i * 100);
@@ -138,8 +135,6 @@ function clearResults() {
   }
 }
 
-// Get the place details for a hotel. Show the information in an info window,
-// anchored on the marker for the hotel that the user selected.
 function showInfoWindow() {
   var marker = this;
   places.getDetails({placeId: marker.placeResult.place_id},
@@ -152,7 +147,6 @@ function showInfoWindow() {
       });
 }
 
-// Load the place information into the HTML elements used by the info window.
 function buildIWContent(place) {
   if (place.photos){
   document.getElementById('iw-icon').innerHTML = '<img class="imgPop" ' +
@@ -185,8 +179,6 @@ function buildIWContent(place) {
     document.getElementById('iw-rating-row').style.display = 'none';
   }
 
-  // The regexp isolates the first part of the URL (domain plus subdomain)
-  // to give a short URL for displaying in the info window.
   if (place.website) {
     var fullUrl = place.website;
     var website = hostnameRegexp.exec(place.website);
@@ -207,7 +199,6 @@ $('#iw-addto-calendar').on('click', function(){
   $('#add_place_name').val($('#iw-url').children(":first").children(":first").html());
   $('#add_place_address').val($('#iw-address').html());
   $('#add_place_coords').val($('#iw-coords').html());
-  //pop-up with pre-populated information about place
 });
 
 $(document).on("click", ".search_icon", function(){

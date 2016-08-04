@@ -11,6 +11,8 @@ var session = require('express-session');
 var passport = require('passport');
 
 var routes = require('./routes/index');
+var trips = require('./routes/trips');
+var activities = require('./routes/activities');
 var users = require('./routes/users');
 
 var app = express();
@@ -58,6 +60,8 @@ passport.deserializeUser(function(user, done) {
 });
 
 app.use('/', routes);
+app.use('/trips', trips);
+app.use('/activities', activities);
 app.use('/users', users);
 
 // catch 404 and forward to error handler

@@ -48,17 +48,104 @@ h1, h2, h3, h4, h5, h6{
   width: 100vw;
   background-color: #d3d3d3;
 }
-#login, #signup{
-  text-decoration: none;
+#frontButt{
+  margin-left: 4vw;
+  display: block;
+}
+ button.signup{
+  display: flex;
   border: 1px solid black;
-  background-color: rgb(140, 138, 150);
   border-radius: 5px;
+  width: 15vw;
+  height: 8vh;
+  font-size: 1.4em;
+  text-align: center;
+  margin-top: 2vh;
   color: white;
-  width: 4vw;
-  height: 5vh;
-  display: inline-flex;
+  border: none;
+  background-color: rgb(255, 218, 0);
+  padding: auto;
+}
+button.signup span{
+  margin-left: auto;
+  margin-right: auto;
+}
+ .signup:hover{
+  background-color: #3d60d1;
+}
+#googBut button{
+  width: 15vw;
+}
+#googBut{
+  margin-top: 3vh;
+  margin-left: 5vw;
+}
+#googBut button img{
+  height: 90%;
+  width: 25%;
+  vertical-align: middle;
+
 }
 
+#ourBanner{
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Fjalla One', sans-serif;
+  color: #FFDA00;
+}
+#makeTransparent{
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .75);
+  position: absolute;
+  z-index: 0;
+
+}
+#bottomButt{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 10;
+  text-align: center;
+  margin-top: -3%;
+}
+#bottomButt a{
+  text-decoration: none;
+}
+#bottomButt a span{
+  color: #FFDA00;
+  font-size: 2.8em;
+}
+#bannerText{
+  display: table;
+  width: 100vw;
+  height: 100vh;
+  line-height: normal;
+}
+#bannerText h1{
+  font-size: 6em;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+#container {
+  margin: 0 auto;
+  text-align: center;
+  position: absolute;;
+  width: 100vw;
+  height: inherit;
+  z-index: -1;
+}
+#container div {
+  width: 100vw;
+  height: inherit;
+  display: inline-block;
+  display: none;
+}
+.pics{
+  width: 100%;
+  height: 100%;
+}
 .form-group {
     margin-top: 2em;
     margin-bottom: 2em;
@@ -165,7 +252,6 @@ h5{
 }
 
 .addtocalendar{
-  top: -36vh;
   position: relative;
   display: inline-block;
   background-color: blue;
@@ -189,3 +275,6 @@ h5{
 .autocomplete-suggestion { padding: 10px 5px; font-size: 1em; white-space: nowrap; overflow: hidden; }
 .autocomplete-selected { background: #f0f0f0; }
 .autocomplete-suggestions strong { font-weight: normal; color: #3399ff; }
+#hackey2{
+  width: 16.666667%;
+}
