@@ -18,5 +18,12 @@ module.exports = {
   },
   getUserDataWithGKey: function(google_key){
     return knex.raw(`select * from users where "googleKey"='${google_key}'`);
+  },
+  getActivitiesByTrip: function(tripId) {
+    return knex.raw(`SELECT activities.id as activities_id, activities.day_id as activities_day_id, activities.name as activities_name, activities.phone as activities_phone, activities.coordinates as activities_coordinates, activities.address as activities_address, activities.type as activities_type, activities.start_time as activities_start_time, activities.end_time as activities_end_time, days.id as days_id, days.trip_id as days_trip_id, days.date as days_date, trips.id as trips_id, trips.user_id as trips_user_id, trips.start_date as trips_start_date, trips.end_date as trips_end_date, trips.city as trips_city FROM activities inner join days on days.id = activities.day_id inner join trips on days.trip_id=trips.id WHERE days.id=activities.day_id and days.trip_id=trips.id and days.trip_id=${tripId}`);
+  },
+  getActivitiesByDate: function(dateId) {
+        return knex.raw(`SELECT activities.id as activities_id, activities.day_id as activities_day_id, activities.name as activities_name, activities.phone as activities_phone, activities.coordinates as activities_coordinates, activities.address as activities_address, activities.type as activities_type, activities.start_time as activities_start_time, activities.end_time as activities_end_time, days.id as days_id, days.trip_id as days_trip_id, days.date as days_date FROM activities inner join days on days.id = activities.day_id WHERE days.id=activities.day_id and days.id=${dateId}`);
+    return knex.raw();
   }
 };
