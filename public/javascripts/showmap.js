@@ -1,5 +1,6 @@
 var user_id;
 var cookies = document.cookie.split("; ");
+var root = location.protocol + '//' + location.host;
 
 cookies.forEach(function(cookie){
   if (cookie.indexOf("id=") > -1){
@@ -60,7 +61,7 @@ function typeIcon(type){
 var map;
 function initMap() {
   $.ajax({
-      url: `http://localhost:3000/trips/last/${user_id}`,
+      url: root + `/trips/last/${user_id}`,
       success: function(trips){
   var startPoint = {lat: Number(trips[0].city_coordinates.slice(1,-1).split(",")[0]), lng: Number(trips[0].city_coordinates.slice(1,-1).split(",")[1])}
   map = new google.maps.Map(document.getElementById('map'), {
@@ -73,7 +74,7 @@ function initMap() {
   });
 
   var id = $('.last_trip').attr("id");
-  var url = `http://localhost:3000/activities/trip/${id}`;
+  var url = root + `/activities/trip/${id}`;
 
   $.ajax({
       url: url,

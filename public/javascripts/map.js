@@ -7,6 +7,7 @@ var MARKER_PATH = 'https://maps.gstatic.com/intl/en_us/mapfiles/marker_green';
 var hostnameRegexp = new RegExp('^https?://.+?/');
 var user_id;
 var cookies = document.cookie.split("; ");
+var root = location.protocol + '//' + location.host;
 
 cookies.forEach(function(cookie){
   if (cookie.indexOf("id=") > -1){
@@ -59,7 +60,7 @@ function typeIcon(type){
 //function end
 function initMap() {
   $.ajax({
-      url: `http://localhost:3000/trips/last/${user_id}`,
+      url: root + `/trips/last/${user_id}`,
       success: function(trips){
         console.log(trips)
   var startPoint = {lat: Number(trips[0].city_coordinates.slice(1,-1).split(",")[0]), lng: Number(trips[0].city_coordinates.slice(1,-1).split(",")[1])}
@@ -81,7 +82,7 @@ function initMap() {
 
   autocomplete.addListener('place_changed', onPlaceChanged);
 
-  var url = `http://localhost:3000/activities/trip/${trip_id}`;
+  var url = root + `/activities/trip/${trip_id}`;
   $.ajax({
       url: url,
       success: function(markers){
@@ -199,7 +200,7 @@ function addResult(result, i) {
   var iconTd = document.createElement('td');
   var nameTd = document.createElement('td');
   var icon = document.createElement('img');
-  icon.src = 'http://i.imgur.com/xmsSDVo.png';
+  icon.src = 'https://i.imgur.com/xmsSDVo.png';
   icon.setAttribute('class', 'placeIcon');
   icon.setAttribute('className', 'placeIcon');
   var name = document.createTextNode(result.name);
