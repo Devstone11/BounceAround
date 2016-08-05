@@ -274,3 +274,7 @@ $(document).on("click", ".search_icon", function(){
   $('#autocomplete').attr("name", $(this).children(":first").attr("alt"));
   onPlaceChanged();
 });
+
+$(document).on("click", ".act_delete", function(){
+  window.location.replace(`/activities/trip/${trip_id}/act/${this.id}/delete`)
+})

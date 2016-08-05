@@ -7,6 +7,11 @@ var data = require('../data/queries');
 var salt = bcrypt.genSaltSync(10);
 var magic = require('../jsmagic/magic');
 
+router.get('/trip/:trip_id/act/:id/delete', function(req, res, next){
+   data.deleteActivity(req.params.id).then(function(){
+     res.redirect(`/trips/${req.params.trip_id}/edit`);
+   });
+ });
 //get all activities from trip
 router.get('/trip/:id', function(req, res, next) {
    var trip_id = req.params.id;
