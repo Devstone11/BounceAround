@@ -15,7 +15,6 @@ cookies.forEach(function(cookie){
   }
 });
 
-
 var trip_id = window.location.href.substring(window.location.href.lastIndexOf('/')-1, window.location.href.lastIndexOf('/'));
 //function start
 String.prototype.capitalize = function() {
