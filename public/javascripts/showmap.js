@@ -3,6 +3,15 @@ String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 };
 
+function getFormattedTime(time) {
+    time.replace(":", '')
+    var hours24 = parseInt(time.substring(0, 2),10);
+    var hours = ((hours24 + 11) % 12) + 1;
+    var amPm = hours24 > 11 ? 'pm' : 'am';
+    var minutes = time.substring(2);
+    return hours + minutes + amPm;
+};
+
 function typeIcon(type){
   switch(type) {
   case 'park' || 'rv_park' || 'campground':
@@ -57,9 +66,12 @@ function initMap() {
               icon: typeIcon(marker.activities_type),
               title: marker.activities_name
           });
+          var date = new Date(marker.days_date);
+          date = (date + '').split(" "), date.length -= 4, date = date.join(' ');
+          var time = getFormattedTime(marker.activities_start_time.substring(0,5));
 
           var infowindow = new google.maps.InfoWindow({
-            content: '<div class="infowindowshow">' + marker.activities_name.capitalize() + '</div>' + '<div class="infowindowshow">' + "Address: " + marker.activities_address + '</div>' + '<div class="infowindowshow">' + "Time: " + marker.activities_start_time + '</div>'
+            content: '<div class="infowindowshow">' + marker.activities_name.capitalize() + '</div>' + '<div class="infowindowshow">' + "Address: " + marker.activities_address + '</div>' + '<div class="infowindowshow">' + "Date: "+ date + " at " + time + '</div>'
           });
 
           thismarker.addListener('click', function() {
