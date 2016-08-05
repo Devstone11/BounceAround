@@ -145,7 +145,7 @@ router.get('/dashboard', function(req, res, next) {
         if (!days[date]){
           days[date] = { date: date, activities : {} }
         }
-        days[date].activities[last_trip.rows[i].id] = {name: last_trip.rows[i].name, phone: last_trip.rows[i].phone, address: last_trip.rows[i].address};
+        days[date].activities[last_trip.rows[i].id] = {name: last_trip.rows[i].name, address: last_trip.rows[i].address, start: magic.getFormattedTime(last_trip.rows[i].start_time), end: magic.getFormattedTime(last_trip.rows[i].end_time)};
       }
       var trip;
       if (last_trip.rows.length !== 0){

@@ -39,13 +39,17 @@
                   <%= lasttrip.days[i].date %>
                 </p>
                 <div class="activities">
-                  <ul>
+                  <div>
                   <% for (var e in lasttrip.days[i].activities) { %>
-                    <li>
-                      <%= lasttrip.days[i].activities[e].name %>
-                    </li>
+                    <a class="accordion">
+                      - <%= lasttrip.days[i].activities[e].name %>
+                    </a>
+                    <div class="panel">
+                      <p><%= lasttrip.days[i].activities[e].start %> - <%= lasttrip.days[i].activities[e].end %></p>
+                      <p><%= lasttrip.days[i].activities[e].address %></p>
+                    </div>
                     <% } %>
-                  </ul>
+                  </div>
                 </div>
                 <% } %>
               <% } %>

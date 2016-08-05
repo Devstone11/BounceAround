@@ -7,6 +7,16 @@ cookies.forEach(function(cookie){
   }
 });
 
+var acc = document.getElementsByClassName("accordion");
+var a;
+
+for (a = 0; a < acc.length; a++) {
+    acc[a].onclick = function(){
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+  }
+}
+
 
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
