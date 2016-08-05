@@ -6,10 +6,17 @@ var countryRestrict = {'country': 'all'};
 var MARKER_PATH = 'https://maps.gstatic.com/intl/en_us/mapfiles/marker_green';
 var hostnameRegexp = new RegExp('^https?://.+?/');
 
+var trip_id = window.location.href.substring(window.location.href.lastIndexOf('/')-1, window.location.href.lastIndexOf('/'));
+
 function initMap() {
-  var startPoint = {lat: 39.7429674, lng: -104.9855794}; //coordinates from db
+  var url = `http://localhost:3000/activities/trip/${trip_id}`;
+  $.ajax({
+      url: url,
+      success: function(markers){
+        console.log(markers);
+  var startPoint = {lat: Number(markers[0].coordinates.slice(1,-1).split(",")[0]), lng: Number(markers[0].coordinates.slice(1,-1).split(",")[1])}
   map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 14, //set zoom to 12-14 when changing to db data
+    zoom: 14,
     center: startPoint,
     mapTypeControl: false,
     panControl: true,
@@ -33,6 +40,8 @@ function initMap() {
     search();
     clearMarkers()
   });
+  }
+});
 }
 
 // When the user selects a city, get the place details for the city and
