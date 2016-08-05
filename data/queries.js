@@ -30,5 +30,9 @@ module.exports = {
   },
   deleteActivity: function(act_id){
     return knex.raw(`delete from activities where id=${act_id}`)
+  },
+  //no activity info
+  returnLastTrip: function(user_id){
+    return knex.raw(`select * from trips where id=(select MAX(id) from trips where trips.user_id=${user_id})`)
   }
 };

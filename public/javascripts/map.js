@@ -5,7 +5,7 @@ var autocomplete;
 var countryRestrict = {'country': 'all'};
 var MARKER_PATH = 'https://maps.gstatic.com/intl/en_us/mapfiles/marker_green';
 var hostnameRegexp = new RegExp('^https?://.+?/');
-
+var user_id = String(document.cookie.split("; ")[1]).substring(String(document.cookie.split("; ")[1]).indexOf('=')+1, String(document.cookie.split("; ")[1]).length);
 var trip_id = window.location.href.substring(window.location.href.lastIndexOf('/')-1, window.location.href.lastIndexOf('/'));
 //function start
 String.prototype.capitalize = function() {
@@ -49,11 +49,11 @@ function typeIcon(type){
 }
 //function end
 function initMap() {
-  var url = `http://localhost:3000/activities/trip/${trip_id}`;
   $.ajax({
-      url: url,
-      success: function(markers){
-  var startPoint = {lat: Number(markers[0].coordinates.slice(1,-1).split(",")[0]), lng: Number(markers[0].coordinates.slice(1,-1).split(",")[1])}
+      url: `http://localhost:3000/trips/last/${user_id}`,
+      success: function(trips){
+        console.log(trips)
+  var startPoint = {lat: Number(trips[0].city_coordinates.slice(1,-1).split(",")[0]), lng: Number(trips[0].city_coordinates.slice(1,-1).split(",")[1])}
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 14,
     center: startPoint,
@@ -72,6 +72,10 @@ function initMap() {
 
   autocomplete.addListener('place_changed', onPlaceChanged);
 
+  var url = `http://localhost:3000/activities/trip/${trip_id}`;
+  $.ajax({
+      url: url,
+      success: function(markers){
   markers.forEach(function(marker){
       console.log(marker);
         marker.activities_coordinates = marker.activities_coordinates.slice(1,-1);
@@ -102,6 +106,8 @@ function initMap() {
     clearMarkers()
   });
   }
+});
+}
 });
 }
 
