@@ -2,11 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Mukta+Vaani" rel="stylesheet">    <!-- font for text  font-family: 'Mukta Vaani', sans-serif;-->
+    <link href="https://fonts.googleapis.com/css?family=Mukta+Vaani" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/style.css" media="screen" title="no title" charset="utf-8">
     <title></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='/stylesheets/cal.css' />
   </head>
   <body>
+    <% include ../layout.ejs %>
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-md-3">
     <div class="filters">
       <h5>find:</h5>
       <div id="searchfield">
@@ -23,36 +31,47 @@
         <input id="autocompletemap" placeholder="Enter a city" type="text" />
       </div>
     </div>
+    </div>
+    <div class="col-md-6">
     <div class="map_box">
       <div id="map"></div>
     </div>
-
+    </div>
+    <div class="col-md-3">
     <div class="addtocalendar">
       Add activity to trip planner
       <form class="" action="/activities/<%= trip_id %>/new" method="post">
-        Event Title
-        <input type="text" name="event_title" value="" placeholder="Event Title"><br>
+        <div class="form-group">
+        Title / Place
+        <input class="form-control" id="add_place_name" type="text" name="place" value="">
+        </div>
+        <div class="form-group">
         Trip Day
-        <select name="day">
+        <select class="form-control" name="day">
           <% days.forEach(function(day) { %>
               <option class="day"+<%= day.id %>><%= day.date %></option>
           <% }) %>
         </select>
+        </div>
+        <div class="form-group">
         Start Time
-        <input type="time" name="start_time" value="" placeholder="time"><br>
+        <input class="form-control" type="time" name="start_time" value="" placeholder="time">
+        </div>
+        <div class="form-group">
         End Time
-        <input type="time" name="end_time" value="" placeholder="time"><br>
-        Place
-        <input id="add_place_name" type="text" name="place" value=""><br>
+        <input class="form-control" type="time" name="end_time" value="" placeholder="time">
+        </div>
+        <div class="form-group">
         Address
-        <input id="add_place_address" type="address" name="address" value=""><br>
+        <input class="form-control" id="add_place_address" type="address" name="address" value=""><br>
+        </div>
         Coordinates (hidden)
         <input id="add_place_coords" type="text" name="coordinates" value=""><br>
         <input id="add_place_type" type="text" name="type" value=""><br>
         <input type="submit" id="addToCal" value="add to calendar">
       </form>
     </div>
-
+    </div>
     <div id="listing">
       <table id="resultsTable">
         <tbody id="results"></tbody>
@@ -71,23 +90,23 @@
             <td id="iw-address"></td>
           </tr>
           <tr id="iw-phone-row" class="iw_table_row">
-            <td class="iw_attribute_name">Telephone:</td>
+            <td class="iw_attribute_name">Telephone: </td>
             <td id="iw-phone"></td>
           </tr>
           <tr id="iw-rating-row" class="iw_table_row">
-            <td class="iw_attribute_name">Rating:</td>
+            <td class="iw_attribute_name">Rating: </td>
             <td id="iw-rating"></td>
           </tr>
           <tr id="iw-website-row" class="iw_table_row">
-            <td class="iw_attribute_name">Website:</td>
+            <td class="iw_attribute_name">Website: </td>
             <td id="iw-website"></td>
           </tr>
           <tr id="iw-website-coords" class="iw_table_row">
-            <td class="iw_attribute_name">Coords:</td>
+            <td class="iw_attribute_name">Coords: </td>
             <td id="iw-coords"></td>
           </tr>
           <tr id="iw-website-type" class="iw_table_row">
-            <td class="iw_attribute_name">Coords:</td>
+            <td class="iw_attribute_name">Type: </td>
             <td id="iw-type"></td>
           </tr>
           <tr id="iw-addto-calendar" class="iw_table_row">
@@ -97,7 +116,8 @@
         </table>
       </div>
     </div>
-
+    </div>
+    <div class="row">
     <div id="calendar_box">
       <% days.forEach(function(day) { %>
         <div class="day_container">
@@ -113,8 +133,9 @@
           </div>
         </div>
         <% }) %>
+      </div>
     </div>
-
+    </div>
     <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.26/jquery.autocomplete.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTSj-FCBxjl1YBfJ2GngYKyajoobyKdVg&libraries=places&callback=initMap" async defer></script>

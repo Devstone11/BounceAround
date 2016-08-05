@@ -238,12 +238,10 @@ table {
 }
 
 .filters{
-  width: 20%;
-  height: 70%;
-  display: inline-block;
+  width: 100%;
+  height: 100%;
   background-color: red;
   position: relative;
-  top: -40vh;
   padding: 30px;
 }
 
@@ -252,16 +250,14 @@ h5{
 }
 
 .addtocalendar{
-  position: relative;
-  display: inline-block;
   background-color: blue;
-  width: 12%;
-  height: 70%;
+  width: 100%;
+  height: 100%;
   padding: 20px;
   color: white;
 }
 
-#iw-website-coords{
+#iw-website-coords, #iw-website-type{
   display: none;
 }
 
@@ -272,7 +268,7 @@ h5{
 }
 
 .map_box{
-  width: 500px;
+  width: 100%;
   height: 400px;
   display:inline-block;
 }

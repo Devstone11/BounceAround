@@ -194,10 +194,11 @@ function buildIWContent(place) {
   }
 }
 
+console.log($('#iw-url').children(":first").children(":first").html());
 $('.addtocalendar').hide();
 $('#iw-addto-calendar').on('click', function(){
   $('.addtocalendar').show();
-  $('#add_place_name').val($('#iw-url').children(":first").children(":first").html());
+  $('#add_place_name').val($('#iw-url').children(":first").html());
   $('#add_place_address').val($('#iw-address').html());
   $('#add_place_coords').val($('#iw-coords').html());
   $('#add_place_type').val($('#iw-type').html());
