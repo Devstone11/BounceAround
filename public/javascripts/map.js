@@ -8,13 +8,12 @@ var hostnameRegexp = new RegExp('^https?://.+?/');
 var user_id;
 var cookies = document.cookie.split("; ");
 
+
 cookies.forEach(function(cookie){
   if (cookie.indexOf("id=") > -1){
     user_id = cookie.substring(cookie.indexOf("=")+1, cookie.length);
   }
 });
-
-
 var trip_id = window.location.href.substring(window.location.href.lastIndexOf('/')-1, window.location.href.lastIndexOf('/'));
 //function start
 String.prototype.capitalize = function() {

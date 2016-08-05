@@ -1,5 +1,9 @@
 var user_id;
+<<<<<<< 3ae55d7cc4c63b39cf93e15e867519ad426605c5
 var cookies = document.cookie.split("; ");
+=======
+var cookies = document.cookie.split('; ');
+>>>>>>> css for scrolling and accordian
 
 cookies.forEach(function(cookie){
   if (cookie.indexOf("id=") > -1){
@@ -7,6 +11,7 @@ cookies.forEach(function(cookie){
   }
 });
 
+<<<<<<< 3ae55d7cc4c63b39cf93e15e867519ad426605c5
 var acc = document.getElementsByClassName("accordion");
 var a;
 
@@ -18,6 +23,8 @@ for (a = 0; a < acc.length; a++) {
 }
 
 
+=======
+>>>>>>> css for scrolling and accordian
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 };
