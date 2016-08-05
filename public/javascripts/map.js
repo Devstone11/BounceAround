@@ -55,7 +55,7 @@ function initMap() {
         console.log(trips)
   var startPoint = {lat: Number(trips[0].city_coordinates.slice(1,-1).split(",")[0]), lng: Number(trips[0].city_coordinates.slice(1,-1).split(",")[1])}
   map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 14,
+    zoom: 13,
     center: startPoint,
     mapTypeControl: false,
     panControl: true,
