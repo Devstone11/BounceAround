@@ -135,9 +135,9 @@ router.get('/auth/google/callback',
   });
 
 router.get('/dashboard', function(req, res, next) {
+  if (req.cookies.session){
   knex.raw(`SELECT * from trips WHERE user_id=${req.cookies.id}`).then(function(payload) {
     data.getLastTrip(req.cookies.id).then(function(last_trip){
-    var trip;
     if (payload.rows.length !== 0){
       var days = {};
       for (var i in last_trip.rows){
@@ -147,20 +147,35 @@ router.get('/dashboard', function(req, res, next) {
         }
         days[date].activities[last_trip.rows[i].id] = {name: last_trip.rows[i].name, phone: last_trip.rows[i].phone, address: last_trip.rows[i].address};
       }
-      trip = {};
-      trip.start = (last_trip.rows[0].start_date + '').substring(4, 15);
-      trip.end = (last_trip.rows[0].end_date + '').substring(4, 15);
-      trip.days = days;
-      trip.id = last_trip.rows[0].trip_id;
-      console.log(trip.id)
-      trip.city = last_trip.rows[0].city;
-      console.log(trip);
-      console.log(payload.rows);
+      var trip;
+      if (last_trip.rows.length !== 0){
+        trip = {
+          start: (last_trip.rows[0].start_date + '').substring(4, 15),
+          end: (last_trip.rows[0].end_date + '').substring(4, 15),
+          days: days,
+          id: last_trip.rows[0].trip_id,
+          city: last_trip.rows[0].city
+        }
+        res.render('dashboard', {trips: payload.rows, lasttrip: trip});
+      } else {
+        data.returnLastTrip(req.cookies.id).then(function(trip_only){
+          trip = {
+            start: (trip_only.rows[0].start_date + '').substring(4, 15),
+            end: (trip_only.rows[0].end_date + '').substring(4, 15),
+            days: {},
+            id: trip_only.rows[0].id,
+            city: trip_only.rows[0].city
+          }
+          res.render('dashboard', {trips: payload.rows, lasttrip: trip});
+        });
       }
-      else { trip = "" }
-      res.render('dashboard', {trips: payload.rows, lasttrip: trip});
+      }
+      else { trip = "", res.render('dashboard', {trips: payload.rows, lasttrip: trip});}
     });
   });
+} else {
+  res.redirect('/login')
+  }
 })
 
 module.exports = router;

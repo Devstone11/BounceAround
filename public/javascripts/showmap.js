@@ -1,6 +1,15 @@
-
+var user_id = String(document.cookie.split("; ")[1]).substring(String(document.cookie.split("; ")[1]).indexOf('=')+1, String(document.cookie.split("; ")[1]).length);
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
+};
+
+function getFormattedTime(time) {
+    time.replace(":", '')
+    var hours24 = parseInt(time.substring(0, 2),10);
+    var hours = ((hours24 + 11) % 12) + 1;
+    var amPm = hours24 > 11 ? 'pm' : 'am';
+    var minutes = time.substring(2);
+    return hours + minutes + amPm;
 };
 
 function typeIcon(type){
@@ -32,14 +41,10 @@ function typeIcon(type){
 
 var map;
 function initMap() {
-  var id = $('.last_trip').attr("id");
-  var url = `http://localhost:3000/activities/trip/${id}`;
-
   $.ajax({
-      url: url,
-      success: function(markers){
-        console.log(markers);
-  var startPoint = {lat: Number(markers[0].coordinates.slice(1,-1).split(",")[0]), lng: Number(markers[0].coordinates.slice(1,-1).split(",")[1])} //coordinates from db
+      url: `http://localhost:3000/trips/last/${user_id}`,
+      success: function(trips){
+  var startPoint = {lat: Number(trips[0].city_coordinates.slice(1,-1).split(",")[0]), lng: Number(trips[0].city_coordinates.slice(1,-1).split(",")[1])}
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 13,
     center: startPoint,
@@ -49,6 +54,13 @@ function initMap() {
     streetViewControl: false
   });
 
+  var id = $('.last_trip').attr("id");
+  var url = `http://localhost:3000/activities/trip/${id}`;
+
+  $.ajax({
+      url: url,
+      success: function(markers){
+        console.log(markers);
         markers.forEach(function(marker){
               marker.activities_coordinates = marker.activities_coordinates.slice(1,-1);
               thismarker = new google.maps.Marker({
@@ -57,9 +69,12 @@ function initMap() {
               icon: typeIcon(marker.activities_type),
               title: marker.activities_name
           });
+          var date = new Date(marker.days_date);
+          date = (date + '').split(" "), date.length -= 4, date = date.join(' ');
+          var time = getFormattedTime(marker.activities_start_time.substring(0,5));
 
           var infowindow = new google.maps.InfoWindow({
-            content: '<div class="infowindowshow">' + marker.activities_name.capitalize() + '</div>' + '<div class="infowindowshow">' + "Address: " + marker.activities_address + '</div>' + '<div class="infowindowshow">' + "Time: " + marker.activities_start_time + '</div>'
+            content: '<div class="infowindowshow">' + marker.activities_name.capitalize() + '</div>' + '<div class="infowindowshow">' + "Address: " + marker.activities_address + '</div>' + '<div class="infowindowshow">' + "Date: "+ date + " at " + time + '</div>'
           });
 
           thismarker.addListener('click', function() {
@@ -68,4 +83,6 @@ function initMap() {
         });
       }
     });
+  }
+  });
 }

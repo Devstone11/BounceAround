@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <!-- font for headers font-family: 'Fjalla One', sans-serif; -->
     <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Mukta+Vaani" rel="stylesheet">    <!-- font for text  font-family: 'Mukta Vaani', sans-serif;-->
     <link href="https://fonts.googleapis.com/css?family=Mukta+Vaani" rel="stylesheet">
@@ -34,6 +33,7 @@
             </div>
           </div>
             <div class="schedule">
+            <% if (lasttrip.days !== undefined) { %>
               <% for (var i in lasttrip.days) { %>
                 <p>
                   <%= lasttrip.days[i].date %>
@@ -48,6 +48,7 @@
                   </ul>
                 </div>
                 <% } %>
+              <% } %>
                 <a href="/trips/<%= lasttrip.id %>/edit">+ Edit / Add more activities</a>
             </div>
         </div>

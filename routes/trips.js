@@ -15,6 +15,12 @@ router.get('/:id', function(req, res, next){
   res.render('trips/view_one');
 });
 
+router.get('/last/:user_id', function(req, res, next){
+  data.returnLastTrip(req.params.user_id).then(function(results){
+    res.json(results.rows);
+  });
+});
+
 router.get('/:id/edit', function(req, res, next) {
   knex.raw(`SELECT id, date from days WHERE trip_id=${req.params.id}`).then(function(days) {
     var formatDates = days.rows.map(function(day) {
@@ -24,14 +30,15 @@ router.get('/:id/edit', function(req, res, next) {
         date: `${splitDate[1]}-${splitDate[2]}-${splitDate[0]}`
       }
     })
-    knex.raw(`SELECT * from activities
+    knex.raw(`SELECT activities.day_id, activities.name, activities.id from activities
       JOIN days ON days.id = activities.day_id
       JOIN trips ON trips.id = days.trip_id
       WHERE trip_id = ${req.params.id}
       ORDER BY start_time`).then(function(activities) {
       res.render('trips/edit', {days: formatDates,
         activities: activities.rows,
-        trip_id: req.params.id
+        trip_id: req.params.id,
+        alert: ''
       });
     })
   })

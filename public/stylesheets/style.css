@@ -52,6 +52,12 @@ h1, h2, h3, h4, h5, h6{
   margin-left: 4vw;
   display: block;
 }
+
+label {
+  display: inline-block;
+  width: 5em;
+}
+
  button.signup{
   display: flex;
   border: 1px solid black;
@@ -238,12 +244,10 @@ table {
 }
 
 .filters{
-  width: 20%;
-  height: 70%;
-  display: inline-block;
+  width: 100%;
+  height: 100%;
   background-color: red;
   position: relative;
-  top: -40vh;
   padding: 30px;
 }
 
@@ -252,16 +256,18 @@ h5{
 }
 
 .addtocalendar{
-  position: relative;
-  display: inline-block;
   background-color: blue;
-  width: 12%;
-  height: 70%;
+  width: 100%;
+  height: 100%;
   padding: 20px;
   color: white;
 }
-
-#iw-website-coords{
+#addToCal{
+  position: relative;
+  top: -50px;
+  float: right;
+}
+#iw-website-coords, #iw-website-type{
   display: none;
 }
 
@@ -272,7 +278,7 @@ h5{
 }
 
 .map_box{
-  width: 500px;
+  width: 100%;
   height: 400px;
   display:inline-block;
 }
@@ -289,6 +295,25 @@ h5{
   border-left: 1px solid grey;
   border-right: 1px solid grey;
 }
+.act_edit{
+  display: block;
+  padding: 2%;
+  padding-right: 4%;
+}
+.act_name, .act_delete{
+  display: inline-block;
+}
+.act_delete{
+  float: right;
+  cursor: pointer;
+}
+
+.close_form{
+  float: right;
+  display: block;
+  cursor: pointer;
+}
+
 .autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }
 .autocomplete-suggestion { padding: 10px 5px; font-size: 1em; white-space: nowrap; overflow: hidden; }
 .autocomplete-selected { background: #f0f0f0; }
