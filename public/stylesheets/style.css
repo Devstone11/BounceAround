@@ -308,6 +308,12 @@ h5{
   cursor: pointer;
 }
 
+.close_form{
+  float: right;
+  display: block;
+  cursor: pointer;
+}
+
 .autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }
 .autocomplete-suggestion { padding: 10px 5px; font-size: 1em; white-space: nowrap; overflow: hidden; }
 .autocomplete-selected { background: #f0f0f0; }

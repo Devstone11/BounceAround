@@ -277,4 +277,8 @@ $(document).on("click", ".search_icon", function(){
 
 $(document).on("click", ".act_delete", function(){
   window.location.replace(`/activities/trip/${trip_id}/act/${this.id}/delete`)
-})
+});
+
+$('.close_form').on("click", function(){
+  $(this).parent().hide();
+});

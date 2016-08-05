@@ -18,7 +18,7 @@
     <div class="filters">
       <h5>find:</h5>
       <div id="searchfield">
-        <input type="text" name="" class="biginput" id="autocomplete">
+        <input type="text" name="" class="biginput" id="autocomplete" placeholder="Enter type of place">
         </div>
       <div class="search_icons">
           <div class="search_icon"><img src="http://i.imgur.com/liUB50H.png" alt="restaurant" /></div>
@@ -28,7 +28,7 @@
       </div>
       <h5>near:</h5>
       <div id="locationField">
-        <input id="autocompletemap" placeholder="Enter a city" type="text" />
+        <input id="autocompletemap" placeholder="Enter a city/place/address" type="text" />
       </div>
     </div>
     </div>
@@ -39,12 +39,8 @@
     </div>
     <div class="col-md-3">
     <div class="addtocalendar">
+      <div class="close_form">x</div>
       Add activity to trip planner
-      <% if (alert.length !== 0) { %>
-      <div class="alert alert-danger">
-        <%= alert %>
-      </div>
-      <% } %>
       <form class="" action="/activities/<%= trip_id %>/new" method="post">
         <div class="form-group">
         Title / Place
