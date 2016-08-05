@@ -127,13 +127,15 @@
         <div class="day_container">
           <h2><%= day.date %></h2>
           <div class="cal_day">
-            <ul>
+
               <% activities.forEach(function(activity) {
                 if (activity.day_id === day.id) { %>
-                  <li><%= activity.name %></li>
+                <div class="act_edit">
+                  <div class="act_name"><%= activity.name %></div>
+                  <div id="<%= activity.id %>" class="act_delete"> x </div>
+                </div>
               <% }
               }) %>
-            </ul>
           </div>
         </div>
         <% }) %>

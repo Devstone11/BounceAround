@@ -52,6 +52,12 @@ h1, h2, h3, h4, h5, h6{
   margin-left: 4vw;
   display: block;
 }
+
+label {
+  display: inline-block;
+  width: 5em;
+}
+
  button.signup{
   display: flex;
   border: 1px solid black;
@@ -289,6 +295,19 @@ h5{
   border-left: 1px solid grey;
   border-right: 1px solid grey;
 }
+.act_edit{
+  display: block;
+  padding: 2%;
+  padding-right: 4%;
+}
+.act_name, .act_delete{
+  display: inline-block;
+}
+.act_delete{
+  float: right;
+  cursor: pointer;
+}
+
 .autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }
 .autocomplete-suggestion { padding: 10px 5px; font-size: 1em; white-space: nowrap; overflow: hidden; }
 .autocomplete-selected { background: #f0f0f0; }

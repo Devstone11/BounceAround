@@ -24,7 +24,7 @@ router.get('/:id/edit', function(req, res, next) {
         date: `${splitDate[1]}-${splitDate[2]}-${splitDate[0]}`
       }
     })
-    knex.raw(`SELECT * from activities
+    knex.raw(`SELECT activities.day_id, activities.name, activities.id from activities
       JOIN days ON days.id = activities.day_id
       JOIN trips ON trips.id = days.trip_id
       WHERE trip_id = ${req.params.id}
