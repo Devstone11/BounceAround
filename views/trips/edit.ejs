@@ -8,11 +8,12 @@
     <link href="https://fonts.googleapis.com/css?family=Mukta+Vaani" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/style.css" media="screen" title="no title" charset="utf-8">
     <title></title>
-    <link rel='stylesheet' href='/stylesheets/cal.css' />
+    <link rel='stylesheet' href='/stylesheets/accordianTrip.css' />
   </head>
   <body>
     <% include ../layout.ejs %>
     <div class="container-fluid">
+
     <div class="row">
     <div class="col-md-3">
     <div class="filters">
@@ -37,41 +38,7 @@
       <div id="map"></div>
     </div>
     </div>
-    <div class="col-md-3">
-    <div class="addtocalendar">
-      <div class="close_form">x</div>
-      Add activity to trip planner
-      <form class="" action="/activities/<%= trip_id %>/new" method="post">
-        <div class="form-group">
-        Title / Place
-        <input class="form-control" id="add_place_name" type="text" name="place" value="" required>
-        </div>
-        <div class="form-group">
-        Trip Day
-        <select class="form-control" name="day">
-          <% days.forEach(function(day) { %>
-              <option class="day"+<%= day.id %>><%= day.date %></option>
-          <% }) %>
-        </select>
-        </div>
-        <div class="form-group">
-        Start Time
-        <input class="form-control" type="time" name="start_time" value="" placeholder="time" required>
-        </div>
-        <div class="form-group">
-        End Time
-        <input class="form-control" type="time" name="end_time" value="" placeholder="time" required>
-        </div>
-        <div class="form-group">
-        Address
-        <input class="form-control" id="add_place_address" type="address" name="address" value="" required><br>
-        </div>
-        <input style="display: none" id="add_place_coords" type="text" name="coordinates" value=""><br>
-        <input style="display: none" id="add_place_type" type="text" name="type" value=""><br>
-        <input type="submit" id="addToCal" value="add to calendar" class="btn btn-primary">
-      </form>
-    </div>
-    </div>
+
     <div id="listing">
       <table id="resultsTable">
         <tbody id="results"></tbody>
@@ -116,28 +83,72 @@
         </table>
       </div>
     </div>
-    </div>
-    <div class="row">
-    <div id="calendar_box">
-      <% days.forEach(function(day) { %>
-        <div class="day_container">
-          <h2><%= day.date %></h2>
-          <div class="cal_day">
 
-              <% activities.forEach(function(activity) {
-                if (activity.day_id === day.id) { %>
-                <div class="act_edit">
-                  <div class="act_name"><%= activity.name %></div>
-                  <div id="<%= activity.id %>" class="act_delete"> x </div>
+    <div class="col-md-3 calDay">
+      <div class="schedule">
+        <div class="activities">
+          <div>
+            <% days.forEach(function(day) { %>
+              <button class="accordion">
+              <a class=""><%= day.shortDay %></a>
+              </button>
+              <div class="panel">
+                <div><% activities.forEach(function(activity) {
+                  if (activity.day_id === day.id) { %>
+                    <a class="accordion">
+                      <p><%= activity.name %></p>
+                    </a>
+                    <div class="panel">
+                      <p><%= activity.address %></p>
+                      <p><%= activity.start_time %></p>
+                      <p><%= activity.end_time %></p>
+                    </div>
+                  <% } %>
+                <% }) %>
                 </div>
-              <% }
-              }) %>
+              </div>
+            <% }) %>
           </div>
         </div>
-        <% }) %>
       </div>
     </div>
+    <div class="row">
+    <div class="col-md-3">
+    <div class="addtocalendar">
+      <div class="close_form">x</div>
+      Add activity to trip planner
+      <form class="" action="/activities/<%= trip_id %>/new" method="post">
+        <div class="form-group">
+        Title / Place
+        <input class="form-control" id="add_place_name" type="text" name="place" value="" required>
+        </div>
+        <div class="form-group">
+        Trip Day
+        <select class="form-control" name="day">
+          <% days.forEach(function(day) { %>
+              <option class="day"+<%= day.id %>><%= day.date %></option>
+          <% }) %>
+        </select>
+        </div>
+        <div class="form-group">
+        Start Time
+        <input class="form-control" type="time" name="start_time" value="" placeholder="time" required>
+        </div>
+        <div class="form-group">
+        End Time
+        <input class="form-control" type="time" name="end_time" value="" placeholder="time" required>
+        </div>
+        <div class="form-group">
+        Address
+        <input class="form-control" id="add_place_address" type="address" name="address" value="" required><br>
+        </div>
+        <input style="display: none" id="add_place_coords" type="text" name="coordinates" value=""><br>
+        <input style="display: none" id="add_place_type" type="text" name="type" value=""><br>
+        <input type="submit" id="addToCal" value="add to calendar" class="btn btn-primary">
+      </form>
     </div>
+    </div>
+  </div>
     <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.26/jquery.autocomplete.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTSj-FCBxjl1YBfJ2GngYKyajoobyKdVg&libraries=places&callback=initMap" async defer></script>

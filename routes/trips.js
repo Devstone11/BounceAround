@@ -25,17 +25,20 @@ router.get('/:id/edit', function(req, res, next) {
   knex.raw(`SELECT id, date from days WHERE trip_id=${req.params.id}`).then(function(days) {
     var formatDates = days.rows.map(function(day) {
       var splitDate = day.date.toISOString().split('T')[0].split('-');
+      var informalDates = ((day.date + '').substring(0,10));
       return {
+        shortDay: informalDates,
         id: day.id,
         date: `${splitDate[1]}-${splitDate[2]}-${splitDate[0]}`
       }
     })
-    knex.raw(`SELECT activities.day_id, activities.name, activities.id from activities
+    knex.raw(`SELECT activities.day_id, activities.name, activities.address, activities.start_time, activities.end_time, activities.id from activities
       JOIN days ON days.id = activities.day_id
       JOIN trips ON trips.id = days.trip_id
       WHERE trip_id = ${req.params.id}
       ORDER BY start_time`).then(function(activities) {
-      res.render('trips/accordianTripView', {days: formatDates,
+      res.render('trips/edit', {
+        days: formatDates,
         activities: activities.rows,
         trip_id: req.params.id,
         alert: ''

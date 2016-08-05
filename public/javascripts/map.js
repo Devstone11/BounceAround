@@ -296,3 +296,13 @@ $(document).on("click", ".act_delete", function(){
 $('.close_form').on("click", function(){
   $(this).parent().hide();
 });
+
+var acc = document.getElementsByClassName("accordion");
+var a;
+
+for (a = 0; a < acc.length; a++) {
+    acc[a].onclick = function(){
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+  }
+};
