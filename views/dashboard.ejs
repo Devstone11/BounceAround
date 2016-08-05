@@ -33,6 +33,7 @@
             </div>
           </div>
             <div class="schedule">
+            <% if (lasttrip.days !== undefined) { %>
               <% for (var i in lasttrip.days) { %>
                 <p>
                   <%= lasttrip.days[i].date %>
@@ -47,6 +48,7 @@
                   </ul>
                 </div>
                 <% } %>
+              <% } %>
                 <a href="/trips/<%= lasttrip.id %>/edit">+ Edit / Add more activities</a>
             </div>
         </div>

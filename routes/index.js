@@ -139,7 +139,6 @@ router.get('/dashboard', function(req, res, next) {
   knex.raw(`SELECT * from trips WHERE user_id=${req.cookies.id}`).then(function(payload) {
     data.getLastTrip(req.cookies.id).then(function(last_trip){
     if (payload.rows.length !== 0){
-      var trip = {};
       var days = {};
       for (var i in last_trip.rows){
         var date = (last_trip.rows[i].date + '').substring(4, 10);
@@ -148,26 +147,30 @@ router.get('/dashboard', function(req, res, next) {
         }
         days[date].activities[last_trip.rows[i].id] = {name: last_trip.rows[i].name, phone: last_trip.rows[i].phone, address: last_trip.rows[i].address};
       }
+      var trip;
       if (last_trip.rows.length !== 0){
-      trip.start = (last_trip.rows[0].start_date + '').substring(4, 15);
-      trip.end = (last_trip.rows[0].end_date + '').substring(4, 15);
-      trip.days = days;
-      trip.id = last_trip.rows[0].trip_id;
-      trip.city = last_trip.rows[0].city;
-      }
-      else{
+        trip = {
+          start: (last_trip.rows[0].start_date + '').substring(4, 15),
+          end: (last_trip.rows[0].end_date + '').substring(4, 15),
+          days: days,
+          id: last_trip.rows[0].trip_id,
+          city: last_trip.rows[0].city
+        }
+        res.render('dashboard', {trips: payload.rows, lasttrip: trip});
+      } else {
         data.returnLastTrip(req.cookies.id).then(function(trip_only){
-          console.log(trip_only.rows)
-          trip.start = (trip_only.rows[0].start_date + '').substring(4, 15);
-          trip.end = (trip_only.rows[0].end_date + '').substring(4, 15);
-          trip.days = days;
-          trip.id = trip_only.rows[0].trip_id;
-          trip.city = trip_only.rows[0].city;
+          trip = {
+            start: (trip_only.rows[0].start_date + '').substring(4, 15),
+            end: (trip_only.rows[0].end_date + '').substring(4, 15),
+            days: {},
+            id: trip_only.rows[0].trip_id,
+            city: trip_only.rows[0].city
+          }
+          res.render('dashboard', {trips: payload.rows, lasttrip: trip});
         });
       }
       }
-      else { trip = "" }
-      res.render('dashboard', {trips: payload.rows, lasttrip: trip});
+      else { trip = "", res.render('dashboard', {trips: payload.rows, lasttrip: trip});}
     });
   });
 } else {
