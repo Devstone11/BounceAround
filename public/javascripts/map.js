@@ -148,10 +148,6 @@ function search() {
   };
 
   places.nearbySearch(search, function(results, status) {
-    results.push(results[0]);
-    results[results.length-1].geometry.location = map.getCenter();
-    results[results.length-1].name = "add this place to calendar"
-    results[results.length-1].geometry.location = map.getCenter();
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       clearResults();
       clearMarkers();
@@ -297,3 +293,13 @@ $(document).on("click", ".act_delete", function(){
 $('.close_form').on("click", function(){
   $(this).parent().hide();
 });
+
+var acc = document.getElementsByClassName("accordion");
+var a;
+
+for (a = 0; a < acc.length; a++) {
+    acc[a].onclick = function(){
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+  }
+}
