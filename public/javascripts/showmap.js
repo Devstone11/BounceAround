@@ -1,4 +1,13 @@
-var user_id = String(document.cookie.split("; ")[1]).substring(String(document.cookie.split("; ")[1]).indexOf('=')+1, String(document.cookie.split("; ")[1]).length);
+var user_id;
+var cookies = document.cookie.split("; ");
+
+cookies.forEach(function(cookie){
+  if (cookie.indexOf("id=") > -1){
+    user_id = cookie.substring(cookie.indexOf("=")+1, cookie.length);
+  }
+});
+
+
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 };
