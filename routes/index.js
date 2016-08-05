@@ -6,6 +6,7 @@ var bcrypt = require('bcrypt');
 var data = require('../data/queries');
 var salt = bcrypt.genSaltSync(10);
 var magic = require('../jsmagic/magic');
+var quickstartjs = require('../quickstart');
 
 router.get('/', function(req, res, next) {
   req.cookies.session ? res.redirect(`/${req.cookies.id}/trips`) : res.render('index', { title: 'Express' });
@@ -29,6 +30,11 @@ router.get('/logout', function(req, res, next) {
   req.session.destroy(function (err) {
     res.redirect('/');
   });
+});
+
+router.get('/:user_id/trips/:trip_id/googlecalendar', function(req, res, next){
+  quickstartjs.quickstart(); //button to redirect to trip page after the events are sent to google
+  res.redirect('/');
 });
 
 router.post('/login', function(req, res, next) {
@@ -129,10 +135,47 @@ router.get('/auth/google/callback',
   });
 
 router.get('/dashboard', function(req, res, next) {
+  if (req.cookies.session){
   knex.raw(`SELECT * from trips WHERE user_id=${req.cookies.id}`).then(function(payload) {
-    console.log(payload.rows);
-    res.render('dashboard', {trips: payload.rows});
-  })
+    data.getLastTrip(req.cookies.id).then(function(last_trip){
+    if (payload.rows.length !== 0){
+      var days = {};
+      for (var i in last_trip.rows){
+        var date = (last_trip.rows[i].date + '').substring(4, 10);
+        if (!days[date]){
+          days[date] = { date: date, activities : {} }
+        }
+        days[date].activities[last_trip.rows[i].id] = {name: last_trip.rows[i].name, phone: last_trip.rows[i].phone, address: last_trip.rows[i].address};
+      }
+      var trip;
+      if (last_trip.rows.length !== 0){
+        trip = {
+          start: (last_trip.rows[0].start_date + '').substring(4, 15),
+          end: (last_trip.rows[0].end_date + '').substring(4, 15),
+          days: days,
+          id: last_trip.rows[0].trip_id,
+          city: last_trip.rows[0].city
+        }
+        res.render('dashboard', {trips: payload.rows, lasttrip: trip});
+      } else {
+        data.returnLastTrip(req.cookies.id).then(function(trip_only){
+          trip = {
+            start: (trip_only.rows[0].start_date + '').substring(4, 15),
+            end: (trip_only.rows[0].end_date + '').substring(4, 15),
+            days: {},
+            id: trip_only.rows[0].id,
+            city: trip_only.rows[0].city
+          }
+          res.render('dashboard', {trips: payload.rows, lasttrip: trip});
+        });
+      }
+      }
+      else { trip = "", res.render('dashboard', {trips: payload.rows, lasttrip: trip});}
+    });
+  });
+} else {
+  res.redirect('/login')
+  }
 })
 
 module.exports = router;

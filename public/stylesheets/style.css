@@ -55,6 +55,12 @@ h1, h2, h3, h4, h5, h6{
   margin-left: 4vw;
   display: block;
 }
+
+label {
+  display: inline-block;
+  width: 5em;
+}
+
  button.signup{
   display: flex;
   border: 1px solid black;
@@ -163,15 +169,15 @@ html, body {
   padding: 0;
 }
 #map {
-  display: inline-block;
-  height: 70%;
-  margin-left: 30px;
+  height: 100%;
+  margin-left: 0;
 }
 table {
   font-size: 12px;
 }
+
 #map {
-  width: 50%;
+  width: 100%;
 }
 
 #findhotels {
@@ -205,9 +211,10 @@ table {
   height: 34px;
   margin: 4px;
 }
-.hotelIcon {
-  width: 24px;
-  height: 24px;
+.imgPop {
+  width: 55px;
+  height: 55px;
+  border-radius: 100%;
 }
 #resultsTable {
   border-collapse: collapse;
@@ -218,6 +225,13 @@ table {
   font-size: 13px;
   font-family: Arial Unicode MS;
 }
+
+#iw-url{
+  font-weight: bold;
+  font-size: 1.2em;
+  text-align: left;
+}
+
 .iw_table_row {
   height: 18px;
 }
@@ -234,12 +248,10 @@ table {
 }
 
 .filters{
-  width: 20%;
-  height: 70%;
-  display: inline-block;
+  width: 100%;
+  height: 100%;
   background-color: red;
   position: relative;
-  top: -52vh;
   padding: 30px;
 }
 
@@ -248,18 +260,62 @@ h5{
 }
 
 .addtocalendar{
-  top: -36vh;
-  position: relative;
-  display: inline-block;
   background-color: blue;
-  width: 12%;
-  height: 70%;
+  width: 100%;
+  height: 100%;
   padding: 20px;
   color: white;
 }
-
-#iw-website-coords{
+#addToCal{
+  position: relative;
+  top: -50px;
+  float: right;
+}
+#iw-website-coords, #iw-website-type{
   display: none;
+}
+
+.search_icon{
+  width: 30px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.map_box{
+  width: 100%;
+  height: 400px;
+  display:inline-block;
+}
+
+.map_dashboard{
+  width: 100%;
+  height: 70%;
+
+}
+.schedule{
+  width: 100%;
+  height: 65vh;
+  padding: 20px;
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
+}
+.act_edit{
+  display: block;
+  padding: 2%;
+  padding-right: 4%;
+}
+.act_name, .act_delete{
+  display: inline-block;
+}
+.act_delete{
+  float: right;
+  cursor: pointer;
+}
+
+.close_form{
+  float: right;
+  display: block;
+  cursor: pointer;
 }
 
 .autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }

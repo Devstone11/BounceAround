@@ -7,12 +7,18 @@ var data = require('../data/queries');
 var salt = bcrypt.genSaltSync(10);
 var magic = require('../jsmagic/magic');
 
-router.get('/edit', function(req, res, next) {
-  res.render('trips/edit');
-});
-
 router.get('/new', function(req, res, next) {
   res.render('trips/new');
+});
+
+router.get('/:id', function(req, res, next){
+  res.render('trips/view_one');
+});
+
+router.get('/last/:user_id', function(req, res, next){
+  data.returnLastTrip(req.params.user_id).then(function(results){
+    res.json(results.rows);
+  });
 });
 
 router.get('/:id/edit', function(req, res, next) {
@@ -24,12 +30,16 @@ router.get('/:id/edit', function(req, res, next) {
         date: `${splitDate[1]}-${splitDate[2]}-${splitDate[0]}`
       }
     })
-    knex.raw(`SELECT * from activities
+    knex.raw(`SELECT activities.day_id, activities.name, activities.id from activities
       JOIN days ON days.id = activities.day_id
       JOIN trips ON trips.id = days.trip_id
       WHERE trip_id = ${req.params.id}
       ORDER BY start_time`).then(function(activities) {
-      res.render('trips/edit', {days: formatDates, activities: activities.rows});
+      res.render('trips/edit', {days: formatDates,
+        activities: activities.rows,
+        trip_id: req.params.id,
+        alert: ''
+      });
     })
   })
 })
@@ -58,7 +68,7 @@ router.post('/new', function(req, res, next) {
   var myDateArray = addDays(startDate, endDate);
   console.log(myDateArray);
   //create records for trip and all days
-  knex.raw(`INSERT into trips values (DEFAULT, ${req.cookies.id}, '${req.body.startDate}', '${req.body.endDate}', '${req.body.city}')`).then(function() {
+  knex.raw(`INSERT into trips values (DEFAULT, ${req.cookies.id}, '${req.body.startDate}', '${req.body.endDate}', '${req.body.city}', ${req.body.coords})`).then(function() {
     knex('trips').max('id').then(function(id) {
       myDateArray.forEach(function(date) {
         knex.raw(`INSERT into days values (DEFAULT, ${id[0].max}, '${date}')`).then(function() {

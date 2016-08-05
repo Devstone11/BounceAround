@@ -4,7 +4,7 @@
   padding: 20px;
   height: 10vw;
   overflow: scroll;
-  white-space:nowrap
+  white-space:nowrap;
 }
 
 .day_container {
