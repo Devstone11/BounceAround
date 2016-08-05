@@ -163,7 +163,7 @@ router.get('/dashboard', function(req, res, next) {
             start: (trip_only.rows[0].start_date + '').substring(4, 15),
             end: (trip_only.rows[0].end_date + '').substring(4, 15),
             days: {},
-            id: trip_only.rows[0].trip_id,
+            id: trip_only.rows[0].id,
             city: trip_only.rows[0].city
           }
           res.render('dashboard', {trips: payload.rows, lasttrip: trip});
