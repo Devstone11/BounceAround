@@ -107,12 +107,20 @@ function initMap() {
     });
   });
 
+  var centerMarker;
   map.addListener('dragend', function() {
-    clearMarkers()
+    if (centerMarker != null){
+    centerMarker.setVisible(false);}
     map.panTo(map.getCenter());
     map.setZoom(14);
     search();
     clearMarkers()
+    centerMarker = new google.maps.Marker({
+            position: map.getCenter(),
+            map: map,
+            title: "map center",
+      });
+      markers.push(centerMarker);
   });
   }
 });
