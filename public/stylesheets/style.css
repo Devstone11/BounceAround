@@ -256,7 +256,11 @@ h5{
   padding: 20px;
   color: white;
 }
-
+#addToCal{
+  position: relative;
+  top: -50px;
+  float: right;
+}
 #iw-website-coords, #iw-website-type{
   display: none;
 }

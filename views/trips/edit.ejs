@@ -40,10 +40,15 @@
     <div class="col-md-3">
     <div class="addtocalendar">
       Add activity to trip planner
+      <% if (alert.length !== 0) { %>
+      <div class="alert alert-danger">
+        <%= alert %>
+      </div>
+      <% } %>
       <form class="" action="/activities/<%= trip_id %>/new" method="post">
         <div class="form-group">
         Title / Place
-        <input class="form-control" id="add_place_name" type="text" name="place" value="">
+        <input class="form-control" id="add_place_name" type="text" name="place" value="" required>
         </div>
         <div class="form-group">
         Trip Day
@@ -55,20 +60,19 @@
         </div>
         <div class="form-group">
         Start Time
-        <input class="form-control" type="time" name="start_time" value="" placeholder="time">
+        <input class="form-control" type="time" name="start_time" value="" placeholder="time" required>
         </div>
         <div class="form-group">
         End Time
-        <input class="form-control" type="time" name="end_time" value="" placeholder="time">
+        <input class="form-control" type="time" name="end_time" value="" placeholder="time" required>
         </div>
         <div class="form-group">
         Address
-        <input class="form-control" id="add_place_address" type="address" name="address" value=""><br>
+        <input class="form-control" id="add_place_address" type="address" name="address" value="" required><br>
         </div>
-        Coordinates (hidden)
-        <input id="add_place_coords" type="text" name="coordinates" value=""><br>
-        <input id="add_place_type" type="text" name="type" value=""><br>
-        <input type="submit" id="addToCal" value="add to calendar">
+        <input style="display: none" id="add_place_coords" type="text" name="coordinates" value=""><br>
+        <input style="display: none" id="add_place_type" type="text" name="type" value=""><br>
+        <input type="submit" id="addToCal" value="add to calendar" class="btn btn-primary">
       </form>
     </div>
     </div>

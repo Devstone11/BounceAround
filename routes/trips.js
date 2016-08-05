@@ -31,7 +31,8 @@ router.get('/:id/edit', function(req, res, next) {
       ORDER BY start_time`).then(function(activities) {
       res.render('trips/edit', {days: formatDates,
         activities: activities.rows,
-        trip_id: req.params.id
+        trip_id: req.params.id,
+        alert: ''
       });
     })
   })
