@@ -33,7 +33,7 @@ router.get('/logout', function(req, res, next) {
 });
 
 router.get('/:user_id/trips/:trip_id/googlecalendar', function(req, res, next){
-  quickstartjs.quickstart(); //button to redirect to trip page after the events are sent to google
+  quickstartjs.quickstart();
   res.redirect('/');
 });
 

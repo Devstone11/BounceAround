@@ -17,7 +17,6 @@ for (a = 0; a < acc.length; a++) {
   }
 }
 
-
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 };

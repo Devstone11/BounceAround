@@ -353,6 +353,11 @@ h5{
   padding: auto;
 }
 
+.activities a{
+  cursor: pointer;
+  text-decoration: none;
+}
+
 button.accordion {
 background-color: #eee;
 color: #444;
