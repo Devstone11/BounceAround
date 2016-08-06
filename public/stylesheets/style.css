@@ -123,6 +123,7 @@ div.panel {
 div.panel.show {
     opacity: 1;
     max-height: 500px;
+    background-color: inherit;
 }
  .signup:hover{
   background-color: #3d60d1;
