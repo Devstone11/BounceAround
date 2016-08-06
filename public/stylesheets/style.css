@@ -199,11 +199,22 @@ div.panel.show {
   width: 100%;
   height: 100%;
 }
+/****************
+new trip form
+****************/
+
 .form-group {
     margin-top: 2em;
     margin-bottom: 2em;
     margin-right: 25px;
     margin-left: 25px;
+}
+div.new-trip {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    width: 50vw;
+    /*margin-right: 30%;
+    margin-left: 30%;*/
 }
 
 html, body {
