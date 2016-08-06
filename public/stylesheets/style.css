@@ -1,48 +1,48 @@
 h1, h2, h3, h4, h5, h6{
   font-family: 'Mukta Vaani', sans-serif !important;
 }
-#custom-bootstrap-menu, footer, body{
+#menu, footer, body{
   font-family: 'Mukta Vaani', sans-serif;
 }
-#custom-bootstrap-menu{
+#menu{
   height: 7vh;
 }
-#custom-bootstrap-menu.navbar-default .navbar-brand {
+#menu.navbar-default .navbar-brand {
     color: rgba(119, 119, 119, 1);
 }
-#custom-bootstrap-menu.navbar-default {
+#menu.navbar-default {
     font-size: 16px;
     background-color: rgba(248, 248, 248, 1);
     border-width: 1px;
     border-radius: 4px;
 }
-#custom-bootstrap-menu.navbar-default .navbar-nav>li>a {
+#menu.navbar-default .navbar-nav>li>a {
     color: rgba(119, 119, 119, 1);
     background-color: rgba(248, 248, 248, 0);
 }
-#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:hover,
-#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
+#menu.navbar-default .navbar-nav>li>a:hover,
+#menu.navbar-default .navbar-nav>li>a:focus {
     color: rgba(51, 51, 51, 1);
     background-color: rgba(255, 218, 0, 1);
 }
-#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a,
-#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover,
-#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:focus {
+#menu.navbar-default .navbar-nav>.active>a,
+#menu.navbar-default .navbar-nav>.active>a:hover,
+#menu.navbar-default .navbar-nav>.active>a:focus {
     color: rgba(85, 85, 85, 1);
     background-color: rgba(209, 174, 61, 1);
 }
-#custom-bootstrap-menu.navbar-default .navbar-toggle {
+#menu.navbar-default .navbar-toggle {
     border-color: #d1ae3d;
 }
-#custom-bootstrap-menu.navbar-default .navbar-toggle:hover,
-#custom-bootstrap-menu.navbar-default .navbar-toggle:focus {
+#menu.navbar-default .navbar-toggle:hover,
+#menu.navbar-default .navbar-toggle:focus {
     background-color: #d1ae3d;
 }
-#custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {
+#menu.navbar-default .navbar-toggle .icon-bar {
     background-color: #d1ae3d;
 }
-#custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar,
-#custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {
+#menu.navbar-default .navbar-toggle:hover .icon-bar,
+#menu.navbar-default .navbar-toggle:focus .icon-bar {
     background-color: #f8f8f8;
 }
 #footer{
@@ -54,6 +54,8 @@ h1, h2, h3, h4, h5, h6{
 #frontButt{
   margin-left: 4vw;
   display: block;
+  background-color: #3C454E;
+  color: white;
 }
 
 label {
@@ -121,12 +123,14 @@ div.panel {
 div.panel.show {
     opacity: 1;
     max-height: 500px;
+    background-color: inherit;
 }
  .signup:hover{
   background-color: #3d60d1;
 }
 #googBut button{
   width: 15vw;
+  color: black;
 }
 #googBut{
   margin-top: 3vh;
@@ -141,14 +145,14 @@ div.panel.show {
 
 #ourBanner{
   width: 100vw;
-  height: 93vh;
+  height: 100vh;
   font-family: 'Fjalla One', sans-serif;
   color: #FFDA00;
   margin-top: -1.3%;
 }
 #makeTransparent{
   width: 100vw;
-  height: 93vh;
+  height: 100vh;
   background-color: rgba(0, 0, 0, .75);
   position: absolute;
   z-index: 0;
@@ -156,7 +160,7 @@ div.panel.show {
 }
 #bottomButt{
   width: 100vw;
-  height: 93vh;
+  height: 100vh;
   position: absolute;
   z-index: 10;
   text-align: center;
@@ -172,7 +176,7 @@ div.panel.show {
 #bannerText{
   display: table;
   width: 100vw;
-  height: 93vh;
+  height: 100vh;
   line-height: normal;
 }
 #bannerText h1{
@@ -293,7 +297,6 @@ table {
 .filters{
   width: 100%;
   height: 100%;
-  background-color: red;
   position: relative;
   padding: 30px;
 }
@@ -463,4 +466,7 @@ max-height: 500px;
   width: 100%;
   margin-bottom: 0;
   padding-bottom: 0;
+}
+#boday{
+  background-color: #3C454E;
 }

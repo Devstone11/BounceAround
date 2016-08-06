@@ -11,77 +11,78 @@
     <title></title>
   </head>
     <% include ./layout.ejs %>
-    <div class="container-fluid">
-      <% if (trips.length !== 0) { %>
-      <div class="row">
-        <div class="col-sm-4" style="height: 90vh;">
+      <div class="container-fluid">
+        <% if (trips.length !== 0) { %>
+          <div class="row">
+          <div class="col-sm-4" style="height: 90vh;">
           <div class="well well-sm">
-            <h1 class="last_trip" id='<%= lasttrip.id %>'>Trip to <%= lasttrip.city %></h1>
+          <h1 class="last_trip" id='<%= lasttrip.id %>'>Trip to <%= lasttrip.city %></h1>
           </div>
           <div class="map_dashboard">
-            <div id="map" class="dashboard_map">
-            </div>
+          <div id="map" class="dashboard_map">
           </div>
-        </div>
-        <div class="col-sm-5">
+          </div>
+          </div>
+          <div class="col-sm-5">
           <div class="well well-sm">
-            <div>
-              <h1>Trip Schedule</h1>
-              <p>
-                ( <%= lasttrip.start %> - <%= lasttrip.end %> )
-              </p>
-            </div>
+          <div>
+          <h1>Trip Schedule for <%= lasttrip.city %></h1>
+          <p>
+          ( <%= lasttrip.start %> - <%= lasttrip.end %> )
+          </p>
           </div>
-            <div class="schedule">
-            <% if (lasttrip.days !== undefined) { %>
-              <% for (var i in lasttrip.days) { %>
-                <p>
-                  <%= lasttrip.days[i].date %>
-                </p>
-                <div class="activities">
-                  <div>
-                  <% for (var e in lasttrip.days[i].activities) { %>
-                    <a class="accordion">
-                      - <%= lasttrip.days[i].activities[e].name %>
-                    </a>
-                    <div class="panel">
-                      <p>From <%= lasttrip.days[i].activities[e].start %> to <%= lasttrip.days[i].activities[e].end %> at  <%= lasttrip.days[i].activities[e].address %></p>
+          </div>
+          <div class="schedule">
+          <% if (lasttrip.days !== undefined) { %>
+            <% for (var i in lasttrip.days) { %>
+              <div class="getFancy">
+              <p>
+              <%= lasttrip.days[i].date %>
+              </p>
+              <div class="activities">
+              <div>
+              <% for (var e in lasttrip.days[i].activities) { %>
+                <a class="accordion">
+                - <%= lasttrip.days[i].activities[e].name %>
+                </a>
+                <div class="panel">
+                <p>From <%= lasttrip.days[i].activities[e].start %> to <%= lasttrip.days[i].activities[e].end %> at  <%= lasttrip.days[i].activities[e].address %></p>
+                </div>
+                <% } %>
+                </div>
+                </div>
+              </div>
+                <% } %>
+                <% } %>
+                <a href="/trips/<%= lasttrip.id %>/edit">+ Edit / Add more activities</a>
+                </div>
+                </div>
+                <div class="col-sm-3" id="all">
+
+                <div class="well well-sm">
+                  <h1>All trips</h1>
+                    <a href="/trips/new" class="add"> + Add Trip</a>
+                    <ul>
+                    <% if (trips.length > 1) { %>
+                      <% trips.forEach(function(trip) { %>
+                      <li class="trippy"><a href="/trips/<%= trip.id %>/edit"><%= trip.city %></a></li>
+                      <% }) %>
+                      <% } else { %>
+                        <li><a href="/trips/<%= trips[0].id %>/edit"><%= trips[0].city %></a></li>
+                        <% } %>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <% } else { %>
+                  <div class="row">
+                    <div class="col-md-12" style="height: 100%;">
+                      <h1>You don't have any trips</h1>
+                      <a href="/trips/new">+ Add a trip</a>
                     </div>
                     <% } %>
                   </div>
-                </div>
-                <% } %>
-              <% } %>
-                <a href="/trips/<%= lasttrip.id %>/edit">+ Edit / Add more activities</a>
-            </div>
-        </div>
-        <div class="col-sm-3">
-        <div class="row">
-          <div class="well well-sm">
-            <h1>All trips</h1>
-            <a href="/trips/new"> + Add Trip</a>
-          <ul>
-          <% if (trips.length > 1) { %>
-          <% trips.forEach(function(trip) { %>
-            <li><a href="/trips/<%= trip.id %>/edit"><%= trip.city %></a></li>
-            <% }) %>
-            <% } else { %>
-            <li><a href="/trips/<%= trips[0].id %>/edit"><%= trips[0].city %></a></li>
-            <% } %>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <% } else { %>
-        <div class="row">
-          <div class="col-md-12" style="height: 100%;">
-            <h1>You don't have any trips</h1>
-            <a href="/trips/new">+ Add a trip</a>
-          </div>
-      <% } %>
-    </div>
-  <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmSDm9b-8fluOVsEKS8VKEu3YFzoF5q6A&libraries=places&callback=initMap" async defer></script>
-  <script type="text/javascript" src="/javascripts/showmap.js"></script>
-  </body>
-</html>
+                  <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
+                  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmSDm9b-8fluOVsEKS8VKEu3YFzoF5q6A&libraries=places&callback=initMap" async defer></script>
+                  <script type="text/javascript" src="/javascripts/showmap.js"></script>
+                  <script type="text/javascript" src="/javascripts/getFancy.js"></script>
