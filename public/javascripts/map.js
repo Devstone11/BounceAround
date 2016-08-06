@@ -7,13 +7,15 @@ var MARKER_PATH = 'https://maps.gstatic.com/intl/en_us/mapfiles/marker_green';
 var hostnameRegexp = new RegExp('^https?://.+?/');
 var user_id;
 var cookies = document.cookie.split("; ");
-
+var root = location.protocol + '//' + location.host;
+var geocoder;
 
 cookies.forEach(function(cookie){
   if (cookie.indexOf("id=") > -1){
     user_id = cookie.substring(cookie.indexOf("=")+1, cookie.length);
   }
 });
+
 var trip_id = window.location.href.substring(window.location.href.lastIndexOf('/')-1, window.location.href.lastIndexOf('/'));
 //function start
 String.prototype.capitalize = function() {
@@ -55,10 +57,12 @@ function typeIcon(type){
       return "http://findicons.com/files/icons/951/google_maps/32/cluster3.png";
   }
 }
+
+
 //function end
 function initMap() {
   $.ajax({
-      url: `http://localhost:3000/trips/last/${user_id}`,
+      url: root + `/trips/last/${user_id}`,
       success: function(trips){
         console.log(trips)
   var startPoint = {lat: Number(trips[0].city_coordinates.slice(1,-1).split(",")[0]), lng: Number(trips[0].city_coordinates.slice(1,-1).split(",")[1])}
@@ -71,6 +75,8 @@ function initMap() {
     streetViewControl: false
   });
 
+  geocoder = new google.maps.Geocoder;
+
   infoWindow = new google.maps.InfoWindow({
     content: document.getElementById('info-content')
   });
@@ -80,12 +86,11 @@ function initMap() {
 
   autocomplete.addListener('place_changed', onPlaceChanged);
 
-  var url = `http://localhost:3000/activities/trip/${trip_id}`;
+  var url = root + `/activities/trip/${trip_id}`;
   $.ajax({
       url: url,
       success: function(markers){
   markers.forEach(function(marker){
-      console.log(marker);
         marker.activities_coordinates = marker.activities_coordinates.slice(1,-1);
         thismarker = new google.maps.Marker({
         position: {lat: Number(marker.activities_coordinates.split(",")[0]), lng: Number(marker.activities_coordinates.split(",")[1])},
@@ -106,13 +111,13 @@ function initMap() {
     });
   });
 
+
   map.addListener('dragend', function() {
-    clearMarkers()
     map.panTo(map.getCenter());
     map.setZoom(14);
     search();
     clearMarkers()
-  });
+    });
   }
 });
 }
@@ -128,6 +133,7 @@ function onPlaceChanged() {
       map.setZoom(14);
       search();
       clearMarkers()
+      center(place.geometry.location)
     }
   }
   else {
@@ -147,10 +153,6 @@ function search() {
   };
 
   places.nearbySearch(search, function(results, status) {
-    results.push(results[0]);
-    results[results.length-1].geometry.location = map.getCenter();
-    results[results.length-1].name = "add this place to calendar"
-    results[results.length-1].geometry.location = map.getCenter();
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       clearResults();
       clearMarkers();
@@ -198,7 +200,7 @@ function addResult(result, i) {
   var iconTd = document.createElement('td');
   var nameTd = document.createElement('td');
   var icon = document.createElement('img');
-  icon.src = 'http://i.imgur.com/xmsSDVo.png';
+  icon.src = 'https://i.imgur.com/xmsSDVo.png';
   icon.setAttribute('class', 'placeIcon');
   icon.setAttribute('className', 'placeIcon');
   var name = document.createTextNode(result.name);
@@ -305,4 +307,32 @@ for (a = 0; a < acc.length; a++) {
         this.classList.toggle("active");
         this.nextElementSibling.classList.toggle("show");
   }
-};
+}
+var centerMarker;
+function center(pan){
+  if (centerMarker != null){
+  centerMarker.setMap(null);
+}
+
+  centerMarker = new google.maps.Marker({
+          position: map.getCenter(),
+          map: map,
+          title: "map center",
+    });
+    markers.push(centerMarker);
+
+    geocoder.geocode({'location': map.getCenter()}, function(results, status) {
+           if (status === 'OK') {
+             if (results[1]) {
+               var result = results[1].formatted_address;
+             }
+           }
+           InfoWindow = new google.maps.InfoWindow({
+             content: `<p>${result}</p><a href="#">+ add to calendar </a>`
+           });
+           centerMarker.addListener('click', function() {
+             InfoWindow.open(map, centerMarker);
+           });
+         });
+
+}
