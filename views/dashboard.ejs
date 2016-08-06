@@ -63,10 +63,10 @@
           <ul>
           <% if (trips.length > 1) { %>
           <% trips.forEach(function(trip) { %>
-            <li><a href="/trips/<%= trip.id %>"><%= trip.city %></a></li>
+            <li><a href="/trips/<%= trip.id %>/edit"><%= trip.city %></a></li>
             <% }) %>
             <% } else { %>
-            <li><a href="/trips/<%= trips[0].id %>"><%= trips[0].city %></a></li>
+            <li><a href="/trips/<%= trips[0].id %>/edit"><%= trips[0].city %></a></li>
             <% } %>
             </ul>
           </div>
