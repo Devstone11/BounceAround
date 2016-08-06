@@ -1,0 +1,67 @@
+
+#acc_calendar_box {
+  border: 1px solid blue;
+  text-align: center;
+  padding: 20px;
+  height: 50vh;
+  overflow: scroll;
+  white-space:nowrap;
+  background: #3C454E;
+}
+
+.acc_day_container {
+  border: 1px dashed red;
+  display: block;
+  background: #3C454E;
+}
+
+.acc_day_container h2 {
+  font-size: 20px;
+  background: #3C454E;
+}
+
+.acc_cal_day {
+  border: 1px dotted green;
+  font-size: 10px;
+  width: 250px;
+  display: block;
+  background: #3C454E;
+}
+.scheduleBorder {
+  border-bottom-color: white;
+  background: #3C454E;
+  height: 50px;
+}
+.schedule {
+  padding-top: 0;
+}
+div.calDay {
+    background: white;
+    display: inline-block;
+    height: 347px;
+    overflow-y: scroll;
+    background: #3C454E;
+}
+div.col-md-3 {
+  padding-right:0px;
+  padding-left:0px;
+  margin-left: 0;
+  margin-right: 0;
+}
+div.col-md-6 {
+  padding-right:0px;
+  padding-left:0px;
+  margin-left: 0;
+  margin-right: 0;
+}
+p {
+  font-family: 'Mukta Vaani', sans-serif;
+  font-size: 1.2em;
+  color: white;
+  padding-left: 2em;
+  padding-top: 1em;
+  padding-bottom: 2em;
+}
+.row {
+  background: #3C454E;
+}
