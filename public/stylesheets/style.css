@@ -342,10 +342,9 @@ h5{
   border-left: 1px solid grey;
   border-right: 1px solid grey;
 }
+
 .act_edit{
   display: block;
-  padding: 2%;
-  padding-right: 4%;
 }
 .act_name, .act_delete{
   display: inline-block;
@@ -353,6 +352,11 @@ h5{
 .act_delete{
   float: right;
   cursor: pointer;
+  width: 10%;
+}
+
+.act_name{
+  width: 90%;
 }
 
 .close_form{

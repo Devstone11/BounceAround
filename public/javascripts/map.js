@@ -132,7 +132,6 @@ function onPlaceChanged() {
       map.panTo(place.geometry.location);
       map.setZoom(14);
       search();
-      clearMarkers()
       center(place.geometry.location)
     }
   }
