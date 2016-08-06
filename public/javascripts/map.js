@@ -8,13 +8,12 @@ var hostnameRegexp = new RegExp('^https?://.+?/');
 var user_id;
 var cookies = document.cookie.split("; ");
 
+
 cookies.forEach(function(cookie){
   if (cookie.indexOf("id=") > -1){
     user_id = cookie.substring(cookie.indexOf("=")+1, cookie.length);
   }
 });
-
-
 var trip_id = window.location.href.substring(window.location.href.lastIndexOf('/')-1, window.location.href.lastIndexOf('/'));
 //function start
 String.prototype.capitalize = function() {
@@ -297,3 +296,13 @@ $(document).on("click", ".act_delete", function(){
 $('.close_form').on("click", function(){
   $(this).parent().hide();
 });
+
+var acc = document.getElementsByClassName("accordion");
+var a;
+
+for (a = 0; a < acc.length; a++) {
+    acc[a].onclick = function(){
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+  }
+};

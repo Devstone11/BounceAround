@@ -3,25 +3,26 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- font for headers font-family: 'Fjalla One', sans-serif; -->
     <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Mukta+Vaani" rel="stylesheet">    <!-- font for text  font-family: 'Mukta Vaani', sans-serif;-->
     <link href="https://fonts.googleapis.com/css?family=Mukta+Vaani" rel="stylesheet">
-    <link rel="stylesheet" href="stylesheets/style.css" media="screen" title="no title" charset="utf-8">
-    <title></title>
+    <link rel="stylesheet" href="stylesheets/signup.css" media="screen" title="no title" charset="utf-8">
   </head>
-  <body style="background-color: #999;">
-    <% include ./layout.ejs %>
+  <body>
     <%= alert %>
-    <div id="signupForm">
-      <form class="" action="/signup" method="post" >
-        <input type="text" name="email" value="" placeholder="email"><br />
-        <input type="text" name="name" value="" placeholder="name"><br />
-        <input type="password" name="password" value="" placeholder="password"><br />
-        <input type="submit" id="signBut">
-      </form><br>
-      <button type="button" name="google" onclick="location.href = '/auth/google';">Connect with Google</button>
-    </div>
+    <a class="navbar-brand" href="/">BounceAround</a>
+    <div class="container-fluid">
+    <form class="" action="/signup" method="post">
+      <input class="form-group" type="text" name="email" value="" placeholder="email">
+      <input class="form-group" type="text" name="name" value="" placeholder="name">
+      <input class="form-group" type="password" name="password" value="" placeholder="password">
+      <input class="form-group" type="submit">
+    </form><br>
+  </div>
+  <div class="button-container">
+    <button id="google-signin" type="button" name="google" onclick="location.href = '/auth/google';"></button>
+  </div>
   </body>
 </html>
