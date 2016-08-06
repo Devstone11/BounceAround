@@ -29,6 +29,9 @@ router.get('/selected/:trip_id', function(req, res, next){
 
 router.get('/:id/edit', function(req, res, next) {
   knex.raw(`SELECT id, date from days WHERE trip_id=${req.params.id}`).then(function(days) {
+    days.rows.sort(function(a, b) {
+      return a.date - b.date;
+    });
     var formatDates = days.rows.map(function(day) {
       var splitDate = day.date.toISOString().split('T')[0].split('-');
       var informalDates = ((day.date + '').substring(0,10));
