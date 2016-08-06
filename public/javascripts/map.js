@@ -72,6 +72,8 @@ function initMap() {
     streetViewControl: false
   });
 
+  var geocoder = new google.maps.Geocoder;
+
   infoWindow = new google.maps.InfoWindow({
     content: document.getElementById('info-content')
   });
@@ -86,7 +88,6 @@ function initMap() {
       url: url,
       success: function(markers){
   markers.forEach(function(marker){
-      console.log(marker);
         marker.activities_coordinates = marker.activities_coordinates.slice(1,-1);
         thismarker = new google.maps.Marker({
         position: {lat: Number(marker.activities_coordinates.split(",")[0]), lng: Number(marker.activities_coordinates.split(",")[1])},
@@ -110,7 +111,8 @@ function initMap() {
   var centerMarker;
   map.addListener('dragend', function() {
     if (centerMarker != null){
-    centerMarker.setVisible(false);}
+    centerMarker.setMap(null);
+  }
     map.panTo(map.getCenter());
     map.setZoom(14);
     search();
@@ -121,6 +123,21 @@ function initMap() {
             title: "map center",
       });
       markers.push(centerMarker);
+
+      geocoder.geocode({'location': map.getCenter()}, function(results, status) {
+             if (status === 'OK') {
+               if (results[1]) {
+                 var result = results[1].formatted_address;
+               }
+             }
+             InfoWindow = new google.maps.InfoWindow({
+               content: `<p>${result}</p><a href="#">+ add to calendar </a>`
+             });
+           });
+
+      centerMarker.addListener('click', function() {
+        InfoWindow.open(map, centerMarker);
+      });
   });
   }
 });
