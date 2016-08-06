@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="/stylesheets/style.css" media="screen" title="no title" charset="utf-8">
     <title></title>
     <link rel='stylesheet' href='/stylesheets/accordionTrip.css' />
+        <link rel='stylesheet' href='/stylesheets/scrollCal.css' />
   </head>
   <body>
     <% include ../layout.ejs %>
-    <div class="container-fluid">
+  <div class="container-fluid">
 
     <div class="row">
       <div class="col-md-3">
@@ -118,7 +119,9 @@
           </table>
         </div>
       </div>
-
+      <div class="col-md-3 scheduleBorder">
+      <p>schedule</p>
+      </div>
       <div class="col-md-3 calDay">
         <div class="schedule">
           <div class="activities">
@@ -150,7 +153,47 @@
           </div>
         </div>
       </div>
+
     </div>
+    </div>
+    <div id="mamadiv">
+      <div id="testscroll">
+              <% for(var i=0; i<12; i++) { %>
+                <!-- <div class="col-sm-12">
+                  <p>heading</p>
+                </div> -->
+                <div class="schedule">
+                  <div class="activities">
+                    <div>
+                      <% days.forEach(function(day) { %>
+                        <div class=" calScrollDay">
+                        <button class="accordion">
+                        <a class=""><%= day.shortDay %></a>
+                        </button>
+                        <div class="panel">
+                          <div><% activities.forEach(function(activity) {
+                            if (activity.day_id === day.id) { %>
+                              <a class="accordion">
+                                <p><%= activity.name %></p>
+                              </a>
+                              <div class="panel">
+                                <p><%= activity.address %></p>
+                                <p><%= activity.start_time %></p>
+                                <p><%= activity.end_time %></p>
+                              </div>
+                            <% } %>
+                          <% }) %>
+                          </div>
+                        </div>
+                        </div>
+                      <% }) %>
+                  </div>
+                  </div>
+              </div>
+                <% } %>
+      </div>
+    </div>
+
 
     <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.26/jquery.autocomplete.min.js"></script>
