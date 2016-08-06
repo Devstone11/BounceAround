@@ -8,6 +8,7 @@ var hostnameRegexp = new RegExp('^https?://.+?/');
 var user_id;
 var cookies = document.cookie.split("; ");
 var root = location.protocol + '//' + location.host;
+var geocoder;
 
 cookies.forEach(function(cookie){
   if (cookie.indexOf("id=") > -1){
@@ -56,6 +57,8 @@ function typeIcon(type){
       return "http://findicons.com/files/icons/951/google_maps/32/cluster3.png";
   }
 }
+
+
 //function end
 function initMap() {
   $.ajax({
@@ -72,7 +75,7 @@ function initMap() {
     streetViewControl: false
   });
 
-  var geocoder = new google.maps.Geocoder;
+  geocoder = new google.maps.Geocoder;
 
   infoWindow = new google.maps.InfoWindow({
     content: document.getElementById('info-content')
@@ -108,37 +111,13 @@ function initMap() {
     });
   });
 
-  var centerMarker;
+
   map.addListener('dragend', function() {
-    if (centerMarker != null){
-    centerMarker.setMap(null);
-  }
     map.panTo(map.getCenter());
     map.setZoom(14);
     search();
     clearMarkers()
-    centerMarker = new google.maps.Marker({
-            position: map.getCenter(),
-            map: map,
-            title: "map center",
-      });
-      markers.push(centerMarker);
-
-      geocoder.geocode({'location': map.getCenter()}, function(results, status) {
-             if (status === 'OK') {
-               if (results[1]) {
-                 var result = results[1].formatted_address;
-               }
-             }
-             InfoWindow = new google.maps.InfoWindow({
-               content: `<p>${result}</p><a href="#">+ add to calendar </a>`
-             });
-           });
-
-      centerMarker.addListener('click', function() {
-        InfoWindow.open(map, centerMarker);
-      });
-  });
+    });
   }
 });
 }
@@ -154,6 +133,7 @@ function onPlaceChanged() {
       map.setZoom(14);
       search();
       clearMarkers()
+      center(place.geometry.location)
     }
   }
   else {
@@ -327,4 +307,32 @@ for (a = 0; a < acc.length; a++) {
         this.classList.toggle("active");
         this.nextElementSibling.classList.toggle("show");
   }
+}
+var centerMarker;
+function center(pan){
+  if (centerMarker != null){
+  centerMarker.setMap(null);
+}
+
+  centerMarker = new google.maps.Marker({
+          position: map.getCenter(),
+          map: map,
+          title: "map center",
+    });
+    markers.push(centerMarker);
+
+    geocoder.geocode({'location': map.getCenter()}, function(results, status) {
+           if (status === 'OK') {
+             if (results[1]) {
+               var result = results[1].formatted_address;
+             }
+           }
+           InfoWindow = new google.maps.InfoWindow({
+             content: `<p>${result}</p><a href="#">+ add to calendar </a>`
+           });
+           centerMarker.addListener('click', function() {
+             InfoWindow.open(map, centerMarker);
+           });
+         });
+
 }
