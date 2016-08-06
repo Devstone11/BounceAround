@@ -215,13 +215,6 @@ new trip form
     margin-right: 25px;
     margin-left: 25px;
 }
-div.new-trip {
-    margin-top: 2em;
-    margin-bottom: 2em;
-    width: 50vw;
-    /*margin-right: 30%;
-    margin-left: 30%;*/
-}
 
 html, body {
   height: 100%;
