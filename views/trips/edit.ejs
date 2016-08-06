@@ -23,10 +23,11 @@
             <input type="text" name="" class="biginput" id="autocomplete" placeholder="Enter type of place">
           </div>
           <div class="search_icons">
-              <div class="search_icon"><img src="https://i.imgur.com/liUB50H.png" alt="restaurant" /></div>
-              <div class="search_icon"><img src="https://i.imgur.com/BFiuOkx.png" alt="lodging" /></div>
-              <div class="search_icon"><img src="https://i.imgur.com/kaicBix.png" alt="bar" /></div>
-              <div class="search_icon"><img src="https://i.imgur.com/OIT3QVJ.png" alt="park" /></div>
+              <div class="search_icon">
+                <img src="http://i.imgur.com/liUB50H.png" alt="restaurant" /></div>
+              <div class="search_icon"><img src="http://i.imgur.com/BFiuOkx.png" alt="lodging" /></div>
+              <div class="search_icon"><img src="http://i.imgur.com/kaicBix.png" alt="bar" /></div>
+              <div class="search_icon"><img src="http://i.imgur.com/OIT3QVJ.png" alt="park" /></div>
           </div>
           <h5>near:</h5>
           <div id="locationField">
@@ -134,13 +135,15 @@
                   <div>
                     <% activities.forEach(function(activity) {
                     if (activity.day_id === day.id) { %>
-
                       <div class="accordion">
                         <div class="act_edit">
                         <div class="act_name"><%= activity.name %></div>
                         <div id="<%= activity.id %>" class="act_delete"> x </div>
                       </div>
                       </div>
+                      <a class="accordion">
+                        <p><%= activity.name %></p>
+                      </a>
                       <div class="panel">
                         <div class="act_dates">
                           <%    function getFormattedTime(time) {
@@ -169,51 +172,10 @@
       </div>
 
     </div>
-<<<<<<< d8d5185a007e21092576554f83be501d79405183
     <form action="/trips/<%= trip_id %>/delete" method="post">
       <input type="submit" name="delete-trip" value="Delete this trip">
     </form>
-=======
     </div>
-    <div id="mamadiv">
-      <div id="testscroll">
-              <% for(var i=0; i<12; i++) { %>
-                <!-- <div class="col-sm-12">
-                  <p>heading</p>
-                </div> -->
-                <div class="schedule">
-                  <div class="activities">
-                    <div>
-                      <% days.forEach(function(day) { %>
-                        <div class=" calScrollDay">
-                        <button class="accordion">
-                        <a class=""><%= day.shortDay %></a>
-                        </button>
-                        <div class="panel">
-                          <div><% activities.forEach(function(activity) {
-                            if (activity.day_id === day.id) { %>
-                              <a class="accordion">
-                                <p><%= activity.name %></p>
-                              </a>
-                              <div class="panel">
-                                <p><%= activity.address %></p>
-                                <p><%= activity.start_time %></p>
-                                <p><%= activity.end_time %></p>
-                              </div>
-                            <% } %>
-                          <% }) %>
-                          </div>
-                        </div>
-                        </div>
-                      <% }) %>
-                  </div>
-                  </div>
-              </div>
-                <% } %>
-      </div>
-    </div>
-
->>>>>>> updated trip edit view
 
     <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.26/jquery.autocomplete.min.js"></script>
