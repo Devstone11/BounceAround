@@ -34,5 +34,8 @@ module.exports = {
   //no activity info
   returnLastTrip: function(user_id){
     return knex.raw(`select * from trips where id=(select MAX(id) from trips where trips.user_id=${user_id})`)
+  },
+  returnSelectedTrip: function(trip_id) {
+    return knex.raw(`SELECT * from trips WHERE id=${trip_id}`);
   }
 };

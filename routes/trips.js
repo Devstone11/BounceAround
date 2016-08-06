@@ -21,6 +21,12 @@ router.get('/last/:user_id', function(req, res, next){
   });
 });
 
+router.get('/selected/:trip_id', function(req, res, next){
+  data.returnSelectedTrip(req.params.trip_id).then(function(results){
+    res.json(results.rows);
+  });
+});
+
 router.get('/:id/edit', function(req, res, next) {
   knex.raw(`SELECT id, date from days WHERE trip_id=${req.params.id}`).then(function(days) {
     var formatDates = days.rows.map(function(day) {

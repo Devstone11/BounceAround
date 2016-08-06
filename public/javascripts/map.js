@@ -67,7 +67,7 @@ function typeIcon(type){
 //function end
 function initMap() {
   $.ajax({
-      url: root + `/trips/last/${user_id}`,
+      url: root + `/trips/selected/${trip_id}`,
       success: function(trips){
         console.log(trips)
   var startPoint = {lat: Number(trips[0].city_coordinates.slice(1,-1).split(",")[0]), lng: Number(trips[0].city_coordinates.slice(1,-1).split(",")[1])}
