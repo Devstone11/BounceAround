@@ -5,3 +5,38 @@ body{
 h1, h2, h3, h4, h5, h6{
   font-family: 'Mukta Vaani', sans-serif !important;
 }
+.well{
+  background: #737C85;
+  color: #15222D;
+}
+.schedule a{
+  text-decoration: none;
+  color: #d1ae3d;
+  font-size: 1.3em;
+}
+.schedule a:hover{
+  color: white;
+  font-size: 1.53em;
+}
+.schedule p{
+  font-size: 1.5em;
+  color: black;
+}
+#all ul{
+  list-style-type: none;
+}
+#all ul li a{
+  text-decoration: none;
+  color: #d1ae3d;
+  font-size: 1.3em;
+}
+.add{
+  color: white;
+}
+.panel a{
+  color white
+}
+#all ul li a:hover{
+  color: white;
+  font-size: 1.53em;
+}

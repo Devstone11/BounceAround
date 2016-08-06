@@ -26,7 +26,7 @@
           <div class="col-sm-5">
           <div class="well well-sm">
           <div>
-          <h1>Trip Schedule</h1>
+          <h1>Trip Schedule for <%= lasttrip.city %></h1>
           <p>
           ( <%= lasttrip.start %> - <%= lasttrip.end %> )
           </p>
@@ -35,6 +35,7 @@
           <div class="schedule">
           <% if (lasttrip.days !== undefined) { %>
             <% for (var i in lasttrip.days) { %>
+              <div class="getFancy">
               <p>
               <%= lasttrip.days[i].date %>
               </p>
@@ -50,19 +51,20 @@
                 <% } %>
                 </div>
                 </div>
+              </div>
                 <% } %>
                 <% } %>
                 <a href="/trips/<%= lasttrip.id %>/edit">+ Edit / Add more activities</a>
                 </div>
                 </div>
-                <div class="col-sm-3">
-                <div class="row">
+                <div class="col-sm-3" id="all">
+
                 <div class="well well-sm">
-                <h1>All trips</h1>
-                <a href="/trips/new"> + Add Trip</a>
-                <ul>
-                  <% if (trips.length > 1) { %>
-                    <% trips.forEach(function(trip) { %>
+                  <h1>All trips</h1>
+                    <a href="/trips/new" class="add"> + Add Trip</a>
+                    <ul>
+                    <% if (trips.length > 1) { %>
+                      <% trips.forEach(function(trip) { %>
                       <li><a href="/trips/<%= trip.id %>/edit"><%= trip.city %></a></li>
                       <% }) %>
                       <% } else { %>
@@ -83,3 +85,4 @@
                   <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
                   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmSDm9b-8fluOVsEKS8VKEu3YFzoF5q6A&libraries=places&callback=initMap" async defer></script>
                   <script type="text/javascript" src="/javascripts/showmap.js"></script>
+                  <script type="text/javascript" src="/javascripts/getFancy.js"></script>
