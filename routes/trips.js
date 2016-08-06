@@ -82,4 +82,18 @@ router.post('/new', function(req, res, next) {
   });
 });
 
+router.post('/:id/delete', function(req, res, next) {
+  console.log("Destruction is imminent!!!");
+  knex.raw(`DELETE from activities USING days WHERE activities.day_id=days.id AND days.trip_id = ${req.params.id}`).then(function() {
+    console.log("activities have been deleted");
+    knex.raw(`DELETE from days WHERE trip_id=${req.params.id}`).then(function() {
+      console.log("Days have been deleted");
+      knex.raw(`DELETE from trips WHERE id=${req.params.id}`).then(function() {
+        console.log("Trip has been deleted");
+        res.redirect('/dashboard');
+      })
+    })
+  })
+})
+
 module.exports = router;
