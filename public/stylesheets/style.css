@@ -246,6 +246,7 @@ table {
   height: 25px;
   display: block;
   margin-bottom: 20px;
+  color: black;
 }
 #controls {
   position: absolute;
@@ -303,6 +304,11 @@ table {
 .filters{
   width: 100%;
   height: 100%;
+<<<<<<< 01c0ee62e6dbfecc54e0a846184f4376d96bb190
+=======
+  background-color: #3C454E;
+  color: white;
+>>>>>>> view/edit page
   position: relative;
   padding: 30px;
 }
@@ -312,10 +318,10 @@ h5{
 }
 
 .addtocalendar{
-  background-color: blue;
+  background-color: #3C454E;
   width: 100%;
   height: 100%;
-  padding: 20px;
+  padding: 1em;
   color: white;
 }
 #addToCal{
@@ -335,7 +341,7 @@ h5{
 
 .map_box{
   width: 100%;
-  height: 400px;
+  height: 84.1vh;
   display:inline-block;
 }
 
