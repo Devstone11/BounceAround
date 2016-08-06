@@ -8,37 +8,46 @@
     <!-- font for headers font-family: 'Fjalla One', sans-serif; -->
     <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Mukta+Vaani" rel="stylesheet">    <!-- font for text  font-family: 'Mukta Vaani', sans-serif;-->
     <link href="https://fonts.googleapis.com/css?family=Mukta+Vaani" rel="stylesheet">
-    <link rel="stylesheet" href="stylesheets/style.css" media="screen" title="no title" charset="utf-8">
-    <title></title>
+    <link rel="stylesheet" href="/stylesheets/new.css">
+    <title>Add New Trip</title>
   </head>
   <body>
-    <div class="container-fluid">
-      <h3 class="form-title">Create a New Trip</h3>
-      <form class="new-trip" action="/trips/new" method="post">
-        <div class="form-group">
-          <label for="tripName">Trip Name</label>
-          <input type="text" name="tripName" class="form-control" id="tripName" placeholder="Enter your trip name">
-        </div>
-        <div class="form-group">
-          <label for="tripCity">City</label>
-          <input type="text" name="city" class="form-control" id="city" placeholder="Enter the city you are visiting">
-        </div>
-        <div class="form-group">
-          <input type="text" name="coords" class="form-control" id="new_coords">
-        </div>
-        <div class="form-group">
-          <label for="startDate">Start Date:</label>
-          <input type="date" name="startDate" class="form-control" id="startDate">
-        </div>
-        <div class="form-group">
-          <label for="endDate">End Date:</label>
-          <input type="date" name="endDate" class="form-control" id="endDate">
-        </div>
-        <button type="submit" class="btn">Create Your Trip!</button>
-      </form>
+    <div id="makeTransparent"></div>
+    <div id="container" class="pictures">
+      <div style="display: inline-block;">
+        <img src="/stylesheets/images/pic1.jpeg" alt="" class="pics"/>
+      </div>
     </div>
+    <main>
+      <div class="form-position">
+        <h1 class="form-title">Create a New Trip</h1>
+        <form class="new-trip" action="/trips/new" method="post">
+          <div class="form-group">
+            <label for="tripName">Trip Name</label>
+            <input type="text" name="tripName" class="form-control" id="tripName" placeholder="Enter a name for your trip">
+          </div>
+          <div class="form-group">
+            <label for="tripCity">City</label>
+            <input type="text" name="city" class="form-control" id="city" placeholder="Enter the city you are visiting">
+          </div>
+          <div class="form-group">
+            <input type="text" name="coords" class="form-control" id="new_coords">
+          </div>
+          <div class="form-group">
+            <label for="startDate">Start Date:</label>
+            <input type="date" name="startDate" class="form-control" id="startDate">
+          </div>
+          <div class="form-group">
+            <label for="endDate">End Date:</label>
+            <input type="date" name="endDate" class="form-control" id="endDate">
+          </div>
+          <button type="submit" class="btn">Create Your Trip!</button>
+        </form>
+      </div>
+    </main>
     <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTSj-FCBxjl1YBfJ2GngYKyajoobyKdVg&libraries=places&callback=initialize" async defer></script>
     <script type="text/javascript" src="/javascripts/a_complete.js"></script>
+    <script src="/javascripts/script.js"></script>
   </body>
 </html>

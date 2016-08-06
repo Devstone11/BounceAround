@@ -1,0 +1,46 @@
+#container {
+    position: absolute;
+    z-index: -1;
+}
+
+#makeTransparent {
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  background-color: rgba(0, 0, 0, .75);
+  z-index: 0;
+}
+
+img {
+  height: 100vh;
+  width: 100vw;
+}
+
+main {
+  position: absolute;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+}
+
+.form-position {
+  width: 80vh;
+  margin: 0 auto;
+  vertical-align: middle;
+  margin-top: 15vh;
+  text-align: center;
+  font-family: 'Mukta Vaani', sans-serif;
+  color: #FFDA00;
+}
+
+h1 {
+  font-size: 5vw;
+  margin-bottom: 2vw;
+}
+
+button {
+  background-color: #FFDA00;
+  color: black;
+  margin-top: 2vw;
+}
