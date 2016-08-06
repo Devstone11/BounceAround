@@ -1,0 +1,30 @@
+body {
+   padding: 50px;
+   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+   margin: 0;
+   padding: 0;
+   background-color: #00A4CA;
+ }
+
+ #testscroll {
+   width: auto;
+   height: 310px;
+   overflow-x: scroll;
+   overflow-y: hidden;
+   white-space: nowrap;
+ }
+ div.calScrollDay {
+   border-radius: 5px;
+   background: #e6e6e6;
+   display: inline-block;
+   width: 300px;
+   height:308px;
+   overflow-y: scroll;
+   margin-right: 1em;
+ }
+ #mamadiv {
+   width: auto;
+   overflow-x:scroll;
+   overflow-y: hidden;
+   background: #3C454E;
+}

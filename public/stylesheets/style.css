@@ -6,6 +6,7 @@ h1, h2, h3, h4, h5, h6{
 }
 #menu{
   height: 7vh;
+  margin-bottom: 1px;
 }
 #menu.navbar-default .navbar-brand {
     color: rgba(119, 119, 119, 1);
@@ -83,6 +84,7 @@ button.signup span{
   margin-left: auto;
   margin-right: auto;
 }
+/*444*/
 button.accordion {
     background-color: #eee;
     color: #444;
@@ -212,13 +214,6 @@ new trip form
     margin-bottom: 2em;
     margin-right: 25px;
     margin-left: 25px;
-}
-div.new-trip {
-    margin-top: 2em;
-    margin-bottom: 2em;
-    width: 50vw;
-    /*margin-right: 30%;
-    margin-left: 30%;*/
 }
 
 html, body {
