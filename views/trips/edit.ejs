@@ -18,21 +18,20 @@
     <div class="row">
       <div class="col-md-3">
         <div class="filters">
-          <div class="well well-sm">
-            <h5>find:</h5>
-            <div id="searchfield">
-              <input type="text" name="" class="biginput" id="autocomplete" placeholder="Enter type of place">
-            </div>
-            <div class="search_icons">
-              <div class="search_icon"><img src="https://i.imgur.com/liUB50H.png" alt="restaurant" /></div>
-              <div class="search_icon"><img src="https://i.imgur.com/BFiuOkx.png" alt="lodging" /></div>
-              <div class="search_icon"><img src="https://i.imgur.com/kaicBix.png" alt="bar" /></div>
-              <div class="search_icon"><img src="https://i.imgur.com/OIT3QVJ.png" alt="park" /></div>
-            </div>
-            <h5>near:</h5>
-            <div id="locationField">
-              <input id="autocompletemap" placeholder="Enter a city/place/address" type="text" />
-            </div>
+          <h5>find:</h5>
+          <div id="searchfield">
+            <input type="text" name="" class="biginput" id="autocomplete" placeholder="Enter type of place">
+          </div>
+          <div class="search_icons">
+              <div class="search_icon">
+                <img src="http://i.imgur.com/liUB50H.png" alt="restaurant" /></div>
+              <div class="search_icon"><img src="http://i.imgur.com/BFiuOkx.png" alt="lodging" /></div>
+              <div class="search_icon"><img src="http://i.imgur.com/kaicBix.png" alt="bar" /></div>
+              <div class="search_icon"><img src="http://i.imgur.com/OIT3QVJ.png" alt="park" /></div>
+          </div>
+          <h5>near:</h5>
+          <div id="locationField">
+            <input id="autocompletemap" placeholder="Enter a city/place/address" type="text" />
           </div>
         </div>
 
@@ -136,7 +135,6 @@
                   <div>
                     <% activities.forEach(function(activity) {
                     if (activity.day_id === day.id) { %>
-
                       <div class="accordion">
                         <div class="act_edit">
                         <div class="act_name"><%= activity.name %></div>
