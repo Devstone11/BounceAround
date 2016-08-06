@@ -155,7 +155,6 @@ function search() {
   places.nearbySearch(search, function(results, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       clearResults();
-      clearMarkers();
 
       for (var i = 0; i < results.length; i++) {
         var markerIcon = 'https://cdn4.iconfinder.com/data/icons/small-n-flat/24/map-marker-32.png';

@@ -130,9 +130,12 @@
                 <div class="panel">
                   <div><% activities.forEach(function(activity) {
                     if (activity.day_id === day.id) { %>
-                      <a class="accordion">
-                        <p><%= activity.name %></p>
+                      <div class="act_edit">
+                      <a class="accordion act_name">
+                        <div><%= activity.name %></div>
                       </a>
+                        <div id="<%= activity.id %>" class="act_delete"> x </div>
+                      </div>
                       <div class="panel">
                         <p><%= activity.address %></p>
                         <p><%= activity.start_time %></p>
