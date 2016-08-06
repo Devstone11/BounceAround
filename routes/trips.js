@@ -21,8 +21,17 @@ router.get('/last/:user_id', function(req, res, next){
   });
 });
 
+router.get('/selected/:trip_id', function(req, res, next){
+  data.returnSelectedTrip(req.params.trip_id).then(function(results){
+    res.json(results.rows);
+  });
+});
+
 router.get('/:id/edit', function(req, res, next) {
   knex.raw(`SELECT id, date from days WHERE trip_id=${req.params.id}`).then(function(days) {
+    days.rows.sort(function(a, b) {
+      return a.date - b.date;
+    });
     var formatDates = days.rows.map(function(day) {
       var splitDate = day.date.toISOString().split('T')[0].split('-');
       var informalDates = ((day.date + '').substring(0,10));
@@ -81,5 +90,19 @@ router.post('/new', function(req, res, next) {
     });
   });
 });
+
+router.post('/:id/delete', function(req, res, next) {
+  console.log("Destruction is imminent!!!");
+  knex.raw(`DELETE from activities USING days WHERE activities.day_id=days.id AND days.trip_id = ${req.params.id}`).then(function() {
+    console.log("activities have been deleted");
+    knex.raw(`DELETE from days WHERE trip_id=${req.params.id}`).then(function() {
+      console.log("Days have been deleted");
+      knex.raw(`DELETE from trips WHERE id=${req.params.id}`).then(function() {
+        console.log("Trip has been deleted");
+        res.redirect('/dashboard');
+      })
+    })
+  })
+})
 
 module.exports = router;
