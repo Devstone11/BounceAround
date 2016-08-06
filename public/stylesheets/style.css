@@ -356,7 +356,12 @@ h5{
 }
 
 .act_name{
+  cursor: pointer;
   width: 90%;
+}
+
+.act_name:hover{
+  text-decoration: underline;
 }
 
 .close_form{
@@ -447,4 +452,15 @@ opacity: 0;
 div.panel.show {
 opacity: 1;
 max-height: 500px;
+}
+
+.act_dates{
+  display: block;
+}
+
+.act_date{
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }

@@ -11,6 +11,7 @@
     <link rel='stylesheet' href='/stylesheets/accordianTrip.css' />
   </head>
   <body>
+
     <% include ../layout.ejs %>
     <div class="container-fluid">
 
@@ -128,18 +129,32 @@
                 <a class=""><%= day.shortDay %></a>
                 </button>
                 <div class="panel">
-                  <div><% activities.forEach(function(activity) {
+                  <div>
+                    <% activities.forEach(function(activity) {
                     if (activity.day_id === day.id) { %>
-                      <div class="act_edit">
-                      <a class="accordion act_name">
-                        <div><%= activity.name %></div>
-                      </a>
+
+                      <div class="accordion">
+                        <div class="act_edit">
+                        <div class="act_name"><%= activity.name %></div>
                         <div id="<%= activity.id %>" class="act_delete"> x </div>
                       </div>
+                      </div>
                       <div class="panel">
-                        <p><%= activity.address %></p>
-                        <p><%= activity.start_time %></p>
-                        <p><%= activity.end_time %></p>
+                        <div class="act_dates">
+                          <%    function getFormattedTime(time) {
+                                  time = time.substring(0,5)
+                                  time.replace(":", '')
+                                  var hours24 = parseInt(time.substring(0, 2),10);
+                                  var hours = ((hours24 + 11) % 12) + 1;
+                                  var amPm = hours24 > 11 ? 'pm' : 'am';
+                                  var minutes = time.substring(2);
+                                  return hours + minutes + amPm;
+                              } %>
+                          <% var astart = getFormattedTime(activity.start_time) %>
+                          <% var aend = getFormattedTime(activity.end_time) %>
+                          <p class="act_date">From <%= astart %> to <%= aend %><p>
+                        </div>
+                        <p>Address: <%= activity.address %></p>
                       </div>
                     <% } %>
                   <% }) %>
