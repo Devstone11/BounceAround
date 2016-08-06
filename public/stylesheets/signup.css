@@ -24,7 +24,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: #00A4CA;
+  background: #3C454E;
 }
 .navbar-brand {
   color: white;
@@ -72,4 +72,11 @@ div.button-container {
   width: 100%;
   height: 56px;
   display: block;
+}
+#makeMeYellow{
+  background-color: rgb(255, 218, 0);
+  border: 1px solid black;
+  border-radius: 5px;
+  font-family: 'Mukta Vaani', sans-serif;
+  font-size: 1.2em;
 }
