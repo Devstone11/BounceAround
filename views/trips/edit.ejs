@@ -13,31 +13,40 @@
   <body>
 
     <% include ../layout.ejs %>
-  <div class="container-fluid">
+  <div class="container-fluid darkGray">
 
     <div class="row">
       <div class="col-md-3">
         <div class="filters">
+          <div class="form-group">
           <h5>find:</h5>
           <div id="searchfield">
-            <input type="text" name="" class="biginput" id="autocomplete" placeholder="Enter type of place">
+            <input class="form-control" type="text" name="" class="biginput" id="autocomplete" placeholder="Enter type of place">
+          </div>
           </div>
           <div class="search_icons">
               <div class="search_icon">
-                <img src="http://i.imgur.com/liUB50H.png" alt="restaurant" /></div>
-              <div class="search_icon"><img src="http://i.imgur.com/BFiuOkx.png" alt="lodging" /></div>
-              <div class="search_icon"><img src="http://i.imgur.com/kaicBix.png" alt="bar" /></div>
-              <div class="search_icon"><img src="http://i.imgur.com/OIT3QVJ.png" alt="park" /></div>
+                <img src="/images/restaurantsIcon.png" alt="restaurant" />
+              </div>
+              <div class="search_icon"><img src="/images/hotelIcon.png" alt="lodging" />
+              </div>
+              <div class="search_icon"><img src="/images/barIcon.png" alt="bar" />
+              </div>
+              <div class="search_icon"><img src="/images/parksIcon.png" alt="park" />
+              </div>
           </div>
+
           <h5>near:</h5>
           <div id="locationField">
-            <input id="autocompletemap" placeholder="Enter a city/place/address" type="text" />
+            <div class="form-group">
+            <input class="form-control" id="autocompletemap" placeholder="Enter a city/place/address" type="text" />
+            </div>
           </div>
         </div>
 
         <div class="addtocalendar">
           <div class="close_form">x</div>
-          Add activity to trip planner
+          <div class="filtersHeader">Add activity to trip planner</div>
           <form class="" action="/activities/<%= trip_id %>/new" method="post">
             <div class="form-group">
             Title / Place
@@ -70,7 +79,7 @@
         </div>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-6 mapFrame">
         <div class="map_box">
           <div id="map"></div>
         </div>
@@ -120,16 +129,18 @@
           </table>
         </div>
       </div>
+      <div class="needBackground">
       <div class="col-md-3 scheduleBorder">
-      <p>schedule</p>
+      <p>schedule:</p>
       </div>
-      <div class="col-md-3 calDay">
+        <div class="col-md-3 calDay">
+
         <div class="schedule">
           <div class="activities">
             <div>
               <% days.forEach(function(day) { %>
                 <button class="accordion">
-                <a class=""><%= day.shortDay %></a>
+                <%= day.shortDay %>
                 </button>
                 <div class="panel">
                   <div>
@@ -142,7 +153,9 @@
                       </div>
                       </div>
                       <a class="accordion">
-                        <p><%= activity.name %></p>
+                        <div>
+                        <%= activity.name %>
+                        </div>
                       </a>
                       <div class="panel">
                         <div class="act_dates">
@@ -169,12 +182,14 @@
             </div>
           </div>
         </div>
+        </div>
+        <div class="col-md-3 deleteButton">
+          <form action="/trips/<%= trip_id %>/delete" method="post">
+            <input class="deleteInp" type="submit" name="delete-trip" value="Delete this trip">
+          </form>
+        </div>
+        </div>
       </div>
-
-    </div>
-    <form action="/trips/<%= trip_id %>/delete" method="post">
-      <input type="submit" name="delete-trip" value="Delete this trip">
-    </form>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
