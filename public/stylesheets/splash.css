@@ -1,3 +1,32 @@
+@media only screen and (max-width: 600px) {
+  #bannerText h1{
+    font-size: 32px !important;
+  }
+  .icons{
+    display: none;
+  }
+  .search_icon{
+    display: none !important;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  #bannerText h1{
+    font-size: 32px !important;
+  }
+  .icons{
+    display: none;
+  }
+  .search_icon{
+    display: none !important;
+  }
+  button.signup{
+    width: 55vw !important;
+  }
+  #messMeUp{
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
 #hackey{
   background-color: #d3d3d3;
   padding: 5% 10% 5% 10%;
@@ -19,11 +48,21 @@
   background-color: #d3d3d3;
   padding: 5% 10% 5% 10%;
   margin-top: 8vh;
-  margin-right: 0vw;
   align-content: center;
+  margin-left: 10vw;
+  margin-right: auto;
+  width: 100%;
+}
+#loginButts{
+  width: 100%;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 #messMeUp button{
-  margin-left: 2vw;
+  margin-left: auto;
+  margin-right: auto;
 }
 i{
   margin-top: 4vh;
@@ -34,4 +73,17 @@ i{
   width: 100%;
   margin-left: 5.8vw;
   margin-right: auto;
+}
+
+#googBut button{
+  width: 15vw;
+  color: black;
+  margin-top: 3vh;
+  background-color: white;
+
+}
+#googBut button img{
+  height: 90%;
+  width: 25%;
+  vertical-align: middle;
 }
