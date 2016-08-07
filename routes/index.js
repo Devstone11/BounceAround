@@ -6,7 +6,6 @@ var bcrypt = require('bcrypt');
 var data = require('../data/queries');
 var salt = bcrypt.genSaltSync(10);
 var magic = require('../jsmagic/magic');
-var quickstartjs = require('../quickstart');
 
 router.get('/', function(req, res, next) {
   req.cookies.session ? res.redirect(`/${req.cookies.id}/trips`) : res.render('index', { title: 'Express' });

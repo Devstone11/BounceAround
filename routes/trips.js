@@ -6,7 +6,6 @@ var bcrypt = require('bcrypt');
 var data = require('../data/queries');
 var salt = bcrypt.genSaltSync(10);
 var magic = require('../jsmagic/magic');
-var quickstartjs = require('../quickstart');
 
 router.get('/new', function(req, res, next) {
   res.render('trips/new');
