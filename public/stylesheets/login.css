@@ -14,7 +14,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: #3C454E;
+  /*background: #3C454E;*/
 }
 .navbar-brand {
   color: white;
@@ -83,4 +83,15 @@ div.button-container {
 #title a:hover{
   color: #d1ae3d;
   text-decoration: none;
+}
+.superCont{
+  background-color: rgba(0,0,0,.75);
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  z-index: 0.5;
+}
+.imgcont{
+  position: absolute;
+  z-index: -1;
 }

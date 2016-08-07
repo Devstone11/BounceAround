@@ -11,30 +11,35 @@
     <link rel="stylesheet" href="stylesheets/login.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <div id="title">
-      <a href="/" >BounceAround</a>
+  <div class="superCont">
+    <div class="imgcont">
+      <img src="stylesheets/images/pic6.jpeg" height="100%" width="100%"/>
     </div>
-  <div class="container-fluid">
-    <form class="" action="/login" method="post">
-      <input class="form-group" type="email" name="email" value="" placeholder="email">
-      <input class="form-group" type="password" name="password" value="" placeholder="password">
-        <div class="button-container">
+      <div id="title">
+        <a href="/" >BounceAround</a>
+      </div>
+      <div class="container-fluid">
+        <form class="" action="/login" method="post">
+          <input class="form-group" type="email" name="email" value="" placeholder="email">
+          <input class="form-group" type="password" name="password" value="" placeholder="password">
+          <div class="button-container">
+            <div class="row">
+              <div class="col-md-2 button-left">
+                <input value="Login with email" type="submit" class="login-button" id="but">
+              </div>
+            </div>
+          </form>
           <div class="row">
-            <div class="col-md-2 button-left">
-              <input value="Login with email" type="submit" class="login-button" id="but">
+            <div class="col-md-2 button-right">
+              <button class="login-button" id="google-signin" type="button" name="google" onclick="location.href = '/auth/google';"></button>
             </div>
           </div>
-      </form>
-      <div class="row">
-        <div class="col-md-2 button-right">
-          <button class="login-button" id="google-signin" type="button" name="google" onclick="location.href = '/auth/google';"></button>
+        </div>
+        <div style="width: 100vw; text-align: center;">
+          <p style="color: red; font-size: 2em; background-color: white; width: 35vw; margin-left: auto; margin-right: auto;">
+            <%= alert %>
+          </p>
         </div>
       </div>
-    </div>
-    <div style="width: 100vw; text-align: center;">
-      <p style="color: red; font-size: 2em; background-color: white; width: 35vw; margin-left: auto; margin-right: auto;">
-        <%= alert %>
-      </p>
-    </div>
   </body>
 </html>
