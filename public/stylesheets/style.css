@@ -475,6 +475,7 @@ max-height: 500px;
 .nameofactivity{
   font-weight: bold;
   font-size: 1.1em;
+  margin-bottom: 10px;
 }
 
 #centerAddress{
@@ -483,4 +484,10 @@ max-height: 500px;
 
 .addtocalCenter{
   float: right;
+}
+
+.titlest{
+  font-weight: bold;
+  width: 30%;
+  margin: 0;
 }

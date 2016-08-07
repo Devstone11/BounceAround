@@ -93,7 +93,7 @@ function initMap() {
           var time = getFormattedTime(marker.activities_start_time.substring(0,5));
 
           var infowindow = new google.maps.InfoWindow({
-            content: '<div class="infowindowshow nameofactivity">' + marker.activities_name.capitalize() + '</div>' + '<div class="infowindowshow">' + "Address: " + marker.activities_address + '</div>' + '<div class="infowindowshow">' + "Date: "+ date + " at " + time + '</div>'
+            content: '<div class="infowindowshow nameofactivity">' + marker.activities_name.capitalize() + '</div>' + '<div class="infowindowshow">' + '<p class="titlest">Address: </p>' + marker.activities_address + '</div>' + '<div class="infowindowshow">' + '<p class="titlest">Date: </p>' + date + " at " + time + '</div>'
           });
 
           thismarker.addListener('click', function() {
