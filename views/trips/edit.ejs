@@ -10,7 +10,7 @@
     <link rel='stylesheet' href='/stylesheets/editstyle.css' />
     <title>Edit Your Trip</title>
   </head>
-  <body>
+  <body id="bod">
 
     <% include ../layout.ejs %>
   <div class="container-fluid darkGray">
@@ -19,7 +19,7 @@
       <div class="col-md-3">
         <div class="filters">
           <div class="form-group">
-            <h5>find:</h5>
+            <h5>Find:</h5>
             <div id="searchfield">
               <input class="form-control" type="text" name="" class="biginput" id="autocomplete" placeholder="Enter type of place">
             </div>
@@ -39,7 +39,7 @@
               </div>
           </div>
 
-          <h5>near:</h5>
+          <h5>Near:</h5>
           <div id="locationField">
             <div class="form-group">
               <input class="form-control" id="autocompletemap" placeholder="Enter a city/place/address" type="text" />
@@ -134,7 +134,7 @@
       </div>
       <div class="needBackground">
         <div class="col-md-3 scheduleBorder">
-          <h2>your itinerary:</h2>
+          <h2 style="text-align: center; width: 100%">Your Itinerary:</h2>
         </div>
         <div class="col-md-3 calDay">
 
@@ -192,7 +192,7 @@
           <div class="deleteButton">
             <button id="delete-init" class="deleteInp" type="button" name="delete-initial">Delete this trip</button>
           </div>
-          <input id="googlesend" type="button" name="" value="Send to Google Calendar" onclick="location.href = '/trips/<%= trip_id %>/googlecalendar'">
+          <input id="googlesend" class="deleteInp hidden" type="button" name="" value="Send to Google Calendar" onclick="location.href = '/trips/<%= trip_id %>/googlecalendar'">
         </div>
       </div>
     </div>
