@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="stylesheets/login.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <%= alert %>
     <div id="title">
       <a href="/" >BounceAround</a>
     </div>
@@ -22,7 +21,7 @@
         <div class="button-container">
           <div class="row">
             <div class="col-md-2 button-left">
-              <input value="Login with email" type="submit" class="login-button">
+              <input value="Login with email" type="submit" class="login-button" id="but">
             </div>
           </div>
       </form>
@@ -31,6 +30,11 @@
           <button class="login-button" id="google-signin" type="button" name="google" onclick="location.href = '/auth/google';"></button>
         </div>
       </div>
+    </div>
+    <div style="width: 100vw; text-align: center;">
+      <p style="color: red; font-size: 2em; background-color: white; width: 35vw; margin-left: auto; margin-right: auto;">
+        <%= alert %>
+      </p>
     </div>
   </body>
 </html>
