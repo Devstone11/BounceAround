@@ -7,30 +7,31 @@
     <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Mukta+Vaani" rel="stylesheet">    <!-- font for text  font-family: 'Mukta Vaani', sans-serif;-->
     <link href="https://fonts.googleapis.com/css?family=Mukta+Vaani" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/style.css" media="screen" title="no title" charset="utf-8">
-    <title></title>
     <link rel='stylesheet' href='/stylesheets/accordianTrip.css' />
+    <title></title>
   </head>
   <body>
-
     <% include ../layout.ejs %>
     <div class="container-fluid">
 
     <div class="row">
       <div class="col-md-3">
         <div class="filters">
-          <h5>find:</h5>
-          <div id="searchfield">
-            <input type="text" name="" class="biginput" id="autocomplete" placeholder="Enter type of place">
-          </div>
-          <div class="search_icons">
+          <div class="well well-sm">
+            <h5>find:</h5>
+            <div id="searchfield">
+              <input type="text" name="" class="biginput" id="autocomplete" placeholder="Enter type of place">
+            </div>
+            <div class="search_icons">
               <div class="search_icon"><img src="https://i.imgur.com/liUB50H.png" alt="restaurant" /></div>
               <div class="search_icon"><img src="https://i.imgur.com/BFiuOkx.png" alt="lodging" /></div>
               <div class="search_icon"><img src="https://i.imgur.com/kaicBix.png" alt="bar" /></div>
               <div class="search_icon"><img src="https://i.imgur.com/OIT3QVJ.png" alt="park" /></div>
-          </div>
-          <h5>near:</h5>
-          <div id="locationField">
-            <input id="autocompletemap" placeholder="Enter a city/place/address" type="text" />
+            </div>
+            <h5>near:</h5>
+            <div id="locationField">
+              <input id="autocompletemap" placeholder="Enter a city/place/address" type="text" />
+            </div>
           </div>
         </div>
 
