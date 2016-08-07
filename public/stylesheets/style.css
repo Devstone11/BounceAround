@@ -1,7 +1,7 @@
 h1, h2, h3, h4, h5, h6{
   font-family: 'Mukta Vaani', sans-serif !important;
 }
-<<<<<<< HEAD
+
 @media only screen and (max-width: 600px) {
   #bannerText h1{
     font-size: 32px !important;
@@ -168,8 +168,7 @@ div.panel.show {
  .signup:hover{
   background-color: #3d60d1;
 }
-<<<<<<< HEAD
-=======
+
 #googBut button{
   width: 15vw;
 }
@@ -181,8 +180,8 @@ div.panel.show {
   height: 90%;
   width: 25%;
   vertical-align: middle;
->>>>>>> devin/master
 
+}
 
 #ourBanner{
   width: 100vw;
