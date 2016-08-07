@@ -169,6 +169,7 @@
     <form action="/trips/<%= trip_id %>/delete" method="post">
       <input type="submit" name="delete-trip" value="Delete this trip">
     </form>
+    <input type="button" name="" value="Send to Google Calendar" onclick="location.href = '/trips/<%= trip_id %>/googlecalendar'">
 
     <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.26/jquery.autocomplete.min.js"></script>
