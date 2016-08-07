@@ -1,0 +1,33 @@
+#acc_calendar_box {
+  border: 1px solid blue;
+  text-align: center;
+  padding: 20px;
+  height: 50vh;
+  overflow: scroll;
+  white-space:nowrap;
+}
+
+.acc_day_container {
+  border: 1px dashed red;
+  display: block;
+}
+
+.acc_day_container h2 {
+  font-size: 20px;
+}
+
+.acc_cal_day {
+  border: 1px dotted green;
+  font-size: 10px;
+  width: 250px;
+  display: block;
+}
+.calDay {
+    border-radius: 5px;
+    background: white;
+    display: inline-block;
+    width: 300px;
+    height:308px;
+    overflow-y: scroll;
+    padding: 1em;
+}
