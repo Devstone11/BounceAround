@@ -329,7 +329,7 @@ function center(pan){
           position: map.getCenter(),
           map: map,
           title: "map center",
-          icon: 'http://i.imgur.com/5hHfNp7.png',
+          icon: 'https://i.imgur.com/5hHfNp7.png',
     });
     markers.push(centerMarker);
 
