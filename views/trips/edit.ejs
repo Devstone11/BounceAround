@@ -148,9 +148,9 @@
                     if (activity.day_id === day.id) { %>
                       <div class="accordion">
                         <div class="act_edit">
-                        <div class="act_name"><%= activity.name %></div>
-                        <div id="<%= activity.id %>" class="act_delete"> x </div>
-                      </div>
+                          <div class="act_name"><%= activity.name %></div>
+                          <div id="<%= activity.id %>" class="act_delete"> x </div>
+                        </div>
                       </div>
                       <div class="panel">
                         <div class="act_dates">
@@ -165,9 +165,9 @@
                               } %>
                           <% var astart = getFormattedTime(activity.start_time) %>
                           <% var aend = getFormattedTime(activity.end_time) %>
-                          <p class="act_date">From <%= astart %> to <%= aend %><p>
+                          <h6>From <%= astart %> to <%= aend %><h6>
+                          <h6 class="act_date">Address: <%= activity.address %></h6>
                         </div>
-                        <p>Address: <%= activity.address %></p>
                       </div>
                     <% } %>
                   <% }) %>
