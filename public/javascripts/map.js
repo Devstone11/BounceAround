@@ -10,6 +10,8 @@ var cookies = document.cookie.split("; ");
 var root = location.protocol + '//' + location.host;
 var geocoder;
 
+  $('.addtocalendar').hide();
+
 cookies.forEach(function(cookie){
   if (cookie.indexOf("id=") > -1){
     user_id = cookie.substring(cookie.indexOf("=")+1, cookie.length);
@@ -106,7 +108,7 @@ function initMap() {
     var time = getFormattedTime(marker.activities_start_time.substring(0,5));
 
     var dbInfo = new google.maps.InfoWindow({
-      content: '<div class="infowindowshow">' + marker.activities_name.capitalize() + '</div>' + '<div class="infowindowshow">' + "Address: " + marker.activities_address + '</div>' + '<div class="infowindowshow">' + "Date: "+ date + " at " + time + '</div>'
+      content: '<div class="infowindowshow nameofactivity">' + marker.activities_name.capitalize() + '</div>' + '<div class="infowindowshow">' + "Address: " + marker.activities_address + '</div>' + '<div class="infowindowshow">' + "Date: "+ date + " at " + time + '</div>'
     });
 
     thismarker.addListener('click', function() {
@@ -279,7 +281,6 @@ function buildIWContent(place) {
   }
 }
 
-$('.addtocalendar').hide();
 $('#iw-addto-calendar').on('click', function(){
   $('.addtocalendar').show();
   $('#add_place_name').val($('#iw-url').children(":first").html());
