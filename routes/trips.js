@@ -29,6 +29,7 @@ router.get('/selected/:trip_id', function(req, res, next){
 });
 
 router.get('/:id/edit', function(req, res, next) {
+  if (req.cookies.session){
   knex.raw(`SELECT id, date from days WHERE trip_id=${req.params.id}`).then(function(days) {
     days.rows.sort(function(a, b) {
       return a.date - b.date;
@@ -55,6 +56,9 @@ router.get('/:id/edit', function(req, res, next) {
       });
     })
   })
+} else {
+  res.redirect('/');
+}
 })
 
 router.post('/new', function(req, res, next) {
