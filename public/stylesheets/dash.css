@@ -62,3 +62,7 @@ div.panel.show p{
   height: 61.5vh;
   overflow-y: scroll;
 }
+
+.bubblepanel{
+  padding: 2%;
+}
