@@ -1,11 +1,14 @@
+
 #container {
-    position: absolute;
-    z-index: -1;
+  position: absolute;
+  z-index: -1;
+  margin-top: -22px;
 }
 
 #makeTransparent {
+  margin-top: -22px;
   background-color: black;
-  height: 100vh;
+  height: 92vh;
   width: 100vw;
   position: absolute;
   background-color: rgba(0, 0, 0, .75);
@@ -13,7 +16,7 @@
 }
 
 img {
-  height: 100vh;
+  height: 92vh;
   width: 100vw;
 }
 
@@ -21,11 +24,12 @@ main {
   position: absolute;
   z-index: 1;
   width: 100vw;
-  height: 100vh;
+  height: 92vh;
+  margin-top: -22px;
 }
 
 .form-position {
-  width: 80vh;
+  width: 70vh;
   margin: 0 auto;
   vertical-align: middle;
   margin-top: 15vh;
