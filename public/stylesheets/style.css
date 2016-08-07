@@ -250,7 +250,7 @@ table {
   z-index: 5;
 }
 #locationField, #searchfield {
-  width: 80%;
+  width: 100%;
   height: 25px;
   display: block;
   margin-bottom: 20px;
@@ -316,7 +316,7 @@ table {
   background-color: #3C454E;
   color: white;
   position: relative;
-  padding: 30px;
+  padding: 1.3vw;
 }
 
 h5{
