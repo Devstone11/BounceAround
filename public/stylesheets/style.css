@@ -9,7 +9,7 @@ h1, h2, h3, h4, h5, h6{
   .icons{
     display: none;
   }
-  .search_icon{
+  .search_ico{
     display: none !important;
   }
 }
@@ -20,7 +20,7 @@ h1, h2, h3, h4, h5, h6{
   .icons{
     display: none;
   }
-  .search_icon{
+  .search_ico{
     display: none !important;
   }
   button.signup{
@@ -173,10 +173,6 @@ div.panel.show {
 #googBut button{
   width: 15vw;
 }
-#googBut{
-  margin-top: 3vh;
-  margin-left: 5vw;
-}
 #googBut button img{
   height: 90%;
   width: 25%;
@@ -195,7 +191,6 @@ div.panel.show {
   background-color: rgba(0, 0, 0, .75);
   position: absolute;
   z-index: 0;
-
 }
 #bottomButt{
   width: 100vw;
