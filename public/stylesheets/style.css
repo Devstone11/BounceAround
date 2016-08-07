@@ -498,6 +498,7 @@ max-height: 500px;
 
 #centerAddress{
   font-weight: bold;
+  color: black;
 }
 
 .addtocalCenter{
@@ -505,6 +506,7 @@ max-height: 500px;
 }
 
 .titlest{
+  color: black;
   font-weight: bold;
   width: 30%;
   margin: 0;
