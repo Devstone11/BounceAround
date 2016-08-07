@@ -1,4 +1,4 @@
-h1, h2, h3, h4, h5, h6{
+h1, h2, h3, h4, h5, h6, body{
   font-family: 'Mukta Vaani', sans-serif !important;
 }
 .form-group {
@@ -34,10 +34,12 @@ input.login-button {
   display: block;
   background-color: rgba(255, 218, 0, 1);
   color: white;
-  width: 191px;
+  width: 35vw;
   height: 46px;
   border: none;
   text-align: center;
+  border-radius: 5px;
+  font-size: 1.4em;
 }
 input.login-button:hover{
   background-color: #3d60d1;

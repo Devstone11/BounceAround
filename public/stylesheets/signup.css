@@ -1,4 +1,4 @@
-h1, h2, h3, h4, h5, h6{
+h1, h2, h3, h4, h5, h6, body{
   font-family: 'Mukta Vaani', sans-serif !important;
 }
 .form-group {
@@ -51,6 +51,8 @@ html, body {
   width: 191px;
   height: 46px;
   border: none;
+  margin-left: auto;
+  margin-right: auto;
 }
 div.button-container {
   margin: auto;
@@ -77,5 +79,21 @@ div.button-container {
   border: 1px solid black;
   border-radius: 5px;
   font-family: 'Mukta Vaani', sans-serif;
-  font-size: 1.2em;
+  font-size: 1.4em;
+}
+#makeMeYellow:hover{
+  background-color: #3d60d1;
+}
+.align-center{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25vh;
+}
+.align-center a{
+  color: white;
+}
+.align-center a:hover{
+  color: #d1ae3d;
+  text-decoration: none;
 }
