@@ -36,7 +36,7 @@
         </div>
 
         <div class="addtocalendar">
-          <div class="close_form">x</div>
+          <div class="close_form"><img src="https://i.imgur.com/OjyIvB7.png" alt="close form" /></div>
           Add activity to trip planner
           <form class="" action="/activities/<%= trip_id %>/new" method="post">
             <div class="form-group">
@@ -90,7 +90,7 @@
               <td id="iw-url"></td>
             </tr>
             <tr id="iw-address-row" class="iw_table_row">
-              <td class="iw_attribute_name">Address:</td>
+              <td class="iw_attribute_name">Address: </td>
               <td id="iw-address"></td>
             </tr>
             <tr id="iw-phone-row" class="iw_table_row">
@@ -115,7 +115,7 @@
             </tr>
             <tr id="iw-addto-calendar" class="iw_table_row">
               <td class="iw_attribute_name"></td>
-              <td id="iw-calendar"><a href="#">Add to calendar</a></td>
+              <td id="iw-calendar"><a href="#">+ add to calendar</a></td>
             </tr>
           </table>
         </div>
@@ -137,7 +137,7 @@
                       <div class="accordion">
                         <div class="act_edit">
                         <div class="act_name"><%= activity.name %></div>
-                        <div id="<%= activity.id %>" class="act_delete"> x </div>
+                        <div id="<%= activity.id %>" class="act_delete"><img src="https://i.imgur.com/ps9BOyT.png" alt="delete" /></div>
                       </div>
                       </div>
                       <div class="panel">
@@ -170,6 +170,7 @@
     <form action="/trips/<%= trip_id %>/delete" method="post">
       <input type="submit" name="delete-trip" value="Delete this trip">
     </form>
+    <input id="googlesend" type="button" name="" value="Send to Google Calendar" onclick="location.href = '/trips/<%= trip_id %>/googlecalendar'">
 
     <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.26/jquery.autocomplete.min.js"></script>

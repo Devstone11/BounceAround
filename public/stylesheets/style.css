@@ -285,6 +285,7 @@ table {
 .iw_attribute_name {
   font-weight: bold;
   text-align: right;
+  padding-right: 4px;
 }
 .iw_table_icon {
   text-align: right;
@@ -469,4 +470,24 @@ max-height: 500px;
 }
 #boday{
   background-color: #3C454E;
+}
+
+.nameofactivity{
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+
+#centerAddress{
+  font-weight: bold;
+}
+
+.addtocalCenter{
+  float: right;
+}
+
+.titlest{
+  font-weight: bold;
+  width: 30%;
+  margin: 0;
 }
