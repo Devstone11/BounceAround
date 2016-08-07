@@ -36,6 +36,9 @@ h1, h2, h3, h4, h5, h6{
 .panel a{
   color white
 }
+div.panel.show p{
+  font-size: 1.2em;
+}
 #all ul li a:hover{
   color: white;
   font-size: 1.53em;
