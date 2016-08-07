@@ -27,11 +27,9 @@ h1, h2, h3, h4, h5, h6{
     width: 55vw !important;
   }
   #googBut{
-    margin-left: -17vw !important;
     margin-right: auto !important;
   }
   #googBut button{
-    width: 55vw !important;
     background-color: white;
   }
 }
@@ -172,10 +170,7 @@ div.panel.show {
 #googBut button{
   width: 15vw;
 }
-#googBut{
-  margin-top: 3vh;
-  margin-left: 5vw;
-}
+
 #googBut button img{
   height: 90%;
   width: 25%;
@@ -196,7 +191,6 @@ div.panel.show {
   background-color: rgba(0, 0, 0, .75);
   position: absolute;
   z-index: 0;
-
 }
 #bottomButt{
   width: 100vw;
