@@ -1,6 +1,39 @@
 h1, h2, h3, h4, h5, h6{
   font-family: 'Mukta Vaani', sans-serif !important;
 }
+@media only screen and (max-width: 600px) {
+  #bannerText h1{
+    font-size: 32px !important;
+  }
+  .icons{
+    display: none;
+  }
+  .search_icon{
+    display: none !important;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  #bannerText h1{
+    font-size: 32px !important;
+  }
+  .icons{
+    display: none;
+  }
+  .search_icon{
+    display: none !important;
+  }
+  button.signup{
+    width: 55vw !important;
+  }
+  #googBut{
+    margin-left: -17vw !important;
+    margin-right: auto !important;
+  }
+  #googBut button{
+    width: 55vw !important;
+    background-color: white;
+  }
+}
 #menu, footer, body{
   font-family: 'Mukta Vaani', sans-serif;
 }
@@ -78,6 +111,8 @@ buton styles
   border: none;
   background-color: rgb(255, 218, 0);
   padding: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 button.signup span{
   margin-left: auto;
@@ -128,31 +163,18 @@ div.panel.show {
  .signup:hover{
   background-color: #3d60d1;
 }
-#googBut button{
-  width: 15vw;
-  color: black;
-}
-#googBut{
-  margin-top: 3vh;
-  margin-left: 5vw;
-}
-#googBut button img{
-  height: 90%;
-  width: 25%;
-  vertical-align: middle;
 
-}
 
 #ourBanner{
   width: 100vw;
-  height: 110vh;
+  height: 102vh;
   font-family: 'Fjalla One', sans-serif;
   color: #FFDA00;
   margin-top: -1.3%;
 }
 #makeTransparent{
   width: 100vw;
-  height: 110vh;
+  height: 102vh;
   background-color: rgba(0, 0, 0, .75);
   position: absolute;
   z-index: 0;
@@ -160,7 +182,7 @@ div.panel.show {
 }
 #bottomButt{
   width: 100vw;
-  height: 110vh;
+  height: 102vh;
   position: absolute;
   z-index: 10;
   text-align: center;
@@ -176,7 +198,7 @@ div.panel.show {
 #bannerText{
   display: table;
   width: 100vw;
-  height: 110vh;
+  height: 102vh;
   line-height: normal;
 }
 #bannerText h1{
@@ -381,10 +403,7 @@ h5{
 #hackey2{
   width: 16.666667%;
 }
-#loginButts{
-  display: inline-block;
-  margin-left: 6vw;
-}
+
 #signupForm{
   display: flex;
   flex-direction: column;
