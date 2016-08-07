@@ -97,24 +97,40 @@ div.form-group {
   cursor: pointer;
 }
 
-input.deleteInp{
- margin-left: 2em;
+#del-cal-buttons input, .deleteInp{
  display: flex;
  border-radius: 5px;
  min-width: 10vw;
  height: 4vh;
  font-size: 1.4em;
  text-align: center;
- margin-top: 2vh;
  border: none;
  background-color: rgb(255, 218, 0);
  font-family: 'Mukta Vaani', sans-serif !important;
+ margin: 0 auto;
 }
-input.deleteInp:hover{
+
+.deleteInp:hover{
  background-color: #3d60d1;
 }
+
 .mapFrame{
   border: solid #3C454E;
   border-width: 40px;
   border-bottom: none;
+}
+
+/*confirm Delete*/
+
+.lwr-rght {
+  text-align: center;
+}
+
+#confirm-delete h3 {
+  font-size: 1.3vw;
+  color: #FFDA00;
+}
+
+.lwr-rght .deleteInp {
+  display: inline-block;
 }
