@@ -8,7 +8,10 @@ var hostnameRegexp = new RegExp('^https?://.+?/');
 var user_id;
 var cookies = document.cookie.split("; ");
 var root = location.protocol + '//' + location.host;
+var trip_id = window.location.href.substring(window.location.href.lastIndexOf('/')-1, window.location.href.lastIndexOf('/'));
 var geocoder;
+
+  $('.addtocalendar').hide();
 
 cookies.forEach(function(cookie){
   if (cookie.indexOf("id=") > -1){
@@ -16,8 +19,6 @@ cookies.forEach(function(cookie){
   }
 });
 
-var trip_id = window.location.href.substring(window.location.href.lastIndexOf('/')-1, window.location.href.lastIndexOf('/'));
-//function start
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 };
@@ -63,13 +64,10 @@ function typeIcon(type){
   }
 }
 
-
-//function end
 function initMap() {
   $.ajax({
       url: root + `/trips/selected/${trip_id}`,
       success: function(trips){
-        console.log(trips)
   var startPoint = {lat: Number(trips[0].city_coordinates.slice(1,-1).split(",")[0]), lng: Number(trips[0].city_coordinates.slice(1,-1).split(",")[1])}
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 13,
@@ -109,7 +107,7 @@ function initMap() {
     var time = getFormattedTime(marker.activities_start_time.substring(0,5));
 
     var dbInfo = new google.maps.InfoWindow({
-      content: '<div class="infowindowshow">' + marker.activities_name.capitalize() + '</div>' + '<div class="infowindowshow">' + "Address: " + marker.activities_address + '</div>' + '<div class="infowindowshow">' + "Date: "+ date + " at " + time + '</div>'
+      content: '<div class="infowindowshow nameofactivity">' + marker.activities_name.capitalize() + '</div>' + '<div class="infowindowshow">' + '<p class="titlest">Address: </p>' + marker.activities_address + '</div>' + '<div class="infowindowshow">' + '<p class="titlest">Date: </p>'+ date + " at " + time + '</div>'
     });
 
     thismarker.addListener('click', function() {
@@ -132,6 +130,8 @@ function initMap() {
 
 var markerIconCenter = 'https://cdn0.iconfinder.com/data/icons/seo-web-15/141/seo-social-web-network-internet_122-32.png';
 function onPlaceChanged() {
+  clearResults()
+  clearMarkers()
   var place = autocomplete.getPlace();
   if (place) {
     if (place.geometry) {
@@ -282,7 +282,6 @@ function buildIWContent(place) {
   }
 }
 
-$('.addtocalendar').hide();
 $('#iw-addto-calendar').on('click', function(){
   $('.addtocalendar').show();
   $('#add_place_name').val($('#iw-url').children(":first").html());
@@ -331,7 +330,7 @@ function center(pan){
           position: map.getCenter(),
           map: map,
           title: "map center",
-          icon: 'http://i.imgur.com/5hHfNp7.png',
+          icon: 'https://i.imgur.com/5hHfNp7.png',
     });
     markers.push(centerMarker);
 
@@ -339,11 +338,12 @@ function center(pan){
            if (status === 'OK') {
              if (results[1]) {
                var address = results[1].formatted_address;
+               var realaddress = $('#autocompletemap').val();
                var ccoords = map.getCenter();
              }
            }
            InfoWindow = new google.maps.InfoWindow({
-             content: `<p id="centerAddress">${address}</p><p id="centerCoords" style="display:none">${ccoords}</p><div class="addtocalCenter"><a href="#">+ add to calendar</a></div>`
+             content: `<p id="centerAddress">${realaddress}</p><p id="centerCoords" style="display:none">${ccoords}</p><div class="addtocalCenter"><a href="#">+ add to calendar</a></div>`
            });
            centerMarker.addListener('click', function() {
              InfoWindow.open(map, centerMarker);

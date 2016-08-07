@@ -12,20 +12,25 @@
   </head>
   <body>
     <%= alert %>
-    <a class="navbar-brand" href="/">BounceAround</a>
-    <div class="container-fluid">
+    <div id="title">
+      <a href="/" >BounceAround</a>
+    </div>
+  <div class="container-fluid">
     <form class="" action="/login" method="post">
       <input class="form-group" type="email" name="email" value="" placeholder="email">
       <input class="form-group" type="password" name="password" value="" placeholder="password">
-      <div class="button-container">
-      <div class="col-md-2 button-left">
-      <input value="Login with email" type="submit" class="login-button">
+        <div class="button-container">
+          <div class="row">
+            <div class="col-md-2 button-left">
+              <input value="Login with email" type="submit" class="login-button">
+            </div>
+          </div>
+      </form>
+      <div class="row">
+        <div class="col-md-2 button-right">
+          <button class="login-button" id="google-signin" type="button" name="google" onclick="location.href = '/auth/google';"></button>
+        </div>
       </div>
-    </form>
-    <div class="col-md-2 button-right">
-    <button id="google-signin" type="button" name="google" onclick="location.href = '/auth/google';"></button>
-    </div>
-    </div>
     </div>
   </body>
 </html>

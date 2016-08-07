@@ -6,13 +6,10 @@ var bcrypt = require('bcrypt');
 var data = require('../data/queries');
 var salt = bcrypt.genSaltSync(10);
 var magic = require('../jsmagic/magic');
+var quickstartjs = require('../quickstart');
 
 router.get('/new', function(req, res, next) {
   res.render('trips/new');
-});
-
-router.get('/:id', function(req, res, next){
-  res.render('trips/view_one');
 });
 
 router.get('/last/:user_id', function(req, res, next){
@@ -28,6 +25,7 @@ router.get('/selected/:trip_id', function(req, res, next){
 });
 
 router.get('/:id/edit', function(req, res, next) {
+  if (req.cookies.session){
   knex.raw(`SELECT id, date from days WHERE trip_id=${req.params.id}`).then(function(days) {
     days.rows.sort(function(a, b) {
       return a.date - b.date;
@@ -54,6 +52,9 @@ router.get('/:id/edit', function(req, res, next) {
       });
     })
   })
+} else {
+  res.redirect('/');
+}
 })
 
 router.post('/new', function(req, res, next) {
@@ -78,8 +79,6 @@ router.post('/new', function(req, res, next) {
   }
 
   var myDateArray = addDays(startDate, endDate);
-  console.log(myDateArray);
-  //create records for trip and all days
   knex.raw(`INSERT into trips values (DEFAULT, ${req.cookies.id}, '${req.body.startDate}', '${req.body.endDate}', '${req.body.city}', ${req.body.coords})`).then(function() {
     knex('trips').max('id').then(function(id) {
       myDateArray.forEach(function(date) {
@@ -104,5 +103,33 @@ router.post('/:id/delete', function(req, res, next) {
     })
   })
 })
+
+router.get('/:trip_id/googlecalendar', function(req, res, next){
+  data.getActivitiesByTrip(req.params.trip_id).then(function(actsFromTrip){
+    var activities = actsFromTrip.rows;
+    var events = [];
+    activities.forEach(function(activity){
+    var startdate = new Date(activity.days_date);
+    startdate = startdate.getFullYear()+'-' + (startdate.getMonth()+1) + '-'+startdate.getDate() + "T" + activity.activities_start_time;
+    var enddate = new Date(activity.days_date);
+    enddate = enddate.getFullYear()+'-' + (enddate.getMonth()+1) + '-'+enddate.getDate() + "T" + activity.activities_end_time;
+      var newEvent = {
+        'summary': activity.activities_name,
+        'location': activity.activities_address,
+        'start': {
+          'dateTime': startdate,
+          'timeZone': 'America/Los_Angeles',
+        },
+        'end': {
+          'dateTime': enddate,
+          'timeZone': 'America/Los_Angeles',
+        }
+      }
+       events.push(newEvent);
+    });
+    quickstartjs.quickstart(events);
+    res.redirect(`/trips/${req.params.trip_id}/edit`);
+  });
+});
 
 module.exports = router;

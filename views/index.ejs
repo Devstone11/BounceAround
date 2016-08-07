@@ -8,7 +8,9 @@
     <!-- font for headers font-family: 'Fjalla One', sans-serif; -->
     <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Mukta+Vaani" rel="stylesheet">    <!-- font for text  font-family: 'Mukta Vaani', sans-serif;-->
     <link href="https://fonts.googleapis.com/css?family=Mukta+Vaani" rel="stylesheet">
+    <link rel="stylesheet" href=https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="stylesheets/style.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="stylesheets/splash.css" media="screen" title="no title" charset="utf-8">
     <title></title>
   </head>
   <body id="boday">
@@ -57,6 +59,18 @@
             <p>
               <strong>BounceAround</strong> is an online travel app that is designed to help you create and customize your travel itinerary based on your interests. Simply put in your dates and your interests and the app will give you a list of activities to choose from. Because the app is so flexible you can easily adjust your itinerary and add or delete activities from your schedule so that you can make the most of your travel time. You can adjust your plans on the go and update your plans easily. All while staying organized because you can find everything in one place.
             </p>
+            <div class="icono" id="icono1">
+              <div class="search_icon"><img src="https://i.imgur.com/liUB50H.png" alt="restaurant" /></div>
+            </div>
+            <div class="icono">
+              <div class="search_icon"><img src="https://i.imgur.com/BFiuOkx.png" alt="lodging" /></div>
+            </div>
+            <div class="icono">
+              <div class="search_icon"><img src="https://i.imgur.com/kaicBix.png" alt="bar" /></div>
+            </div>
+            <div class="icono">
+              <div class="search_icon"><img src="https://i.imgur.com/OIT3QVJ.png" alt="park" /></div>
+            </div>
           </div>
         </div>
       </div>
@@ -66,19 +80,28 @@
         </div>
       </div>
       <div class="col-sm-6">
+        <div id="messMeUp">
           <div id="loginButts">
+            <h3>Please Login or Sign Up</h3>
             <div class="row">
               <button onclick="location.href = '/login';" class="signup"><span>Login</span></button>
             </div>
-              <div class="row">
-                <button onclick="location.href = '/signup';" class="signup"><span>Sign Up</span></button>
-              </div>
+            <div class="row">
+              <button onclick="location.href = '/signup';" class="signup"><span>Sign Up</span></button>
+            </div>
           </div>
-        <div class="row" id="googBut">
-          <button type="button" name="google" onclick="location.href = '/auth/google';" ><img src="stylesheets/googleplus.png"/> Connect with Google</button>
+          <div class="row" id="googBut">
+            <button type="button" name="google" onclick="location.href = '/auth/google';" ><img src="stylesheets/googleplus.png"/> Connect with Google</button>
+          </div>
+          <div class="icons">
+            <i class="fa fa-car fa-3x" aria-hidden="true"></i>
+            <i class="fa fa-road fa-3x" aria-hidden="true"></i>
+            <i class="fa fa-rocket fa-3x" aria-hidden="true"></i>
+            <i class="fa fa-plane fa-3x" aria-hidden="true"></i>
+          </div>
         </div>
       </div>
-    </div>
+        </div>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
       <script src="javascripts/script.js"></script>
   </body>

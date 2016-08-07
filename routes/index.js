@@ -32,11 +32,6 @@ router.get('/logout', function(req, res, next) {
   });
 });
 
-router.get('/:user_id/trips/:trip_id/googlecalendar', function(req, res, next){
-  quickstartjs.quickstart();
-  res.redirect('/');
-});
-
 router.post('/login', function(req, res, next) {
   if (!req.body.email || !req.body.password){
     res.render('login', {alert: 'fields cannot be blank'});
