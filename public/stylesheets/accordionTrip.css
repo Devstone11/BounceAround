@@ -26,7 +26,7 @@
 div.calDay {
   background: white;
   display: inline-block;
-  height: 64vh;
+  height: 56vh;
   overflow-y: scroll;
   background: #3C454E;
 }

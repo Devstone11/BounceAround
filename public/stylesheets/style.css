@@ -1,49 +1,49 @@
 h1, h2, h3, h4, h5, h6{
   font-family: 'Mukta Vaani', sans-serif !important;
 }
-#menu, footer, body{
+#custom-bootstrap-menu, footer, body{
   font-family: 'Mukta Vaani', sans-serif;
 }
-#menu{
+#custom-bootstrap-menu{
   height: 7vh;
   margin-bottom: 1px;
 }
-#menu.navbar-default .navbar-brand {
+#custom-bootstrap-menu.navbar-default .navbar-brand {
     color: rgba(119, 119, 119, 1);
 }
-#menu.navbar-default {
+#custom-bootstrap-menu.navbar-default {
     font-size: 16px;
     background-color: rgba(248, 248, 248, 1);
     border-width: 1px;
     border-radius: 4px;
 }
-#menu.navbar-default .navbar-nav>li>a {
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a {
     color: rgba(119, 119, 119, 1);
     background-color: rgba(248, 248, 248, 0);
 }
-#menu.navbar-default .navbar-nav>li>a:hover,
-#menu.navbar-default .navbar-nav>li>a:focus {
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:hover,
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
     color: rgba(51, 51, 51, 1);
     background-color: rgba(255, 218, 0, 1);
 }
-#menu.navbar-default .navbar-nav>.active>a,
-#menu.navbar-default .navbar-nav>.active>a:hover,
-#menu.navbar-default .navbar-nav>.active>a:focus {
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a,
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover,
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:focus {
     color: rgba(85, 85, 85, 1);
     background-color: rgba(209, 174, 61, 1);
 }
-#menu.navbar-default .navbar-toggle {
+#custom-bootstrap-menu.navbar-default .navbar-toggle {
     border-color: #d1ae3d;
 }
-#menu.navbar-default .navbar-toggle:hover,
-#menu.navbar-default .navbar-toggle:focus {
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover,
+#custom-bootstrap-menu.navbar-default .navbar-toggle:focus {
     background-color: #d1ae3d;
 }
-#menu.navbar-default .navbar-toggle .icon-bar {
+#custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {
     background-color: #d1ae3d;
 }
-#menu.navbar-default .navbar-toggle:hover .icon-bar,
-#menu.navbar-default .navbar-toggle:focus .icon-bar {
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar,
+#custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {
     background-color: #f8f8f8;
 }
 #footer{
@@ -55,8 +55,6 @@ h1, h2, h3, h4, h5, h6{
 #frontButt{
   margin-left: 4vw;
   display: block;
-  background-color: #3C454E;
-  color: white;
 }
 
 label {
@@ -125,14 +123,12 @@ div.panel {
 div.panel.show {
     opacity: 1;
     max-height: 500px;
-    background-color: inherit;
 }
  .signup:hover{
   background-color: #3d60d1;
 }
 #googBut button{
   width: 15vw;
-  color: black;
 }
 #googBut{
   margin-top: 3vh;
@@ -147,14 +143,14 @@ div.panel.show {
 
 #ourBanner{
   width: 100vw;
-  height: 100vh;
+  height: 93vh;
   font-family: 'Fjalla One', sans-serif;
   color: #FFDA00;
   margin-top: -1.3%;
 }
 #makeTransparent{
   width: 100vw;
-  height: 100vh;
+  height: 93vh;
   background-color: rgba(0, 0, 0, .75);
   position: absolute;
   z-index: 0;
@@ -162,7 +158,7 @@ div.panel.show {
 }
 #bottomButt{
   width: 100vw;
-  height: 100vh;
+  height: 93vh;
   position: absolute;
   z-index: 10;
   text-align: center;
@@ -178,7 +174,7 @@ div.panel.show {
 #bannerText{
   display: table;
   width: 100vw;
-  height: 100vh;
+  height: 93vh;
   line-height: normal;
 }
 #bannerText h1{
@@ -214,6 +210,13 @@ new trip form
     margin-bottom: 2em;
     margin-right: 25px;
     margin-left: 25px;
+}
+div.new-trip {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    width: 50vw;
+    /*margin-right: 30%;
+    margin-left: 30%;*/
 }
 
 html, body {
@@ -304,11 +307,8 @@ table {
 .filters{
   width: 100%;
   height: 100%;
-<<<<<<< 01c0ee62e6dbfecc54e0a846184f4376d96bb190
-=======
   background-color: #3C454E;
   color: white;
->>>>>>> view/edit page
   position: relative;
   padding: 30px;
 }
@@ -341,7 +341,7 @@ h5{
 
 .map_box{
   width: 100%;
-  height: 84.1vh;
+  height: 82vh;
   display:inline-block;
 }
 
@@ -478,7 +478,4 @@ max-height: 500px;
   width: 100%;
   margin-bottom: 0;
   padding-bottom: 0;
-}
-#boday{
-  background-color: #3C454E;
 }

@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="/stylesheets/style.css" media="screen" title="no title" charset="utf-8">
     <title></title>
     <link rel='stylesheet' href='/stylesheets/accordionTrip.css' />
-        <link rel='stylesheet' href='/stylesheets/scrollCal.css' />
   </head>
   <body>
+
     <% include ../layout.ejs %>
   <div class="container-fluid darkGray">
 
@@ -168,15 +168,6 @@
                           <p class="act_date">From <%= astart %> to <%= aend %><p>
                         </div>
                         <p>Address: <%= activity.address %></p>
-                        <a class="accordion">
-                        <div>
-                        <%= activity.name %>
-                        </div>
-                      </a>
-                      <div class="panel">
-                        <%= activity.address %>
-                        <%= activity.start_time %>
-                        <%= activity.end_time %>
                       </div>
                     <% } %>
                   <% }) %>
