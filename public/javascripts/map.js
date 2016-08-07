@@ -349,5 +349,4 @@ function center(pan){
              InfoWindow.open(map, centerMarker);
            });
          });
-
 }
