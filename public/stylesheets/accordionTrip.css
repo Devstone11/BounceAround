@@ -5,7 +5,8 @@
   background: #3C454E;
 }
 .scheduleBorder {
-  padding-top: 4em;
+  /*padding-top: 2em;*/
+  /*position: relative;*/
   background: #3C454E;
   height: 15vh;
 }
@@ -83,11 +84,11 @@ div.form-group {
   padding-bottom: .1em;
 }
 .search_icon {
-  margin: 1em;
+  margin: 5%;
   display: inline-block;
 }
 .search_icon:first-child {
-  margin-left: .2em;
+  margin-left: 1%;
   display: inline-block;
   cursor: pointer;
 }
@@ -133,4 +134,28 @@ div.form-group {
 
 .lwr-rght .deleteInp {
   display: inline-block;
+}
+
+/* devin additions */
+
+.search_icons {
+  text-align: center;
+}
+
+.scheduleBorder h2 {
+  color: #F8F8F8;
+  font-size: 24px;
+  position: absolute;
+  bottom: 0;
+}
+
+/*delete me*/
+
+.scheduleBorder {
+  border: 1px red solid;
+}
+
+.signup2 {
+  width: 10px;
+  height: 10px;
 }
