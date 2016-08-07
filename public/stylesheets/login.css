@@ -14,7 +14,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: #00A4CA;
+  background: #3C454E;
 }
 .navbar-brand {
   color: white;
@@ -33,7 +33,6 @@ html, body {
   width: 191px;
   height: 46px;
   border: solid #c0c0c0;
-  border-top-color: #FFDA00;
   text-align: center;
 }
 #google-signin {

@@ -1,0 +1,37 @@
+#hackey{
+  background-color: #d3d3d3;
+  padding: 5% 10% 5% 10%;
+  margin-top: 8vh;
+  margin-right: 0vw;
+  color: #3C454E;
+}
+#hackey h3, #messMeUp h3{
+  color: black;
+}
+.icono{
+  display: inline-block;
+  padding: 1vh 2.5vw 0vh 0vw;
+}
+#icono1{
+  padding: 1vh 2.5vw 0vh 2vw;
+}
+#messMeUp{
+  background-color: #d3d3d3;
+  padding: 5% 10% 5% 10%;
+  margin-top: 8vh;
+  margin-right: 0vw;
+  align-content: center;
+}
+#messMeUp button{
+  margin-left: 2vw;
+}
+i{
+  margin-top: 4vh;
+  margin-right: 4vh;
+  color: black;
+}
+.icons{
+  width: 100%;
+  margin-left: 5.8vw;
+  margin-right: auto;
+}
