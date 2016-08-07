@@ -12,15 +12,17 @@
   </head>
   <body>
     <%= alert %>
-    <a class="navbar-brand" href="/" style="margin-bottom: 5vh;"><h2>BounceAround</h2></a><br />
+    <div class="align-center">
+      <a href="/" style="margin-bottom: 5vh;"><h2>BounceAround</h2></a><br />
+    </div>
     <div class="container-fluid">
-    <form class="" action="/signup" method="post">
-      <input class="form-group" type="text" name="email" value="" placeholder="email">
-      <input class="form-group" type="text" name="name" value="" placeholder="name">
-      <input class="form-group" type="password" name="password" value="" placeholder="password">
-      <input class="form-group" type="submit" id="makeMeYellow">
-    </form><br>
-  </div>
+      <form class="" action="/signup" method="post">
+        <input class="form-group" type="text" name="email" value="" placeholder="email">
+        <input class="form-group" type="text" name="name" value="" placeholder="name">
+        <input class="form-group" type="password" name="password" value="" placeholder="password">
+        <input class="form-group" type="submit" id="makeMeYellow">
+      </form><br>
+    </div>
   <div class="button-container">
     <button id="google-signin" type="button" name="google" onclick="location.href = '/auth/google';"></button>
   </div>
