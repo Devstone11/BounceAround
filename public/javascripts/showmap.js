@@ -80,7 +80,6 @@ function initMap() {
   $.ajax({
       url: url,
       success: function(markers){
-        console.log(markers);
         markers.forEach(function(marker){
               marker.activities_coordinates = marker.activities_coordinates.slice(1,-1);
               thismarker = new google.maps.Marker({

@@ -12,10 +12,6 @@ router.get('/new', function(req, res, next) {
   res.render('trips/new');
 });
 
-router.get('/:id', function(req, res, next){
-  res.render('trips/view_one');
-});
-
 router.get('/last/:user_id', function(req, res, next){
   data.returnLastTrip(req.params.user_id).then(function(results){
     res.json(results.rows);
@@ -83,8 +79,6 @@ router.post('/new', function(req, res, next) {
   }
 
   var myDateArray = addDays(startDate, endDate);
-  console.log(myDateArray);
-  //create records for trip and all days
   knex.raw(`INSERT into trips values (DEFAULT, ${req.cookies.id}, '${req.body.startDate}', '${req.body.endDate}', '${req.body.city}', ${req.body.coords})`).then(function() {
     knex('trips').max('id').then(function(id) {
       myDateArray.forEach(function(date) {
@@ -133,7 +127,6 @@ router.get('/:trip_id/googlecalendar', function(req, res, next){
       }
        events.push(newEvent);
     });
-    console.log(events);
     quickstartjs.quickstart(events);
     res.redirect(`/trips/${req.params.trip_id}/edit`);
   });
