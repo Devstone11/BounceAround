@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Mukta+Vaani" rel="stylesheet">    <!-- font for text  font-family: 'Mukta Vaani', sans-serif;-->
     <link href="https://fonts.googleapis.com/css?family=Mukta+Vaani" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/style.css" media="screen" title="no title" charset="utf-8">
-    <title></title>
+    <title>Edit Your Trip</title>
     <link rel='stylesheet' href='/stylesheets/accordionTrip.css' />
   </head>
   <body>
@@ -19,27 +19,30 @@
       <div class="col-md-3">
         <div class="filters">
           <div class="form-group">
-          <h5>find:</h5>
-          <div id="searchfield">
-            <input class="form-control" type="text" name="" class="biginput" id="autocomplete" placeholder="Enter type of place">
-          </div>
+            <h5>find:</h5>
+            <div id="searchfield">
+              <input class="form-control" type="text" name="" class="biginput" id="autocomplete" placeholder="Enter type of place">
+            </div>
           </div>
           <div class="search_icons">
               <div class="search_icon">
                 <img src="/images/restaurantsIcon.png" alt="restaurant" />
               </div>
-              <div class="search_icon"><img src="/images/hotelIcon.png" alt="lodging" />
+              <div class="search_icon">
+                <img src="/images/hotelIcon.png" alt="lodging" />
               </div>
-              <div class="search_icon"><img src="/images/barIcon.png" alt="bar" />
+              <div class="search_icon">
+                <img src="/images/barIcon.png" alt="bar" />
               </div>
-              <div class="search_icon"><img src="/images/parksIcon.png" alt="park" />
+              <div class="search_icon">
+                <img src="/images/parksIcon.png" alt="park" />
               </div>
           </div>
 
           <h5>near:</h5>
           <div id="locationField">
             <div class="form-group">
-            <input class="form-control" id="autocompletemap" placeholder="Enter a city/place/address" type="text" />
+              <input class="form-control" id="autocompletemap" placeholder="Enter a city/place/address" type="text" />
             </div>
           </div>
         </div>
@@ -49,28 +52,28 @@
           <div class="filtersHeader">Add activity to trip planner</div>
           <form class="" action="/activities/<%= trip_id %>/new" method="post">
             <div class="form-group">
-            Title / Place
-            <input class="form-control" id="add_place_name" type="text" name="place" value="" required>
+              Title / Place
+              <input class="form-control" id="add_place_name" type="text" name="place" value="" required>
             </div>
             <div class="form-group">
-            Trip Day
-            <select class="form-control" name="day">
-              <% days.forEach(function(day) { %>
-                  <option class="day"+<%= day.id %>><%= day.date %></option>
-              <% }) %>
-            </select>
+              Trip Day
+              <select class="form-control" name="day">
+                <% days.forEach(function(day) { %>
+                    <option class="day"+<%= day.id %>><%= day.date %></option>
+                <% }) %>
+              </select>
             </div>
             <div class="form-group">
-            Start Time
-            <input class="form-control" type="time" name="start_time" value="" placeholder="time" required>
+              Start Time
+              <input class="form-control" type="time" name="start_time" value="" placeholder="time" required>
             </div>
             <div class="form-group">
-            End Time
-            <input class="form-control" type="time" name="end_time" value="" placeholder="time" required>
+              End Time
+              <input class="form-control" type="time" name="end_time" value="" placeholder="time" required>
             </div>
             <div class="form-group">
-            Address
-            <input class="form-control" id="add_place_address" type="address" name="address" value="" required><br>
+              Address
+              <input class="form-control" id="add_place_address" type="address" name="address" value="" required><br>
             </div>
             <input style="display: none" id="add_place_coords" type="text" name="coordinates" value=""><br>
             <input style="display: none" id="add_place_type" type="text" name="type" value=""><br>
@@ -178,20 +181,28 @@
             </div>
           </div>
         </div>
-          <div class="col-md-3 deleteButton">
-            <form action="/trips/<%= trip_id %>/delete" method="post">
-              <input class="deleteInp" type="submit" name="delete-trip" value="Delete this trip">
-            </form>
+        <div id="confirm-delete" class="col-md-3 hidden lwr-rght">
+          <h3>Are you sure you want to delete this trip?</h3>
+          <form action="/trips/<%= trip_id %>/delete" method="post">
+            <input class="deleteInp" type="submit" name="delete-trip" value="Yes">
+          </form>
+          <button id="cancel-delete" class="deleteInp" name="button">Cancel</button>
+        </div>
+        <div id="del-cal-buttons" class="col-md-3 del-cal-buttons lwr-right">
+          <div class="deleteButton">
+            <button id="delete-init" class="deleteInp" type="button" name="delete-initial">Delete this trip</button>
           </div>
           <input id="googlesend" type="button" name="" value="Send to Google Calendar" onclick="location.href = '/trips/<%= trip_id %>/googlecalendar'">
         </div>
       </div>
     </div>
+  </div>
     <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.26/jquery.autocomplete.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTSj-FCBxjl1YBfJ2GngYKyajoobyKdVg&libraries=places&callback=initMap" async defer></script>
     <script type="text/javascript" src="/javascripts/map.js"></script>
     <script type="text/javascript" src="/javascripts/autocomplete.js"></script>
     <script type="text/javascript" src="/javascripts/ajax.js"></script>
+    <script type="text/javascript" src="/javascripts/confirmDelete.js"></script>
   </body>
 </html>
