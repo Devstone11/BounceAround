@@ -7,90 +7,97 @@
     <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Mukta+Vaani" rel="stylesheet">    <!-- font for text  font-family: 'Mukta Vaani', sans-serif;-->
     <link href="https://fonts.googleapis.com/css?family=Mukta+Vaani" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/style.css" media="screen" title="no title" charset="utf-8">
-    <title></title>
     <link rel='stylesheet' href='/stylesheets/accordionTrip.css' />
+    <title></title>
   </head>
-  <body>
 
+  <body>
     <% include ../layout.ejs %>
-  <div class="container-fluid darkGray">
+    <div class="container-fluid">
 
     <div class="row">
       <div class="col-md-3">
-        <div class="filters">
-          <div class="form-group">
-          <h5>find:</h5>
-          <div id="searchfield">
-            <input class="form-control" type="text" name="" class="biginput" id="autocomplete" placeholder="Enter type of place">
-          </div>
-          </div>
-          <div class="search_icons">
-              <div class="search_icon">
-                <img src="/images/restaurantsIcon.png" alt="restaurant" />
-              </div>
-              <div class="search_icon"><img src="/images/hotelIcon.png" alt="lodging" />
-              </div>
-              <div class="search_icon"><img src="/images/barIcon.png" alt="bar" />
-              </div>
-              <div class="search_icon"><img src="/images/parksIcon.png" alt="park" />
-              </div>
-          </div>
 
-          <h5>near:</h5>
-          <div id="locationField">
+          <!-- first form to enter location and activity type -->
+          <div class="filters">
             <div class="form-group">
-            <input class="form-control" id="autocompletemap" placeholder="Enter a city/place/address" type="text" />
+              <h5>find:</h5>
+              <div id="searchfield">
+                <input class="form-control" type="text" name="" class="biginput" id="autocomplete" placeholder="Enter type of place">
+              </div>
+            </div>
+            <div class="search_icons">
+              <div class="search_icon"><img src="/images/restaurantsIcon.png" alt="restaurant" /></div>
+              <div class="search_icon"><img src="/images/hotelIcon.png" alt="lodging" /></div>
+              <div class="search_icon"><img src="/images/barIcon.png" alt="bar" /></div>
+              <div class="search_icon"><img src="/images/parksIcon.png" alt="park" /></div>
+            </div>
+            <div class="form-group">
+            <h5>near:</h5>
+            <div id="locationField">
+              <input class="form-control" id="autocompletemap" placeholder="Enter a city/place/address" type="text" />
+              </div>
+            </div>
             </div>
           </div>
-        </div>
+          <!-- end form to enter city and activity type -->
 
-        <div class="addtocalendar">
-          <div class="close_form">x</div>
-          <div class="filtersHeader">Add activity to trip planner</div>
-          <form class="" action="/activities/<%= trip_id %>/new" method="post">
-            <div class="form-group">
-            Title / Place
-            <input class="form-control" id="add_place_name" type="text" name="place" value="" required>
-            </div>
-            <div class="form-group">
-            Trip Day
-            <select class="form-control" name="day">
-              <% days.forEach(function(day) { %>
-                  <option class="day"+<%= day.id %>><%= day.date %></option>
-              <% }) %>
-            </select>
-            </div>
-            <div class="form-group">
-            Start Time
-            <input class="form-control" type="time" name="start_time" value="" placeholder="time" required>
-            </div>
-            <div class="form-group">
-            End Time
-            <input class="form-control" type="time" name="end_time" value="" placeholder="time" required>
-            </div>
-            <div class="form-group">
-            Address
-            <input class="form-control" id="add_place_address" type="address" name="address" value="" required><br>
-            </div>
-            <input style="display: none" id="add_place_coords" type="text" name="coordinates" value=""><br>
-            <input style="display: none" id="add_place_type" type="text" name="type" value=""><br>
-            <input type="submit" id="addToCal" value="add to calendar" class="btn btn-primary">
-          </form>
-        </div>
+          <!-- begin activity detail page  -->
+          <div class="addtocalendar">
+            <div class="close_form">x</div>
+            <div class="filtersHeader">Add activity to trip planner</div>
+            <form class="" action="/activities/<%= trip_id %>/new" method="post">
+              <div class="form-group">
+                Title / Place
+                <input class="form-control" id="add_place_name" type="text" name="place" value="" required>
+              </div>
+              <div class="form-group">
+                Trip Day
+                <select class="form-control" name="day">
+                  <% days.forEach(function(day) { %>
+                      <option class="day"+<%= day.id %><%= day.date %></option>
+                  <% }) %>
+                </select>
+              </div>
+              <div class="form-group">
+                Start Time
+                <input class="form-control" type="time" name="start_time" value="" placeholder="time" required>
+              </div>
+              <div class="form-group">
+                End Time
+                <input class="form-control" type="time" name="end_time" value="" placeholder="time" required>
+              </div>
+              <div class="form-group">
+                Address
+                <input class="form-control" id="add_place_address" type="address" name="address" value="" required><br>
+              </div>
+              <input style="display: none" id="add_place_coords" type="text" name="coordinates" value=""><br>
+              <input style="display: none" id="add_place_type" type="text" name="type" value=""><br>
+              <input type="submit" id="addToCal" value="add to calendar" class="btn btn-primary">
+            </form>
+          </div>
+          <!-- end form for activity details -->
+
+      <!-- end of left column -->
       </div>
 
+      <!-- map -->
       <div class="col-md-6 mapFrame">
         <div class="map_box">
           <div id="map"></div>
         </div>
       </div>
+      <!-- close map -->
 
+      <!-- list table -->
       <div id="listing">
         <table id="resultsTable">
           <tbody id="results"></tbody>
         </table>
       </div>
+      <!-- end of results table -->
 
+      <!-- popup for map -->
       <div style="display: none">
         <div id="info-content">
           <table>
@@ -129,66 +136,76 @@
           </table>
         </div>
       </div>
-      <div class="needBackground">
-      <div class="col-md-3 scheduleBorder">
-      <p>schedule:</p>
-      </div>
-        <div class="col-md-3 calDay">
+      <!-- end popup for map -->
 
-        <div class="schedule">
-          <div class="activities">
-            <div>
-              <% days.forEach(function(day) { %>
-                <button class="accordion">
-                <%= day.shortDay %>
-                </button>
-                <div class="panel">
-                  <div>
-                    <% activities.forEach(function(activity) {
-                    if (activity.day_id === day.id) { %>
-                      <div class="accordion">
-                        <div class="act_edit">
-                        <div class="act_name"><%= activity.name %></div>
-                        <div id="<%= activity.id %>" class="act_delete"> x </div>
-                      </div>
-                      </div>
-                      <a class="accordion">
-                        <div>
-                        <%= activity.name %>
+      <!-- background was failing -->
+      <div class="needBackground">
+
+        <!-- header for schedule div -->
+        <div class="col-md-3 scheduleBorder">
+        <p>schedule:</p>
+        </div>
+
+        <!-- accordion calendar section -->
+        <div class="col-md-3 calDay">
+          <div class="schedule">
+            <div class="activities">
+              <div>
+                <% days.forEach(function(day) { %>
+                  <button class="accordion">
+                    <%= day.shortDay %>
+                  </button>
+                  <div class="panel">
+                    <div>
+                      <% activities.forEach(function(activity) {
+                      if (activity.day_id === day.id) { %>
+                        <div class="accordion">
+                          <div class="act_edit">
+                            <div class="act_name"><%= activity.name %></div>
+                          <div id="<%= activity.id %>" class="act_delete"> x </div>
                         </div>
-                      </a>
-                      <div class="panel">
-                        <div class="act_dates">
-                          <%    function getFormattedTime(time) {
-                                  time = time.substring(0,5)
-                                  time.replace(":", '')
-                                  var hours24 = parseInt(time.substring(0, 2),10);
-                                  var hours = ((hours24 + 11) % 12) + 1;
-                                  var amPm = hours24 > 11 ? 'pm' : 'am';
-                                  var minutes = time.substring(2);
-                                  return hours + minutes + amPm;
-                              } %>
-                          <% var astart = getFormattedTime(activity.start_time) %>
-                          <% var aend = getFormattedTime(activity.end_time) %>
-                          <p class="act_date">From <%= astart %> to <%= aend %><p>
                         </div>
-                        <p>Address: <%= activity.address %></p>
-                      </div>
-                    <% } %>
-                  <% }) %>
+                        <!-- panel part of accordion -->
+                        <!-- <div class="panel"> -->
+                        <!-- I changed this line from Adriana's version -->
+                        <div class="panel">
+                          <div class="act_dates">
+                            <%    function getFormattedTime(time) {
+                                    time = time.substring(0,5)
+                                    time.replace(":", '')
+                                    var hours24 = parseInt(time.substring(0, 2),10);
+                                    var hours = ((hours24 + 11) % 12) + 1;
+                                    var amPm = hours24 > 11 ? 'pm' : 'am';
+                                    var minutes = time.substring(2);
+                                    return hours + minutes + amPm;
+                                  } %>
+                            <% var astart = getFormattedTime(activity.start_time) %>
+                            <% var aend = getFormattedTime(activity.end_time) %>
+                            <div class="act_date">From <%= astart %> to <%= aend %></div>
+                          <div class="act_date">Address: <%= activity.address %></div>
+                        </div>
+                        </div>
+                        <!-- </div> -->
+                      <% } %>
+                    <% }) %>
+                    </div>
                   </div>
-                </div>
-              <% }) %>
+                <% }) %>
+              </div>
             </div>
           </div>
         </div>
-        </div>
-        <div class="col-md-3 deleteButton">
-          <form action="/trips/<%= trip_id %>/delete" method="post">
-            <input class="deleteInp" type="submit" name="delete-trip" value="Delete this trip">
-          </form>
-        </div>
-        </div>
+        <!-- end of calendar accordion -->
+
+
+          <div class="col-md-3 deleteButton">
+            <form action="/trips/<%= trip_id %>/delete" method="post">
+              <input class="deleteInp" type="submit" name="delete-trip" value="Delete this trip">
+            </form>
+          </div>
+      </div>
+
+
       </div>
     </div>
   <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>

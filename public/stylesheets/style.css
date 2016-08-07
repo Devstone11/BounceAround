@@ -469,7 +469,7 @@ opacity: 1;
 max-height: 500px;
 }
 
-.act_dates{
+div.act_dates{
   display: block;
 }
 
@@ -478,4 +478,5 @@ max-height: 500px;
   width: 100%;
   margin-bottom: 0;
   padding-bottom: 0;
+  color: black;
 }
