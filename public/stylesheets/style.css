@@ -4,9 +4,12 @@ h1, h2, h3, h4, h5, h6{
 #custom-bootstrap-menu, footer, body{
   font-family: 'Mukta Vaani', sans-serif;
 }
+#menu.navbar.navbar-default{
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
 #custom-bootstrap-menu{
   height: 7vh;
-  margin-bottom: 1px;
 }
 #custom-bootstrap-menu.navbar-default .navbar-brand {
     color: rgba(119, 119, 119, 1);
@@ -16,6 +19,8 @@ h1, h2, h3, h4, h5, h6{
     background-color: rgba(248, 248, 248, 1);
     border-width: 1px;
     border-radius: 4px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 }
 #custom-bootstrap-menu.navbar-default .navbar-nav>li>a {
     color: rgba(119, 119, 119, 1);
