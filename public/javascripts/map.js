@@ -8,6 +8,7 @@ var hostnameRegexp = new RegExp('^https?://.+?/');
 var user_id;
 var cookies = document.cookie.split("; ");
 var root = location.protocol + '//' + location.host;
+var trip_id = window.location.href.substring(window.location.href.lastIndexOf('/')-1, window.location.href.lastIndexOf('/'));
 var geocoder;
 
   $('.addtocalendar').hide();
@@ -17,8 +18,6 @@ cookies.forEach(function(cookie){
     user_id = cookie.substring(cookie.indexOf("=")+1, cookie.length);
   }
 });
-
-var trip_id = window.location.href.substring(window.location.href.lastIndexOf('/')-1, window.location.href.lastIndexOf('/'));
 
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
