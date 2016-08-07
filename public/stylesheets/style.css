@@ -1,6 +1,7 @@
 h1, h2, h3, h4, h5, h6{
   font-family: 'Mukta Vaani', sans-serif !important;
 }
+<<<<<<< HEAD
 @media only screen and (max-width: 600px) {
   #bannerText h1{
     font-size: 32px !important;
@@ -34,48 +35,54 @@ h1, h2, h3, h4, h5, h6{
     background-color: white;
   }
 }
-#menu, footer, body{
+#custom-bootstrap-menu, footer, body{
   font-family: 'Mukta Vaani', sans-serif;
 }
-#menu{
+#custom-bootstrap-menu.navbar.navbar-default{
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+#custom-bootstrap-menu{
   height: 7vh;
 }
-#menu.navbar-default .navbar-brand {
+#custom-bootstrap-menu.navbar-default .navbar-brand {
     color: rgba(119, 119, 119, 1);
 }
-#menu.navbar-default {
+#custom-bootstrap-menu.navbar-default {
     font-size: 16px;
     background-color: rgba(248, 248, 248, 1);
     border-width: 1px;
     border-radius: 4px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 }
-#menu.navbar-default .navbar-nav>li>a {
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a {
     color: rgba(119, 119, 119, 1);
     background-color: rgba(248, 248, 248, 0);
 }
-#menu.navbar-default .navbar-nav>li>a:hover,
-#menu.navbar-default .navbar-nav>li>a:focus {
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:hover,
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
     color: rgba(51, 51, 51, 1);
     background-color: rgba(255, 218, 0, 1);
 }
-#menu.navbar-default .navbar-nav>.active>a,
-#menu.navbar-default .navbar-nav>.active>a:hover,
-#menu.navbar-default .navbar-nav>.active>a:focus {
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a,
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover,
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:focus {
     color: rgba(85, 85, 85, 1);
     background-color: rgba(209, 174, 61, 1);
 }
-#menu.navbar-default .navbar-toggle {
+#custom-bootstrap-menu.navbar-default .navbar-toggle {
     border-color: #d1ae3d;
 }
-#menu.navbar-default .navbar-toggle:hover,
-#menu.navbar-default .navbar-toggle:focus {
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover,
+#custom-bootstrap-menu.navbar-default .navbar-toggle:focus {
     background-color: #d1ae3d;
 }
-#menu.navbar-default .navbar-toggle .icon-bar {
+#custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {
     background-color: #d1ae3d;
 }
-#menu.navbar-default .navbar-toggle:hover .icon-bar,
-#menu.navbar-default .navbar-toggle:focus .icon-bar {
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar,
+#custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {
     background-color: #f8f8f8;
 }
 #footer{
@@ -87,8 +94,6 @@ h1, h2, h3, h4, h5, h6{
 #frontButt{
   margin-left: 4vw;
   display: block;
-  background-color: #3C454E;
-  color: white;
 }
 
 label {
@@ -118,6 +123,7 @@ button.signup span{
   margin-left: auto;
   margin-right: auto;
 }
+/*444*/
 button.accordion {
     background-color: #eee;
     color: #444;
@@ -158,11 +164,24 @@ div.panel {
 div.panel.show {
     opacity: 1;
     max-height: 500px;
-    background-color: inherit;
 }
  .signup:hover{
   background-color: #3d60d1;
 }
+<<<<<<< HEAD
+=======
+#googBut button{
+  width: 15vw;
+}
+#googBut{
+  margin-top: 3vh;
+  margin-left: 5vw;
+}
+#googBut button img{
+  height: 90%;
+  width: 25%;
+  vertical-align: middle;
+>>>>>>> devin/master
 
 
 #ourBanner{
@@ -225,11 +244,22 @@ div.panel.show {
   width: 100%;
   height: 100%;
 }
+/****************
+new trip form
+****************/
+
 .form-group {
     margin-top: 2em;
     margin-bottom: 2em;
     margin-right: 25px;
     margin-left: 25px;
+}
+div.new-trip {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    width: 50vw;
+    /*margin-right: 30%;
+    margin-left: 30%;*/
 }
 
 html, body {
@@ -262,6 +292,7 @@ table {
   height: 25px;
   display: block;
   margin-bottom: 20px;
+  color: black;
 }
 #controls {
   position: absolute;
@@ -320,6 +351,8 @@ table {
 .filters{
   width: 100%;
   height: 100%;
+  background-color: #3C454E;
+  color: white;
   position: relative;
   padding: 30px;
 }
@@ -329,10 +362,10 @@ h5{
 }
 
 .addtocalendar{
-  background-color: blue;
+  background-color: #3C454E;
   width: 100%;
   height: 100%;
-  padding: 20px;
+  padding: 1em;
   color: white;
 }
 #addToCal{
@@ -352,7 +385,7 @@ h5{
 
 .map_box{
   width: 100%;
-  height: 400px;
+  height: 82vh;
   display:inline-block;
 }
 
@@ -487,6 +520,7 @@ max-height: 500px;
   margin-bottom: 0;
   padding-bottom: 0;
 }
+
 #boday{
   background-color: #3C454E;
 }
