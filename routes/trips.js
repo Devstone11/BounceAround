@@ -131,7 +131,7 @@ router.get('/:trip_id/googlecalendar', function(req, res, next){
     });
     console.log(events);
     quickstartjs.quickstart(events);
-    res.redirect('/');
+    res.redirect(`/trips/${req.params.trip_id}/edit`);
   });
 });
 
