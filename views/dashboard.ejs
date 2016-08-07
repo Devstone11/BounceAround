@@ -14,7 +14,7 @@
       <div class="container-fluid">
         <% if (trips.length !== 0) { %>
           <div class="row">
-            <div class="col-sm-4" style="height: 90vh;">
+            <div class="col-md-4" style="height: 90vh;" id="buttHead">
               <div class="well well-sm">
                 <h1 class="last_trip" id='<%= lasttrip.id %>'>Trip to <%= lasttrip.city %></h1>
               </div>
@@ -23,7 +23,7 @@
               </div>
             </div>
           </div>
-          <div class="col-sm-5">
+          <div class="col-md-4">
             <div class="well well-sm">
               <div>
                 <h1>Trip Schedule for <%= lasttrip.city %></h1>
@@ -57,9 +57,10 @@
           <a href="/trips/<%= lasttrip.id %>/edit">+ Edit / Add more activities</a>
         </div>
       </div>
-    <div class="col-sm-3" id="all">
+    <div class="col-md-3" id="all">
       <div class="well well-sm">
         <h1>All trips</h1>
+      </div>
           <a href="/trips/new" class="add"> + Add Trip</a>
             <ul>
               <% if (trips.length > 1) { %>
@@ -70,7 +71,7 @@
                 <li><a href="/trips/<%= trips[0].id %>/edit"><%= trips[0].city %></a></li>
                   <% } %>
             </ul>
-        </div>
+
       </div>
     </div>
       <% } else { %>

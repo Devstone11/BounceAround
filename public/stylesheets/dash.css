@@ -1,3 +1,11 @@
+@media only screen and (max-width: 992px) {
+  #buttHead{
+    margin-left: 0% !important;
+  }
+}
+#buttHead{
+  margin-left: -7%;
+}
 body{
   background-color: #3C454E;
 
@@ -8,6 +16,7 @@ h1, h2, h3, h4, h5, h6{
 .well{
   background: #737C85;
   color: #15222D;
+  margin-top: 5vh;
 }
 .schedule a{
   text-decoration: none;
