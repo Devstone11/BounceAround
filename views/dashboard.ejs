@@ -43,7 +43,7 @@
                 <div>
                   <% for (var e in lasttrip.days[i].activities) { %>
                     <a class="accordion">
-                    - <%= lasttrip.days[i].activities[e].name %>
+                    <%= lasttrip.days[i].activities[e].name %>
                     </a>
                       <div class="panel">
                         <p>From <%= lasttrip.days[i].activities[e].start %> to <%= lasttrip.days[i].activities[e].end %> at  <%= lasttrip.days[i].activities[e].address %></p>
