@@ -46,6 +46,12 @@ router.post('/:id/new', function(req, res, next) {
     if (req.body.place.indexOf("'")> -1){
       req.body.place = req.body.place.replace(/\'/g, "´");
     }
+    if (req.body.place.indexOf("&amp;")> -1){
+      req.body.place = req.body.place.replaceAll("&(?!amp;)", "&amp;");
+    }
+    if (req.body.address.indexOf("&amp;")> -1){
+      req.body.place = req.body.place.replaceAll("&(?!amp;)", "&amp;");
+    }
     knex.raw(`INSERT into activities (id, day_id, name, address, coordinates, start_time, end_time, type)
     values (DEFAULT, ${dayId}, '${req.body.place}', '${req.body.address}', '${req.body.coordinates}', '${req.body.start_time}', '${req.body.end_time}', '${req.body.type}')`).then(function() {
       res.redirect(`/trips/${req.params.id}/edit`);

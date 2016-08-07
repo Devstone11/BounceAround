@@ -130,6 +130,8 @@ function initMap() {
 
 var markerIconCenter = 'https://cdn0.iconfinder.com/data/icons/seo-web-15/141/seo-social-web-network-internet_122-32.png';
 function onPlaceChanged() {
+  clearResults()
+  clearMarkers()
   var place = autocomplete.getPlace();
   if (place) {
     if (place.geometry) {
