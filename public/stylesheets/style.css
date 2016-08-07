@@ -470,3 +470,8 @@ max-height: 500px;
 #boday{
   background-color: #3C454E;
 }
+
+.nameofactivity{
+  font-weight: bold;
+  font-size: 1.1em;
+}

@@ -17,7 +17,7 @@ cookies.forEach(function(cookie){
 });
 
 var trip_id = window.location.href.substring(window.location.href.lastIndexOf('/')-1, window.location.href.lastIndexOf('/'));
-//function start
+
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 };
@@ -63,8 +63,6 @@ function typeIcon(type){
   }
 }
 
-
-//function end
 function initMap() {
   $.ajax({
       url: root + `/trips/selected/${trip_id}`,
@@ -338,11 +336,12 @@ function center(pan){
            if (status === 'OK') {
              if (results[1]) {
                var address = results[1].formatted_address;
+               var realaddress = $('#autocompletemap').val();
                var ccoords = map.getCenter();
              }
            }
            InfoWindow = new google.maps.InfoWindow({
-             content: `<p id="centerAddress">${address}</p><p id="centerCoords" style="display:none">${ccoords}</p><div class="addtocalCenter"><a href="#">+ add to calendar</a></div>`
+             content: `<p id="centerAddress">${realaddress}</p><p id="centerCoords" style="display:none">${ccoords}</p><div class="addtocalCenter"><a href="#">+ add to calendar</a></div>`
            });
            centerMarker.addListener('click', function() {
              InfoWindow.open(map, centerMarker);
