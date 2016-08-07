@@ -31,7 +31,7 @@
                 </p>
               </div>
             </div>
-          <a href="/trips/<%= lasttrip.id %>/edit">+ Edit / Add more activities</a>
+          <a href="/trips/<%= lasttrip.id %>/edit" class="add">+ Edit / Add more activities</a>
           <div class="schedule">
           <% if (lasttrip.days !== undefined) { %>
             <% for (var i in lasttrip.days) { %>
