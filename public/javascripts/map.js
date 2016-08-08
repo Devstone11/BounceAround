@@ -8,7 +8,7 @@ var hostnameRegexp = new RegExp('^https?://.+?/');
 var user_id;
 var cookies = document.cookie.split("; ");
 var root = location.protocol + '//' + location.host;
-console.log(window.location.href.length);
+
 var trip_id;
 if (window.location.href.length === 34){
   trip_id = window.location.href.substring(window.location.href.lastIndexOf('/')-1, window.location.href.lastIndexOf('/'));
