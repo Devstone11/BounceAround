@@ -8,7 +8,17 @@ var hostnameRegexp = new RegExp('^https?://.+?/');
 var user_id;
 var cookies = document.cookie.split("; ");
 var root = location.protocol + '//' + location.host;
-var trip_id = window.location.href.substring(window.location.href.lastIndexOf('/')-1, window.location.href.lastIndexOf('/'));
+
+var trip_id;
+if (window.location.href.length === 34){
+  trip_id = window.location.href.substring(window.location.href.lastIndexOf('/')-1, window.location.href.lastIndexOf('/'));
+}
+else if (window.location.href.length === 35){
+  trip_id = window.location.href.substring(window.location.href.lastIndexOf('/')-2, window.location.href.lastIndexOf('/'));
+}
+else {
+  trip_id = window.location.href.substring(window.location.href.lastIndexOf('/')-3, window.location.href.lastIndexOf('/'));
+}
 var geocoder;
 
   $('.addtocalendar').hide();
@@ -65,6 +75,7 @@ function typeIcon(type){
 }
 
 function initMap() {
+  console.log(trip_id);
   $.ajax({
       url: root + `/trips/selected/${trip_id}`,
       success: function(trips){
@@ -349,5 +360,4 @@ function center(pan){
              InfoWindow.open(map, centerMarker);
            });
          });
-
 }

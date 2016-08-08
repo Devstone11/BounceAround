@@ -6,7 +6,6 @@ var bcrypt = require('bcrypt');
 var data = require('../data/queries');
 var salt = bcrypt.genSaltSync(10);
 var magic = require('../jsmagic/magic');
-var quickstartjs = require('../quickstart');
 
 router.get('/', function(req, res, next) {
   req.cookies.session ? res.redirect(`/${req.cookies.id}/trips`) : res.render('index', { title: 'Express' });
@@ -82,7 +81,7 @@ router.post('/signup', function(req, res, next) {
 });
 
 router.get('/auth/google',
-  passport.authenticate('google', { scope: ['profile', 'https://www.googleapis.com/auth/userinfo.email'] }));
+  passport.authenticate('google', { scope: ['profile', 'https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/calendar'] }));
 
 router.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),

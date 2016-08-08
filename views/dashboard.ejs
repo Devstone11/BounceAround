@@ -25,27 +25,28 @@
           <div class="col-md-4">
             <div class="well well-sm">
               <div>
-                <h1>Trip Schedule for <%= lasttrip.city %></h1>
+                <h1>Trip Schedule</h1>
                 <p>
                 ( <%= lasttrip.start %> - <%= lasttrip.end %> )
                 </p>
               </div>
             </div>
+          <a href="/trips/<%= lasttrip.id %>/edit" class="add">+ Edit / Add more activities</a>
           <div class="schedule">
           <% if (lasttrip.days !== undefined) { %>
             <% for (var i in lasttrip.days) { %>
               <div class="getFancy">
-              <p>
+              <p class="titlegf">
                 <%= lasttrip.days[i].date %>
               </p>
               <div class="activities">
                 <div>
                   <% for (var e in lasttrip.days[i].activities) { %>
                     <a class="accordion">
-                    - <%= lasttrip.days[i].activities[e].name %>
+                    <%= lasttrip.days[i].activities[e].name %>
                     </a>
                       <div class="panel">
-                        <p>From <%= lasttrip.days[i].activities[e].start %> to <%= lasttrip.days[i].activities[e].end %> at  <%= lasttrip.days[i].activities[e].address %></p>
+                        <p class="bubblepanel">From <%= lasttrip.days[i].activities[e].start %> to <%= lasttrip.days[i].activities[e].end %> at  <%= lasttrip.days[i].activities[e].address %></p>
                       </div>
                   <% } %>
                 </div>
@@ -53,10 +54,9 @@
             </div>
               <% } %>
             <% } %>
-          <a href="/trips/<%= lasttrip.id %>/edit">+ Edit / Add more activities</a>
         </div>
       </div>
-    <div class="col-md-3" id="all">
+    <div class="col-md-4" id="all">
       <div class="well well-sm">
         <h1>All trips</h1>
       </div>

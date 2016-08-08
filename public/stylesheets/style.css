@@ -98,6 +98,7 @@ label {
   display: inline-block;
   width: 5em;
 }
+
 /****************
 buton styles
 ****************/
@@ -328,6 +329,7 @@ h5{
 
 #centerAddress{
   font-weight: bold;
+  color: black;
 }
 
 .addtocalCenter{
@@ -335,6 +337,7 @@ h5{
 }
 
 .titlest{
+  color: black;
   font-weight: bold;
   width: 30%;
   margin: 0;

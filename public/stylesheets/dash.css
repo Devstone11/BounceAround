@@ -28,9 +28,15 @@ h1, h2, h3, h4, h5, h6{
   font-size: 1.53em;
 }
 .schedule p{
-  font-size: 1.5em;
+  font-size: 1.1em;
   color: black;
 }
+
+.schedule .titlegf{
+  font-size: 1.4em;
+  color: black;
+}
+
 #all ul{
   list-style-type: none;
 }
@@ -53,6 +59,10 @@ div.panel.show p{
   font-size: 1.53em;
 }
 .schedule{
-  height: 60vh;
+  height: 61.5vh;
   overflow-y: scroll;
+}
+
+.bubblepanel{
+  padding: 2%;
 }
