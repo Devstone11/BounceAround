@@ -10,10 +10,10 @@ var cookies = document.cookie.split("; ");
 var root = location.protocol + '//' + location.host;
 
 var trip_id;
-if (window.location.href.length === 34){
+if (window.location.href.length === 47){
   trip_id = window.location.href.substring(window.location.href.lastIndexOf('/')-1, window.location.href.lastIndexOf('/'));
 }
-else if (window.location.href.length === 35){
+else if (window.location.href.length === 48){
   trip_id = window.location.href.substring(window.location.href.lastIndexOf('/')-2, window.location.href.lastIndexOf('/'));
 }
 else {
